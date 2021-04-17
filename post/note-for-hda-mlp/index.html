@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Phd student of Computer Science" />
+  <meta name="description" content="提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/tag/machine-learning/" />
+  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/post/note-for-hda-mlp/" />
 
   
 
@@ -268,8 +268,6 @@
   
 
   
-    <link rel="alternate" href="/tag/machine-learning/index.xml" type="application/rss+xml" title="WuxinWang" />
-  
 
   
     <link rel="manifest" href="/index.webmanifest" />
@@ -278,7 +276,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://wuxinwang1997.github.io/tag/machine-learning/" />
+  <link rel="canonical" href="https://wuxinwang1997.github.io/post/note-for-hda-mlp/" />
 
   
   
@@ -289,39 +287,91 @@
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="WuxinWang" />
-  <meta property="og:url" content="https://wuxinwang1997.github.io/tag/machine-learning/" />
-  <meta property="og:title" content="Machine Learning | WuxinWang" />
-  <meta property="og:description" content="Phd student of Computer Science" /><meta property="og:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
-    <meta property="twitter:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:url" content="https://wuxinwang1997.github.io/post/note-for-hda-mlp/" />
+  <meta property="og:title" content="Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron | WuxinWang" />
+  <meta property="og:description" content="提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测" /><meta property="og:image" content="https://wuxinwang1997.github.io/post/note-for-hda-mlp/featured.png" />
+    <meta property="twitter:image" content="https://wuxinwang1997.github.io/post/note-for-hda-mlp/featured.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2021-04-17T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2021-04-17T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2021-04-17T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wuxinwang1997.github.io/post/note-for-hda-mlp/"
+  },
+  "headline": "Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron",
+  
+  "image": [
+    "https://wuxinwang1997.github.io/post/note-for-hda-mlp/featured.png"
+  ],
+  
+  "datePublished": "2021-04-17T00:00:00Z",
+  "dateModified": "2021-04-17T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wuxin Wang"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "WuxinWang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测"
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>Machine Learning | WuxinWang</title>
+  <title>Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron | WuxinWang</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   "  >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="cccb4644382851795833795847a807dd" >
 
   
   
@@ -713,6 +763,157 @@
   </div>
 
   <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      Wuxin Wang</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 17, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/note/">Note</a>, <a href="/category/%E7%AC%94%E8%AE%B0/">笔记</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 734px; max-height: 645px;">
+  <div style="position: relative">
+    <img src="/post/note-for-hda-mlp/featured.png" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://unsplash.com/photos/CpkOjOcXdUY"><strong>Unsplash</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="主要工作">主要工作</h2>
+<p>提出一种HDA-MLP方法，在输出DA结果时有很好的进步性，且计算量小。</p>
+<ul>
+<li>通过MLP对单一DA方法(3DVar和EnKF)进行了形式化优化，并构建了新的训练数据集，添加了未来的短期预测来修正当前的同化结果，显著提高了结果的质量</li>
+<li>为了优化同化结果，提出了一种新的3D-Var定制MLP</li>
+<li>整合了一个创造性的MLP框架HDA-MLP来混合单一的3D-Var和EnKF</li>
+</ul>
+<h2 id="问题定义">问题定义</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi3.png" alt="fig3" style="zoom:67%;" /></p>
+<p>短期预测作为背景场$\mathrm{x}^b$，结合来自新鲜观察$\mathrm{y}^o$的信息来获得分析场$\mathrm{x}^a$，这称作分析循环</p>
+<p>单个同化（3D-Var/EnKF）的目的是寻找最佳权重$\mathcal{w}$使得
+$$
+x^a_t=x^b_t+w*(y^o_t-x^b_t)
+$$</p>
+<p>集合同化则是从不同的同化结果中进行加权
+$$
+x_{hybrid}^a=(1-v)*x_{Var}^a+v*x_{Ensemble}^a
+$$</p>
+<p>当前的$\mathrm{x}^a$受到多时刻历史数据的影响，可以将DA重新定义为一个时间序列问题。本文扩展认为，未来的短期预测$\mathrm{x}^b$是由之前的$\mathrm{x}^a$扩展得到的，未来短期的观测$\mathrm{y}^o$可以独立观测，用于修正$\mathrm{x}^a_t$，更具DA的动态性质，它也可以用来修正当前的分析场。</p>
+<p>$x^a=f\left(historical(x^b,y^o),future(y^o)\right)$</p>
+<p>其中$f$为训练得到的DA模型</p>
+<p>考虑使用一段时间的$\mathrm{x}^a$来获得最终的$\mathrm{x}^a$，而不是将不同方法的DA结果结合。因此，混合DA可以定义为基于不同DA方法的多时刻$\mathrm{x}^a$的回归问题。</p>
+<p>$x_{Hybrid}^a=F(x_{Var}^a,x_{Ensemble,l}^a),l=1,2,3,\cdots$</p>
+<p>其中$F$为训练得到的混合DA模型，$l$表示$\mathrm{x}^a$的长度</p>
+<h2 id="方法">方法</h2>
+<h3 id="hda-mlp优化问题">HDA-MLP：优化问题</h3>
+<p>类似4DVar-DA，将同化时间窗设为$[t_1,t_n]$，利用前半段数据进行分析，利用后半段诗句对时间窗中的分析场进行修正，对当前分析场的优化由下式决定
+$$
+x_{ct}^a=\sum\limits^p_{i=0}w_{ct-i}x_{ct-i}^b+\sum\limits^q_{i=0}v_{ct-i}y_{ct-i}^o+bias
+$$
+其中$ct=\frac{n+1}{w},p=\frac{n-1}{2},q=n-1$，$\mathcal{w},\mathcal{v}$分别为$\mathrm{x}^b,\mathrm{y}^o$的权重矩阵</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi4.png" alt="fig4" style="zoom:67%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi5.png" alt="fig5"></p>
+<h3 id="混合">混合</h3>
+<p>使用MLP优化过的结果作为训练集，直接混合优化后的3D-Var和EnKF的分析场，再用于分析$\mathrm{x}^a_t$</p>
+<h2 id="实验结论">实验结论</h2>
+<p>在Lorenz-63上结果比较显著，但是在Lorenz-96上效果不太明显。</p>
+<h2 id="分析">分析</h2>
+<ol>
+<li>有可能是三层MLP用于替换模式不能捕获Lorenz-96这类稍微复杂的混沌模型的规律，考虑使用时空序列预测的深度学习模型替换模式进行短期预测</li>
+<li>可能是3D-Var本身不考虑时间的维度信息，缺少时间的指导，考虑用RNN替换MLP获取时间信息以增强同化结果</li>
+</ol>
+
+    </div>
+
     
 
 
@@ -720,74 +921,246 @@
 
 
 
-
-
-
-
-
-
+<div class="article-tags">
   
-
+  <a class="badge badge-light" href="/tag/academic/">Academic</a>
   
+  <a class="badge badge-light" href="/tag/data-assimilation/">Data Assimilation</a>
   
-  
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Machine Learning</h1>
-
-  
-
+  <a class="badge badge-light" href="/tag/machine-learning/">Machine Learning</a>
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
-
-  
-  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
-    
-    
-    <div>
-      <h2><a href="/post/note-for-hda-mlp/" >Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-          提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wuxinwang1997.github.io/post/note-for-hda-mlp/&amp;text=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wuxinwang1997.github.io/post/note-for-hda-mlp/&amp;t=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/post/note-for-combine-ml-and-da/" >Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-          使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场
-        
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron&amp;body=https://wuxinwang1997.github.io/post/note-for-hda-mlp/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/" >Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-          资料同化与机器学习的共同点：在贝叶斯理论框架下，都是反问题求解 资料同化的特性：不确定性、稀疏性、非直接观测 四维变分同化与RNN在一定程度下是等价的
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wuxinwang1997.github.io/post/note-for-hda-mlp/&amp;title=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
         
-      </div>
-    </div>
-  
-
-  
-
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron%20https://wuxinwang1997.github.io/post/note-for-hda-mlp/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wuxinwang1997.github.io/post/note-for-hda-mlp/&amp;title=Note%20for%20A%20Data-Driven%20Method%20for%20Hybrid%20Data%20Assimilation%20with%20Multilayer%20Perceptron" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wuxinwang1997.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu923308ddc45a0139331c87f8a72e7c37_94118_270x270_fill_q75_lanczos_center.jpg" alt="Wuxin Wang"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wuxinwang1997.github.io/">Wuxin Wang</a></h5>
+      <h6 class="card-subtitle">Phd student of Computer Science</h6>
+      <p class="card-text">My research interests include data assimilation, machine learning and spatial-temporal forecasting.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/wuxinwang1997" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.kaggle.com/whurobin" target="_blank" rel="noopener">
+        <i class="fab fa-kaggle"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.zhihu.com/people/pa-ke-ni-zi" target="_blank" rel="noopener">
+        <i class="fab fa-zhihu"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/note-for-combine-ml-and-da/">Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</a></li>
+      
+      <li><a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/">Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

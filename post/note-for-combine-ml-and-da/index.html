@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Phd student of Computer Science" />
+  <meta name="description" content="使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/post/" />
+  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/" />
 
   
 
@@ -268,8 +268,6 @@
   
 
   
-    <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="WuxinWang" />
-  
 
   
     <link rel="manifest" href="/index.webmanifest" />
@@ -278,7 +276,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://wuxinwang1997.github.io/post/" />
+  <link rel="canonical" href="https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/" />
 
   
   
@@ -289,39 +287,91 @@
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="WuxinWang" />
-  <meta property="og:url" content="https://wuxinwang1997.github.io/post/" />
-  <meta property="og:title" content="Posts | WuxinWang" />
-  <meta property="og:description" content="Phd student of Computer Science" /><meta property="og:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
-    <meta property="twitter:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:url" content="https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/" />
+  <meta property="og:title" content="Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model | WuxinWang" />
+  <meta property="og:description" content="使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场" /><meta property="og:image" content="https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/featured.jpg" />
+    <meta property="twitter:image" content="https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/featured.jpg" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2021-04-17T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2021-04-16T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2021-04-16T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/"
+  },
+  "headline": "Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model",
+  
+  "image": [
+    "https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/featured.jpg"
+  ],
+  
+  "datePublished": "2021-04-16T00:00:00Z",
+  "dateModified": "2021-04-16T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wuxin Wang"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "WuxinWang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场"
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>Posts | WuxinWang</title>
+  <title>Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model | WuxinWang</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6370009740e1eb2ee0b7974f10ecc91f" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="e9c0290ad261e0898aeb296b58c9ae39" >
 
   
   
@@ -713,44 +763,16 @@
   </div>
 
   <div class="page-body">
-    
-
-
-
-
-
-
-
-
-
-
-
+    <article class="article">
 
   
 
-  
-  
-  
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Posts</h1>
-
-  
-
-  
-</div>
 
 
 
-<div class="universal-wrapper">
 
-  
 
-  
-  
-    
-      
+
 
 
 
@@ -765,139 +787,15 @@
 
 
   
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/note-for-hda-mlp/" >Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</a>
-    </div>
-
-    
-    <a href="/post/note-for-hda-mlp/"  class="summary-link">
-      <div class="article-style">
-        提出HDA-MLP对同化结果进行优化，并用MLP替换模式进行预测
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  <span >
-      Wuxin Wang</span>
-  </div>
-  
   
 
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Apr 17, 2021
-  </span>
-  
+
+<div class="article-container pt-3">
+  <h1>Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</h1>
 
   
 
   
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/note/">Note</a>, <a href="/category/%E7%AC%94%E8%AE%B0/">笔记</a></span>
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/note-for-hda-mlp/" >
-      <img src="/post/note-for-hda-mlp/featured_huea2c5686c15420c0f177d65e6c427e83_136684_150x0_resize_lanczos_2.png" alt="Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron" loading="lazy">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/note-for-combine-ml-and-da/" >Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</a>
-    </div>
-
-    
-    <a href="/post/note-for-combine-ml-and-da/"  class="summary-link">
-      <div class="article-style">
-        使用CNN预测混沌模型Lorenz96，采用集合卡尔曼滤波同化数据更新初始场
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 <div class="article-metadata">
@@ -950,140 +848,323 @@
 
 </div>
 
-      
-    </div>
+  
 
-    
 
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/note-for-combine-ml-and-da/" >
-      <img src="/post/note-for-combine-ml-and-da/featured_hu46bba466d103562d05741a69d82cb27b_37976_150x0_resize_q75_lanczos.jpg" alt="Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model" loading="lazy">
-    </a>
-    
+
+
+
+</div>
+
+
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 907px; max-height: 459px;">
+  <div style="position: relative">
+    <img src="/post/note-for-combine-ml-and-da/featured.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://unsplash.com/photos/CpkOjOcXdUY"><strong>Unsplash</strong></a></span>
   </div>
 </div>
 
-    
-  
-    
-      
 
 
+  <div class="article-container">
 
+    <div class="article-style">
+      <h2 id="背景">背景</h2>
+<p>在地球物理流体动力学中，由于<code>小尺度特征的表示不正确或物理过程被忽略</code>，数值模式的某些部分必须由经验子模型或参数化进行表示。地球观测主要包括两个步骤：1. 模型调整和选择；2. 数据同化。</p>
+<p>机器学习算法已经被用来产生<code>完全由观测到的低阶混沌系统</code>的替代模型，然后用于预测。机器学习也已基于真实观测值应用于临近预报。特别的，<code>在模型误差存在下，由DA解决的优化问题等效于 ML问题</code>。</p>
+<p>在必须基于嘈杂和稀疏的观测结果提出系统状态及其动力学模型的情况下，本文提出的混合算法<code>依靠DA来估计系统状态，并依靠ML来模拟动力模型</code>。</p>
+<h2 id="问题定义">问题定义</h2>
+<p>考虑对于未知过程$\mathbb{x}_k \in \mathbb{R}^m$多维观测的时间序列$\mathbb{y}^{obs}_k \in \mathbb{R}^p$：
+$$
+y^{obs}_k=\mathcal{H}_k(x_k)+\epsilon^{obs}_k
+$$
+其中$0 \leq k \leq K$是时间步的索引，$\mathcal{H}_k:\mathbb{R}^m\rightarrow\mathbb{R}^p$是观测算子（未知），假设观测误差$\epsilon^{obs}<em>k$服从均值为$0$和协方差矩阵为$R_k$的正态分布，观察次数$p$及其噪声水平不会随时间变化，且观测空间无关（即$R_k$是一个对角阵），并且考虑常规时间离散化，例如：$\forall k，t</em>{k + 1} -t_k = h$</p>
+<p>假设$x_k$是连续过程$x$的时间离散，服从形式为的未知的常微分方程
+$$
+\frac{dx}{dt} = \mathcal{M}(x)
+$$
+目标是得到$t_k$和$t_{k + 1}$之间的$\mathcal{M}$的的替代模型$\mathcal{G}$
+$$
+x_{k+1}=\mathcal{G}(x_k)+\epsilon_k^m=x_k+\int_{t_k}^{t_{k+1}}\mathcal{M}(x)dt \tag{3} \label{eq3}
+$$
+其中$\mathbb{\epsilon}_k^m$是模型$\mathcal{G}$的误差</p>
+<h2 id="方法">方法</h2>
+<h3 id="cnn">CNN</h3>
+<p>目前已有论文使用卷积神经网络来表示代理模型。</p>
+<p>由于$\ref{eq3}$中表达式可表示为$x_{k+1}=x_k+\cdots$，故采用残差网络的方式构建模型$\mathcal{G}(x)=x_k+f_{nn}(x_k,W)$。</p>
+<p>$Loss$函数定义为
+$$
+L(W)=\sum^{K-{N_f}-1}<em>{k=0} \sum^{N_f}</em>{i=1} |\mathcal{G}<em>W^{(i)}-x</em>{k+1}|_{P_k^{-1}}^2
+$$</p>
+<p>其中$N_f$是时间步数，$P_k$是定义范数$|x|_{P_k^-1}^2=x^TP_k^{-1}x$的半正定对称阵，注意：$\mathrm{P}_k$是代理模型的误差协方差矩阵。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig2.jpg" alt="fig2" style="zoom:60%;" /></p>
+<h3 id="同化">同化</h3>
+<p>本文使用有限大小的集合卡尔曼滤波器EnKF-N（本文方法不依赖于特定同化过程）</p>
+<p>EnKF-N是一种序列集合同化方法，时间$t_k$时的分析矩阵$X_k^{a/f} \equiv \left[x_{k,1}^{a/f},\cdots,x_{k,p}^{a/f},\cdots,x_{k,N}^{a/f}\right] \in R^{m \times N}$其中的$a$表示分析场，成员$x_{k,p}^{a/f}=\mathcal{G}(x_{k-1,p}^a)+\epsilon_{k,p}^m$，其中$\mathrm{\epsilon}_{k,p}^a$是第$t_k$时刻成员$p$的模型误差。</p>
+<p>分析过程中，给一个观测$\mathrm{y}^{obs}_k$和集合预测$\mathrm{X}_k^f$，使用同化算法更新为$\mathrm{X}_k^a$，对集合进行均值和协方差的求解。</p>
+<h3 id="结合同化于机器学习">结合同化于机器学习</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.jpg" alt="fig1" style="zoom:50%;" /></p>
+<p>该过程可以看作是<code>期望最大化算法</code>，其中<code>DA是期望步骤</code>，而<code>ML是最大化步骤</code>。且ML与DA算法选取是<code>相互独立</code>的。</p>
+<h2 id="实验">实验</h2>
+<p>组合DA-ML方法使用40变量Lorenz96产生的综合观测值进行测试。通过以下一组常微分方程，在周期一维域上定义模型L96：
+$$
+\frac{x_n}{dt} = (x_{n+1}-x_{n-2})x_{n-1}-x_n+F
+$$
+其中$x_n, 0 \leq n &lt; m$是标量状态变量，$x_m = x_0, x_{−1} = x_{m−1}, x_{−2} = x_{m−2}, m= 40, F = 8$</p>
+<p>使用Lyapunov时间单位$t_\Lambda=\Lambda_1t$，其中$t$是模型单位中的时间：一个Lyapunov时间单位对应于误差增长$e$倍的时间。</p>
+<p>具体实验步骤查看论文。</p>
+<h2 id="结论与分析">结论与分析</h2>
+<p>实验中的观测值是来自全状态向量的子样本，意味着DA充当观测值的插值器和平滑器，从而产生了所谓的“分析”。</p>
 
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/" >Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</a>
     </div>
 
     
-    <a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/"  class="summary-link">
-      <div class="article-style">
-        资料同化与机器学习的共同点：在贝叶斯理论框架下，都是反问题求解 资料同化的特性：不确定性、稀疏性、非直接观测 四维变分同化与RNN在一定程度下是等价的
-      </div>
-    </a>
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/academic/">Academic</a>
+  
+  <a class="badge badge-light" href="/tag/data-assimilation/">Data Assimilation</a>
+  
+  <a class="badge badge-light" href="/tag/machine-learning/">Machine Learning</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
-
-    <div class="stream-meta article-metadata">
-
       
-
+      
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  <span >
-      Wuxin Wang</span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/&amp;text=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/&amp;t=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
-    Apr 13, 2021
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    4 min read
-  </span>
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/note/">Note</a>, <a href="/category/%E7%AC%94%E8%AE%B0/">笔记</a></span>
-  
-
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model&amp;body=https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/&amp;title=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model%20https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/&amp;title=Note%20for%20Combining%20data%20assimilation%20and%20machine%20learning%20to%20emulate%20a%20dynamical%20model%20from%20sparse%20and%20noisy%20observations%20a%20case%20study%20with%20the%20Lorenz96%20model" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
       
+      <a href="https://wuxinwang1997.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu923308ddc45a0139331c87f8a72e7c37_94118_270x270_fill_q75_lanczos_center.jpg" alt="Wuxin Wang"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wuxinwang1997.github.io/">Wuxin Wang</a></h5>
+      <h6 class="card-subtitle">Phd student of Computer Science</h6>
+      <p class="card-text">My research interests include data assimilation, machine learning and spatial-temporal forecasting.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/wuxinwang1997" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.kaggle.com/whurobin" target="_blank" rel="noopener">
+        <i class="fab fa-kaggle"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.zhihu.com/people/pa-ke-ni-zi" target="_blank" rel="noopener">
+        <i class="fab fa-zhihu"></i>
+      </a>
+    </li>
+  
+</ul>
+
     </div>
-
-    
-
   </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/" >
-      <img src="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/featured_hu3ca8adf464eb03765dbe6db75ffa3b57_57369_150x0_resize_q75_lanczos.jpg" alt="Note for Learning Earth System Models Observations Machine Learning or Data Assimilation" loading="lazy">
-    </a>
-    
-  </div>
-</div>
 
-    
-  
 
   
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/note-for-hda-mlp/">Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</a></li>
+      
+      <li><a href="/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/">Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

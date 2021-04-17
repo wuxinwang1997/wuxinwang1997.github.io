@@ -5,12 +5,116 @@
     <link>https://wuxinwang1997.github.io/category/note/</link>
       <atom:link href="https://wuxinwang1997.github.io/category/note/index.xml" rel="self" type="application/rss+xml" />
     <description>Note</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 17 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Note</title>
       <link>https://wuxinwang1997.github.io/category/note/</link>
     </image>
+    
+    <item>
+      <title>Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-hda-mlp/</link>
+      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-hda-mlp/</guid>
+      <description>&lt;h2 id=&#34;主要工作&#34;&gt;主要工作&lt;/h2&gt;
+&lt;p&gt;提出一种HDA-MLP方法，在输出DA结果时有很好的进步性，且计算量小。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过MLP对单一DA方法(3DVar和EnKF)进行了形式化优化，并构建了新的训练数据集，添加了未来的短期预测来修正当前的同化结果，显著提高了结果的质量&lt;/li&gt;
+&lt;li&gt;为了优化同化结果，提出了一种新的3D-Var定制MLP&lt;/li&gt;
+&lt;li&gt;整合了一个创造性的MLP框架HDA-MLP来混合单一的3D-Var和EnKF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;问题定义&#34;&gt;问题定义&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi3.png&#34; alt=&#34;fig3&#34; style=&#34;zoom:67%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;短期预测作为背景场$\mathrm{x}^b$，结合来自新鲜观察$\mathrm{y}^o$的信息来获得分析场$\mathrm{x}^a$，这称作分析循环&lt;/p&gt;
+&lt;p&gt;单个同化（3D-Var/EnKF）的目的是寻找最佳权重$\mathcal{w}$使得
+$$
+x^a_t=x^b_t+w*(y^o_t-x^b_t)
+$$&lt;/p&gt;
+&lt;p&gt;集合同化则是从不同的同化结果中进行加权
+$$
+x_{hybrid}^a=(1-v)*x_{Var}^a+v*x_{Ensemble}^a
+$$&lt;/p&gt;
+&lt;p&gt;当前的$\mathrm{x}^a$受到多时刻历史数据的影响，可以将DA重新定义为一个时间序列问题。本文扩展认为，未来的短期预测$\mathrm{x}^b$是由之前的$\mathrm{x}^a$扩展得到的，未来短期的观测$\mathrm{y}^o$可以独立观测，用于修正$\mathrm{x}^a_t$，更具DA的动态性质，它也可以用来修正当前的分析场。&lt;/p&gt;
+&lt;p&gt;$x^a=f\left(historical(x^b,y^o),future(y^o)\right)$&lt;/p&gt;
+&lt;p&gt;其中$f$为训练得到的DA模型&lt;/p&gt;
+&lt;p&gt;考虑使用一段时间的$\mathrm{x}^a$来获得最终的$\mathrm{x}^a$，而不是将不同方法的DA结果结合。因此，混合DA可以定义为基于不同DA方法的多时刻$\mathrm{x}^a$的回归问题。&lt;/p&gt;
+&lt;p&gt;$x_{Hybrid}^a=F(x_{Var}^a,x_{Ensemble,l}^a),l=1,2,3,\cdots$&lt;/p&gt;
+&lt;p&gt;其中$F$为训练得到的混合DA模型，$l$表示$\mathrm{x}^a$的长度&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;h3 id=&#34;hda-mlp优化问题&#34;&gt;HDA-MLP：优化问题&lt;/h3&gt;
+&lt;p&gt;类似4DVar-DA，将同化时间窗设为$[t_1,t_n]$，利用前半段数据进行分析，利用后半段诗句对时间窗中的分析场进行修正，对当前分析场的优化由下式决定
+$$
+x_{ct}^a=\sum\limits^p_{i=0}w_{ct-i}x_{ct-i}^b+\sum\limits^q_{i=0}v_{ct-i}y_{ct-i}^o+bias
+$$
+其中$ct=\frac{n+1}{w},p=\frac{n-1}{2},q=n-1$，$\mathcal{w},\mathcal{v}$分别为$\mathrm{x}^b,\mathrm{y}^o$的权重矩阵&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi4.png&#34; alt=&#34;fig4&#34; style=&#34;zoom:67%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi5.png&#34; alt=&#34;fig5&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;混合&#34;&gt;混合&lt;/h3&gt;
+&lt;p&gt;使用MLP优化过的结果作为训练集，直接混合优化后的3D-Var和EnKF的分析场，再用于分析$\mathrm{x}^a_t$&lt;/p&gt;
+&lt;h2 id=&#34;实验结论&#34;&gt;实验结论&lt;/h2&gt;
+&lt;p&gt;在Lorenz-63上结果比较显著，但是在Lorenz-96上效果不太明显。&lt;/p&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;有可能是三层MLP用于替换模式不能捕获Lorenz-96这类稍微复杂的混沌模型的规律，考虑使用时空序列预测的深度学习模型替换模式进行短期预测&lt;/li&gt;
+&lt;li&gt;可能是3D-Var本身不考虑时间的维度信息，缺少时间的指导，考虑用RNN替换MLP获取时间信息以增强同化结果&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;在地球物理流体动力学中，由于&lt;code&gt;小尺度特征的表示不正确或物理过程被忽略&lt;/code&gt;，数值模式的某些部分必须由经验子模型或参数化进行表示。地球观测主要包括两个步骤：1. 模型调整和选择；2. 数据同化。&lt;/p&gt;
+&lt;p&gt;机器学习算法已经被用来产生&lt;code&gt;完全由观测到的低阶混沌系统&lt;/code&gt;的替代模型，然后用于预测。机器学习也已基于真实观测值应用于临近预报。特别的，&lt;code&gt;在模型误差存在下，由DA解决的优化问题等效于 ML问题&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;在必须基于嘈杂和稀疏的观测结果提出系统状态及其动力学模型的情况下，本文提出的混合算法&lt;code&gt;依靠DA来估计系统状态，并依靠ML来模拟动力模型&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;问题定义&#34;&gt;问题定义&lt;/h2&gt;
+&lt;p&gt;考虑对于未知过程$\mathbb{x}_k \in \mathbb{R}^m$多维观测的时间序列$\mathbb{y}^{obs}_k \in \mathbb{R}^p$：
+$$
+y^{obs}_k=\mathcal{H}_k(x_k)+\epsilon^{obs}_k
+$$
+其中$0 \leq k \leq K$是时间步的索引，$\mathcal{H}_k:\mathbb{R}^m\rightarrow\mathbb{R}^p$是观测算子（未知），假设观测误差$\epsilon^{obs}&lt;em&gt;k$服从均值为$0$和协方差矩阵为$R_k$的正态分布，观察次数$p$及其噪声水平不会随时间变化，且观测空间无关（即$R_k$是一个对角阵），并且考虑常规时间离散化，例如：$\forall k，t&lt;/em&gt;{k + 1} -t_k = h$&lt;/p&gt;
+&lt;p&gt;假设$x_k$是连续过程$x$的时间离散，服从形式为的未知的常微分方程
+$$
+\frac{dx}{dt} = \mathcal{M}(x)
+$$
+目标是得到$t_k$和$t_{k + 1}$之间的$\mathcal{M}$的的替代模型$\mathcal{G}$
+$$
+x_{k+1}=\mathcal{G}(x_k)+\epsilon_k^m=x_k+\int_{t_k}^{t_{k+1}}\mathcal{M}(x)dt \tag{3} \label{eq3}
+$$
+其中$\mathbb{\epsilon}_k^m$是模型$\mathcal{G}$的误差&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;h3 id=&#34;cnn&#34;&gt;CNN&lt;/h3&gt;
+&lt;p&gt;目前已有论文使用卷积神经网络来表示代理模型。&lt;/p&gt;
+&lt;p&gt;由于$\ref{eq3}$中表达式可表示为$x_{k+1}=x_k+\cdots$，故采用残差网络的方式构建模型$\mathcal{G}(x)=x_k+f_{nn}(x_k,W)$。&lt;/p&gt;
+&lt;p&gt;$Loss$函数定义为
+$$
+L(W)=\sum^{K-{N_f}-1}&lt;em&gt;{k=0} \sum^{N_f}&lt;/em&gt;{i=1} |\mathcal{G}&lt;em&gt;W^{(i)}-x&lt;/em&gt;{k+1}|_{P_k^{-1}}^2
+$$&lt;/p&gt;
+&lt;p&gt;其中$N_f$是时间步数，$P_k$是定义范数$|x|_{P_k^-1}^2=x^TP_k^{-1}x$的半正定对称阵，注意：$\mathrm{P}_k$是代理模型的误差协方差矩阵。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig2.jpg&#34; alt=&#34;fig2&#34; style=&#34;zoom:60%;&#34; /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;同化&#34;&gt;同化&lt;/h3&gt;
+&lt;p&gt;本文使用有限大小的集合卡尔曼滤波器EnKF-N（本文方法不依赖于特定同化过程）&lt;/p&gt;
+&lt;p&gt;EnKF-N是一种序列集合同化方法，时间$t_k$时的分析矩阵$X_k^{a/f} \equiv \left[x_{k,1}^{a/f},\cdots,x_{k,p}^{a/f},\cdots,x_{k,N}^{a/f}\right] \in R^{m \times N}$其中的$a$表示分析场，成员$x_{k,p}^{a/f}=\mathcal{G}(x_{k-1,p}^a)+\epsilon_{k,p}^m$，其中$\mathrm{\epsilon}_{k,p}^a$是第$t_k$时刻成员$p$的模型误差。&lt;/p&gt;
+&lt;p&gt;分析过程中，给一个观测$\mathrm{y}^{obs}_k$和集合预测$\mathrm{X}_k^f$，使用同化算法更新为$\mathrm{X}_k^a$，对集合进行均值和协方差的求解。&lt;/p&gt;
+&lt;h3 id=&#34;结合同化于机器学习&#34;&gt;结合同化于机器学习&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.jpg&#34; alt=&#34;fig1&#34; style=&#34;zoom:50%;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;该过程可以看作是&lt;code&gt;期望最大化算法&lt;/code&gt;，其中&lt;code&gt;DA是期望步骤&lt;/code&gt;，而&lt;code&gt;ML是最大化步骤&lt;/code&gt;。且ML与DA算法选取是&lt;code&gt;相互独立&lt;/code&gt;的。&lt;/p&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
+&lt;p&gt;组合DA-ML方法使用40变量Lorenz96产生的综合观测值进行测试。通过以下一组常微分方程，在周期一维域上定义模型L96：
+$$
+\frac{x_n}{dt} = (x_{n+1}-x_{n-2})x_{n-1}-x_n+F
+$$
+其中$x_n, 0 \leq n &amp;lt; m$是标量状态变量，$x_m = x_0, x_{−1} = x_{m−1}, x_{−2} = x_{m−2}, m= 40, F = 8$&lt;/p&gt;
+&lt;p&gt;使用Lyapunov时间单位$t_\Lambda=\Lambda_1t$，其中$t$是模型单位中的时间：一个Lyapunov时间单位对应于误差增长$e$倍的时间。&lt;/p&gt;
+&lt;p&gt;具体实验步骤查看论文。&lt;/p&gt;
+&lt;h2 id=&#34;结论与分析&#34;&gt;结论与分析&lt;/h2&gt;
+&lt;p&gt;实验中的观测值是来自全状态向量的子样本，意味着DA充当观测值的插值器和平滑器，从而产生了所谓的“分析”。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</title>
