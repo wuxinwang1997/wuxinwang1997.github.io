@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Physics-informed Neural Network | Wuxin Wang</title>
+    <link>https://wuxinwang1997.github.io/tag/physics-informed-neural-network/</link>
+      <atom:link href="https://wuxinwang1997.github.io/tag/physics-informed-neural-network/index.xml" rel="self" type="application/rss+xml" />
+    <description>Physics-informed Neural Network</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 19 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>Physics-informed Neural Network</title>
+      <link>https://wuxinwang1997.github.io/tag/physics-informed-neural-network/</link>
+    </image>
+    
+    <item>
+      <title>Notes for Physics-informed Neural Network</title>
+      <link>https://wuxinwang1997.github.io/post/notes-for-physics-informed-neural-network/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/notes-for-physics-informed-neural-network/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;h5 id=&#34;physics-informed-neural-networks-a-deep-learning-framework-for-solving-forward-and-inverse-problems-involving-nonlinear-partial-differential-equations&#34;&gt;Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations&lt;/h5&gt;
+&lt;p&gt;M. Raissi, P. Perdikaris, G.E. Karniadakis, &lt;strong&gt;Journal of Computational Physics, 2019, Q2&lt;/strong&gt; (Citations 1249)&lt;/p&gt;
+&lt;p&gt;Type: new method and framework&lt;/p&gt;
+&lt;p&gt;Theory:&lt;/p&gt;
+&lt;p&gt;A PDE function has a general form:&lt;/p&gt;
+&lt;p&gt;$$
+u_t+\mathcal{N}[u] = 0, x \in \Omega,t \in [0,T]
+$$&lt;/p&gt;
+&lt;p&gt;This paper introduces physics-informed neural networks which uses NN to learn PDE functions.&lt;/p&gt;
+&lt;p&gt;$$
+f := u_t+\mathcal{N}[u]
+$$&lt;/p&gt;
+&lt;p&gt;The shared parameters between the neural networks $u(t, x)$ and $f(t,x)$ can be learned by minimizing:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+MSE &amp;amp;= MSE_u + MSE_f \
+MSE_u &amp;amp;= \frac{1}{N_u}\sum^{N_u}&lt;em&gt;{i=1}\left|u(t^i_u,x^i_u)-u^i\right|^2 \
+MSE_f &amp;amp;= \frac{1}{N_f}\sum^{N_f}&lt;/em&gt;{i=1}\left|f(t^i_f,x^i_f)\right|^2
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Where ${t^i_u, x^i_u, u^i}^{N_u}&lt;em&gt;{i=1}$ denote the initial and boundary training data on $u(t, x)$ and ${t^i_f,x^i_f}^{N_f}&lt;/em&gt;{i=1}$ specify the collocations points for $f(t, x)$.&lt;/p&gt;
+&lt;p&gt;The discrete time models are using Runge-Kutta methods with q stages to equation.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;u^{n+c_i}=u^n-\Delta t\sum^q_{j=1}a_{ij}\mathcal{N}[u^{n+c_j}],i=1,\cdots,q \
+&amp;amp;u^{n+1}=u^n-\Delta t\sum^q_{j=1}b_j\mathcal{N}[u^{n+c_j}]
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Here, $u^{n+c_j}(x)=u(t^n+c_j\Delta t, x)$ for $j=1,\cdots,q$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h5 id=&#34;physics-informed-learning-of-governing-equations&#34;&gt;Physics-informed learning of governing equations&lt;/h5&gt;
+&lt;p&gt;Zhao Chen, Yang Liu， Hao Sun， &lt;strong&gt;Nature Communications, 2021, Nature_sub&lt;/strong&gt; (Citation 11)&lt;/p&gt;
+&lt;p&gt;Type: method&lt;/p&gt;
+&lt;p&gt;Physics-informed neural network with sparse regrassion.&lt;/p&gt;
+&lt;p&gt;SINDy has strong dependence on both quality and quantity of the measurement data.&lt;/p&gt;
+&lt;p&gt;the deep neural network (DNN) is used to approximate the solution constrained by both the PDE(s) and a small amount of available data.&lt;/p&gt;
+&lt;img src=&#34;file:///D:/Software/MarkText/images/2022-02-22-12-07-30-image.png&#34; title=&#34;&#34; alt=&#34;&#34; data-align=&#34;center&#34;&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;D:%5cSoftware%5cMarkText%5cimages%5c2022-02-22-12-11-14-image.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

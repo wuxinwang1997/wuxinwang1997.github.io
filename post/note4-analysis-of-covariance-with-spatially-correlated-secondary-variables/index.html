@@ -1,0 +1,1559 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wuxin Wang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="考虑空间协相关对数据进行分析" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Wuxin Wang" />
+  <meta property="og:url" content="https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/" />
+  <meta property="og:title" content="Note for Analysis of Covariance with Spatially Correlated Secondary Variable | Wuxin Wang" />
+  <meta property="og:description" content="考虑空间协相关对数据进行分析" /><meta property="og:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-11-19T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-11-19T14:09:29&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/"
+  },
+  "headline": "Note for Analysis of Covariance with Spatially Correlated Secondary Variable",
+  
+  "datePublished": "2021-11-19T00:00:00Z",
+  "dateModified": "2021-11-19T14:09:29+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wuxin Wang"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wuxin Wang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "考虑空间协相关对数据进行分析"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Note for Analysis of Covariance with Spatially Correlated Secondary Variable | Wuxin Wang</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6ad77aa454df5906fad79287e3b58eaa" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.e22a2a20712150175b9cd707be2d0584.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Wuxin Wang</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Wuxin Wang</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#talks"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#featured"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Note for Analysis of Covariance with Spatially Correlated Secondary Variable</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Wuxin Wang</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Nov 19, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/note/">Note</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="问题背景">问题背景</h2>
+<p>观测在空间上是有相关性的，目前的协克里金方法仅统计了协变量的相关结构，而协方差的空间分析允许进行参数估计但忽略了协变量的相关结构。本文的方法将两方面进行结合。</p>
+<h2 id="理论方法">理论方法</h2>
+<h3 id="kriging插值">Kriging插值</h3>
+<h4 id="反距离插值">反距离插值</h4>
+<p>地理属性有空间相关性，相近的事物会更相似，则对于空间上任意一点$(x,y)$，定义反距离插值公式估计量</p>
+<p>$$
+\hat{z} = \sum^n_{i=1}\frac{1}{d^\alpha}z_i
+$$</p>
+<p>其中$\alpha=1,2$</p>
+<p>即，用空间上所有已知点的数据加权求和来估计未知点的值，权重取决于距离的倒数（或者倒数的平方）。那么，距离近的点，权重就大；距离远的点，权重就笑。</p>
+<h4 id="克里金插值">克里金插值</h4>
+<p>$$
+\hat{z}<em>0 = \sum^n</em>{i=1}\lambda_i z_i
+$$</p>
+<p>其中$\hat{z}_0$是点$(x_0,y_0)$处的估计值，即$z_0=z(x_0,y_0)$，$\lambda_i$是权重系数，其定义为能满足点$(x_0,y_0)$处的估计值$\hat{z}_0$与真实值$z_0$的差最小的一套最优系数，即</p>
+<p>$$
+\min_{\lambda_i} Var(\hat{z}_0-z_0)
+$$</p>
+<p>同时满足无偏估计</p>
+<p>$$
+E(\hat{z}_0-z_0)=0
+$$</p>
+<h4 id="假设条件">假设条件</h4>
+<p>普通克里金插值的假设条件为：空间属性$z$是均一的，对于空间任意一点$(x,y)$都有相同的期望和方差</p>
+<p>$$
+\begin{aligned}
+E[z(x,y)] &amp;= E[z] = c \\
+Var[z(x,y)] &amp;= \sigma^2
+\end{aligned}
+$$</p>
+<p>则任意一点的$z$都由该区域平均至和该点的随机偏差$R(x,y)$组成</p>
+<p>$$
+\begin{aligned}
+z(x,y) &amp;= E[z(x,y)] + R(x,y) = c+R(x,y) \\
+Var[R(x,y)] &amp;= \sigma^2
+\end{aligned}
+$$</p>
+<h4 id="无偏约束条件">无偏约束条件</h4>
+<p>$$
+\begin{aligned}
+E(\hat{z}<em>0-z_0) &amp;= 0 \\
+\Rightarrow E(\sum^n</em>{i=1}\lambda_i z_i - z_0) &amp;= 0 \\
+\Rightarrow c\sum^n_{i=1}\lambda_i-c &amp;= 0 \\
+\Rightarrow \sum^n_{i=1} \lambda_1 &amp;= 1
+\end{aligned}
+$$</p>
+<h4 id="优化目标">优化目标</h4>
+<p>$$
+\begin{aligned}
+J &amp;= Var(\hat{z}<em>0-z_0) \\
+&amp;= Var(\sum^n</em>{i=1}\lambda_i z_i - z_0) \\
+&amp;= Var(\sum^n_{i=1}\lambda_i z_i)-2Cov(\sum^n_{i=1}\lambda_i z_i, z_0) + Var(z_0) \\
+&amp;= \sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_jCov(z_i,z_j)-2\sum^n_{i=1}\lambda_iCov(z_i,z_0)+Cov(z_0,z_0)
+\end{aligned}
+$$</p>
+<p>定义$C_{ij}=Cov(z_i,z_j)=Cov(R_i,R_j)$，其中$R_i=z_i-c$</p>
+<p>则</p>
+<p>$$
+J=\sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_jC_{ij}-2\sum^n_{i}\lambda_iC_{i0}+C_{00}
+$$</p>
+<h4 id="最优解">最优解</h4>
+<p>定义半方差函数$r_{ij}=\sigma^2-C_{ij}$，带入$J$有</p>
+<p>$$
+\begin{aligned}
+J &amp;= \sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_jC_{ij}-2\sum^n_{i}\lambda_iC_{i0}+C_{00} \\
+&amp;= \sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_j(\sigma^2-r_{ij})-2\sum^n_{i}\lambda_i(\sigma^2-r_{i0})+\sigma^2-r_{00} \\
+&amp;= \sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_j\sigma^2-\sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_jr_{ij}-2\sum^n_{i}\lambda_i\sigma^2+2\sum^n_{i=1}\lambda_ir_{i0}+\sigma^2-r_{00} \\
+\end{aligned}
+$$</p>
+<p>考虑到$\sum^n_{i=1}\lambda_i = 1$</p>
+<p>则</p>
+<p>$$
+\begin{aligned}
+J &amp;= \sigma^2-\sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_j(r_{ij})-2\sigma^2+2\sum^n_{i=1}\lambda_ir_{i0}+\sigma^2-r_{00} \\
+&amp;= 2\sum^n_{i=1}\lambda_ir_{i0} - \sum^n_{i=1}\sum^n_{j=1}\lambda_i\lambda_j(r_{ij})-r_{00}
+\end{aligned}
+$$</p>
+<p>目标是找到使$J$最小的$\lambda_i$，且$J$是$\lambda_i$的函数，因此求偏导令为$0$即可。又因为需要满足$\sum^n_{i=1}\lambda_i=1$，这就是一个带约束的最优化问题，采用拉格朗日乘子法，构造新的目标函数</p>
+<p>$$
+J+2\phi\left(\sum^n_{i=1}\lambda_i-1\right)
+$$</p>
+<p>其中$\phi$是拉格朗日乘子，求解使得该目标函数最小的参数集$\phi,\lambda_i$</p>
+<p>$$
+\begin{aligned}
+&amp;\begin{cases}
+\frac{\partial(J+2\phi(\sum^n_{i=1}\lambda_i-1))}{\partial\lambda_k} = 0; &amp; k=1,2,\cdots,n \\
+\frac{\partial(J+2\phi(\sum^n_{i=1}\lambda_i-1))}{\partial\phi} = 0
+\end{cases} \\
+\Rightarrow
+&amp;\begin{cases}
+2r_{k0} - \sum^n_{j=1}(r_{kj}+r_{jk})\lambda_j+2\phi = 0;&amp;k=1,2,\cdots,n\\
+\sum^n_{i=1}\lambda_i = 1
+\end{cases} \\
+\end{aligned}
+$$</p>
+<p>由于$C_{ij}=Cov(z_i,z_j)=C_{ji}$，则$r_{ij}=r_{ji}$，即</p>
+<p>$$
+\begin{cases}
+r_{k0} - \sum^n_{j=1}r_{kj}\lambda_j+\phi = 0;&amp;k=1,2,\cdots,n\\
+\sum^n_{i=1}\lambda_i = 1
+\end{cases}
+$$</p>
+<p>则需要求解线性方程组</p>
+<p>$$
+\begin{bmatrix}
+r_{11} &amp; r_{12} &amp; \cdots &amp; r_{1n} &amp; 1 \\
+r_{21} &amp; r_{22} &amp; \cdots &amp; r_{2n} &amp; 1 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+r_{n1} &amp; r_{n2} &amp; \cdots &amp; r_{nn} &amp; 1 \\
+1 &amp; 1 &amp; \cdots &amp; 1 &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 \\
+\lambda_2 \\
+\vdots \\
+\lambda_n \\
+-\phi
+\end{bmatrix} =
+\begin{bmatrix}
+r_{10}\\
+r_{20} \\
+\vdots \\
+r_{n0} \\
+1
+\end{bmatrix}
+$$</p>
+<p>对矩阵求逆即可，未知内容包括开始定义的半方差函数$r_{ij}$</p>
+<h4 id="半方差函数">半方差函数</h4>
+<p>$$
+r_{ij} = \sigma^2-C_{ij}
+$$</p>
+<p>其等价形式为</p>
+<p>$$
+r_{ij}=\frac{1}{2}E[(z_i-z_j)^2]
+$$</p>
+<p>这也是半方差函数名称的由来。而由地理学第一定律，空间上相近的属性相近，空间的相似度由距离来表达，通过对空间距离$d_{ij}=\sqrt{(x_i-x_j)^2+(y_i-y_j)^2}$与观测的半方差$\sigma^2-C_{ij}$进行计算，再通过曲线进行最优拟合，得到函数</p>
+<p>$$
+r=r(d)
+$$</p>
+<p>之后就可以直接将两点的距离带入函数计算半方差</p>
+<h4 id="克里金插值总结">克里金插值总结</h4>
+<ol>
+<li>对于观测数据，两两计算距离与半方差</li>
+<li>寻找一个拟合曲线拟合距离与半方差的关系，从而能根据任意距离计算出相应的半方差</li>
+<li>计算出所有已知点之间的半方差$r_ij$</li>
+<li>对于未知点$z_0$，计算它到所有已知点$z_i$的半方差$r_{i0}$</li>
+<li>求解方程组，得到最优系数$λ_i$</li>
+<li>使用最优系数对已知点的属性值进行加权求和，得到未知点$z_0$的估计值</li>
+</ol>
+<p>参考自<a href="https://xg1990.com/blog/archives/222" target="_blank" rel="noopener">克里金(Kriging)插值的原理与公式推导</a></p>
+<h3 id="本文方法">本文方法</h3>
+<p>对于并置的数据，其模型可表示为</p>
+<p>$$
+\begin{align}
+y &amp;= X\tau+\beta u + e_y \\
+u &amp;= \mathrm{1}\mu + e_u
+\end{align}
+$$</p>
+<p>其中$y$是一个$n \times 1$的观测向量，$u$是一个$n \times 1$的协变量观测向量，设站点为$S_{yu}$，$X$是一个$n \times p$的处理效应矩阵，$\tau$是一个$p \times 1$的处理效应向量，$\beta$是协变量的回归系数，$\mathrm{1}$是$n \times 1$的全$1$向量，$\mu$表示大量协变量的均值。且假设</p>
+<p>$$
+\begin{align}
+e_y \sim N(0,\sigma^2_yR) &amp;&amp; and &amp;&amp; e_u \sim N(0,\sigma_u^2R)
+\end{align}
+$$</p>
+<p>其中$R$表示一个空间相关结构矩阵。（是否可以用来构造观测误差协方差矩阵？或者具有某种结构的$R$就是观测误差协方差矩阵？）</p>
+<p>则</p>
+<p>$$
+\begin{align}
+E(y) &amp;= E(X\tau + \beta u + e_y) = X\tau+\beta E(u)=X\tau+\beta\mathrm{1}\mu \\
+E(u) &amp;= E(\mathrm{1}\mu+e_u) = E(\mathrm{1}\mu) = \mathrm{1}\mu
+\end{align}
+$$</p>
+<p>由于$\beta u$可与包含$y$和$u$的任何相关性，则可以假设$Cov(e_y,e_u)=0$。</p>
+<p>则</p>
+<p>$$
+\begin{align}
+Var(y) &amp;= Var(X\tau+\beta u + e_y) \\
+&amp;= Var(X\tau) + Var(\beta u) + Var(e_y) \\
+&amp;= \beta^2 Var(u)+Var(e_y) \\
+&amp;= \beta^2 Var(e_u)+Var(e_y) \\
+Var(u) &amp;= Var(\mathrm{1}\mu + e_u) \\
+&amp;= Var(e_u) \\
+Cov(y, u) &amp;= Cov(X\tau+\beta u+e_y, \mathrm{1}\mu+e_u) \\
+&amp;= Cov(X\tau+\beta(\mathrm{1}\mu+e_u)+e_y, \mathrm{1}\mu+e_u) \\
+&amp;= Cov(\beta(\mathrm{1}\mu+e_u)+e_y,\mathrm{1}\mu+e_u) \\
+&amp;= Cov(\beta e_u+e_y, e_u) \\
+&amp;= Cov(\beta e_u, e_u)+Cov(e_y,e_u) \\
+&amp;= \beta Var(e_u)
+\end{align}
+$$</p>
+<p>则，模型假设可写作</p>
+<p>$$
+\begin{bmatrix}
+y \\
+u
+\end{bmatrix}
+\sim
+N
+\begin{pmatrix}
+\begin{bmatrix}
+X\tau+\beta\mathrm{1}\mu \\
+\mathrm{1}\mu
+\end{bmatrix},
+\begin{bmatrix}
+\Sigma_{yy} &amp; \Sigma_{yu} \\
+\Sigma_{uy} &amp; \Sigma_{uu}
+\end{bmatrix}
+\end{pmatrix}
+$$</p>
+<p>其中，根据上面对$Var$和$Cov$的推导可知：</p>
+<p>$$
+\begin{align}
+\Sigma_{yy} &amp;= \beta^2 \Sigma_{uu}+\Sigma_{yy}=(\beta^2 \sigma_u^2 +\sigma_y^2)R \\
+\Sigma_{uu} &amp;= Var(e-U) = \sigma_u^2R \\
+\Sigma_{yu} &amp;= \beta \Sigma_{uu} = \beta\sigma_u^2R
+\end{align}
+$$</p>
+<p>即</p>
+<p>$$
+\begin{bmatrix}
+y \\
+u
+\end{bmatrix}
+\sim
+N
+\begin{pmatrix}
+\begin{bmatrix}
+X\tau+\beta\mathrm{1}\mu \\
+\mathrm{1}\mu
+\end{bmatrix},
+\begin{bmatrix}
+(\beta^2 \sigma_u^2 +\sigma_y^2)R &amp; \beta\sigma_u^2R \\
+\beta\sigma_u^2R &amp; \sigma_u^2R
+\end{bmatrix}
+\end{pmatrix}
+$$</p>
+<p>对于单变量的情况，响应变量的方差定义为</p>
+<p>$$
+\mathcal{K}_y^2 = Var(y_i) = \beta\sigma^2_u+\sigma^2_y
+$$</p>
+<p>且协变量的方差定义为</p>
+<p>$$
+\mathcal{K}_u^2 = Var(u_i) = \sigma^2_u
+$$</p>
+<p>同样的</p>
+<p>$$
+\mathcal{K}_{yu} = Cov(y_i, u_i) = \beta \sigma^2_u
+$$</p>
+<p>设$\rho$表示协变量和响应变量之间的相关性，$\rho$和$\beta$的关系可表示如下</p>
+<p>$$
+\begin{aligned}
+\mathcal{K}_{yu} &amp;= \beta \sigma_u^2 \Rightarrow \beta = \frac{\mathcal{K}_{yu}}{\sigma^2_u} = \frac{\mathcal{K}_{yu}}{\mathcal{K}^2_u} \\
+\rho &amp;= \frac{Cov(y_i,u_i)}{\sqrt{Var(y_i)Var(u_i)}} = \frac{\mathcal{K}_{yu}}{\mathcal{K}_y\mathcal{K}_u} \Rightarrow \mathcal{K}_{yu} = \rho\mathcal{K}_y\mathcal{K}_u
+\end{aligned}
+$$</p>
+<p>则</p>
+<p>$$
+\begin{aligned}
+\beta &amp;= \frac{\rho \mathcal{K}_y \mathcal{K}_u }{ \mathcal{K}_u^2 } \\
+\hat{\beta} &amp;= \frac{\hat{\rho}\hat{\mathcal{K}_y}}{\hat{\mathcal{K}_u}}
+\end{aligned}
+$$</p>
+<p>其中$\mathcal{K}_y$也是反应变量基台值(sill)的平方根，$\mathcal{K}_u$是协变量基台值(sill)的平方根。（基台值用以衡量区域化变量变化幅度的大小。当滞后距无限增大并到达某一程度后，试验变异函数若趋于平稳，则这一平稳水平所对应的数值即为基台值。然而，并不是所有的区域化变量均具有基台值——如无基台值模型对应的变异函数。）</p>
+<p>该模型可以拓展到非同位数据，令$y$是在$S_{yu} \bigcup S_y$中的观测$y(s_i)$的向量，$u$为在$S_{yu} \bigcup S_y$中的观测$u(s_j)$的向量。令$y&rsquo;$表示$S_u$上缺失的观测$y$的向量，$u&rsquo;$为在$S_y$上缺失的观测$u$的向量。则模型中的反应和协观测可以被替换为$y_{aug} = (y,y&rsquo;),u_{aug}=(u,u&rsquo;)$，再将其排列到$\begin{bmatrix}y \ u\end{bmatrix}$带入式子即可。</p>
+<p>则可以同过将$\hat{\beta}$求解出来，由$u$的分布推导出$y$的分布。</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/academic/">Academic</a>
+  
+  <a class="badge badge-light" href="/tag/data-assimilation/">Data Assimilation</a>
+  
+  <a class="badge badge-light" href="/tag/observation-correlation/">Observation correlation</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/&amp;text=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/&amp;t=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable&amp;body=https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/&amp;title=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable%20https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wuxinwang1997.github.io/post/note4-analysis-of-covariance-with-spatially-correlated-secondary-variables/&amp;title=Note%20for%20Analysis%20of%20Covariance%20with%20Spatially%20Correlated%20Secondary%20Variable" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wuxinwang1997.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu923308ddc45a0139331c87f8a72e7c37_94118_270x270_fill_q75_lanczos_center.jpg" alt="Wuxin Wang"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wuxinwang1997.github.io/">Wuxin Wang</a></h5>
+      <h6 class="card-subtitle">Ph.D student of Computer Science</h6>
+      <p class="card-text">My research interests include data assimilation, machine learning and spatial-temporal forecasting.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/wuxinwang1997" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.zhihu.com/people/pa-ke-ni-zi" target="_blank" rel="noopener">
+        <i class="fab fa-zhihu"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.92d2024afaa4dce0cad42ba360879ce9.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.e8fd2d733eef6a8bbbe0539398fc0547.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.de33c90527762392d440555c36739dd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>

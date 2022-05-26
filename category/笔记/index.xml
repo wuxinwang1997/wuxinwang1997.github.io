@@ -1,0 +1,1694 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>笔记 | Wuxin Wang</title>
+    <link>https://wuxinwang1997.github.io/category/%E7%AC%94%E8%AE%B0/</link>
+      <atom:link href="https://wuxinwang1997.github.io/category/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <description>笔记</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 19 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>笔记</title>
+      <link>https://wuxinwang1997.github.io/category/%E7%AC%94%E8%AE%B0/</link>
+    </image>
+    
+    <item>
+      <title>Notes for Physics-informed Neural Network</title>
+      <link>https://wuxinwang1997.github.io/post/notes-for-physics-informed-neural-network/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/notes-for-physics-informed-neural-network/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;h5 id=&#34;physics-informed-neural-networks-a-deep-learning-framework-for-solving-forward-and-inverse-problems-involving-nonlinear-partial-differential-equations&#34;&gt;Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations&lt;/h5&gt;
+&lt;p&gt;M. Raissi, P. Perdikaris, G.E. Karniadakis, &lt;strong&gt;Journal of Computational Physics, 2019, Q2&lt;/strong&gt; (Citations 1249)&lt;/p&gt;
+&lt;p&gt;Type: new method and framework&lt;/p&gt;
+&lt;p&gt;Theory:&lt;/p&gt;
+&lt;p&gt;A PDE function has a general form:&lt;/p&gt;
+&lt;p&gt;$$
+u_t+\mathcal{N}[u] = 0, x \in \Omega,t \in [0,T]
+$$&lt;/p&gt;
+&lt;p&gt;This paper introduces physics-informed neural networks which uses NN to learn PDE functions.&lt;/p&gt;
+&lt;p&gt;$$
+f := u_t+\mathcal{N}[u]
+$$&lt;/p&gt;
+&lt;p&gt;The shared parameters between the neural networks $u(t, x)$ and $f(t,x)$ can be learned by minimizing:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+MSE &amp;amp;= MSE_u + MSE_f \
+MSE_u &amp;amp;= \frac{1}{N_u}\sum^{N_u}&lt;em&gt;{i=1}\left|u(t^i_u,x^i_u)-u^i\right|^2 \
+MSE_f &amp;amp;= \frac{1}{N_f}\sum^{N_f}&lt;/em&gt;{i=1}\left|f(t^i_f,x^i_f)\right|^2
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Where ${t^i_u, x^i_u, u^i}^{N_u}&lt;em&gt;{i=1}$ denote the initial and boundary training data on $u(t, x)$ and ${t^i_f,x^i_f}^{N_f}&lt;/em&gt;{i=1}$ specify the collocations points for $f(t, x)$.&lt;/p&gt;
+&lt;p&gt;The discrete time models are using Runge-Kutta methods with q stages to equation.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;u^{n+c_i}=u^n-\Delta t\sum^q_{j=1}a_{ij}\mathcal{N}[u^{n+c_j}],i=1,\cdots,q \
+&amp;amp;u^{n+1}=u^n-\Delta t\sum^q_{j=1}b_j\mathcal{N}[u^{n+c_j}]
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;Here, $u^{n+c_j}(x)=u(t^n+c_j\Delta t, x)$ for $j=1,\cdots,q$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h5 id=&#34;physics-informed-learning-of-governing-equations&#34;&gt;Physics-informed learning of governing equations&lt;/h5&gt;
+&lt;p&gt;Zhao Chen, Yang Liu， Hao Sun， &lt;strong&gt;Nature Communications, 2021, Nature_sub&lt;/strong&gt; (Citation 11)&lt;/p&gt;
+&lt;p&gt;Type: method&lt;/p&gt;
+&lt;p&gt;Physics-informed neural network with sparse regrassion.&lt;/p&gt;
+&lt;p&gt;SINDy has strong dependence on both quality and quantity of the measurement data.&lt;/p&gt;
+&lt;p&gt;the deep neural network (DNN) is used to approximate the solution constrained by both the PDE(s) and a small amount of available data.&lt;/p&gt;
+&lt;img src=&#34;file:///D:/Software/MarkText/images/2022-02-22-12-07-30-image.png&#34; title=&#34;&#34; alt=&#34;&#34; data-align=&#34;center&#34;&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;D:%5cSoftware%5cMarkText%5cimages%5c2022-02-22-12-11-14-image.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Diagnosis and tuning of observational error in a quasi-operational data assimilation setting</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-diagnosis-and-tuning-of-observational-error-in-a-quasi-operational-data-assimilation-setting/</link>
+      <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-diagnosis-and-tuning-of-observational-error-in-a-quasi-operational-data-assimilation-setting/</guid>
+      <description>&lt;h2 id=&#34;问题背景&#34;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;大多数DA方法都是基于最小方差线性估计理论，其中观测误差的期望和方差确定是DA中主要问题之一.B和R的唯一客观来源是新息量，一般假设背景和观测不相关。&lt;/p&gt;
+&lt;p&gt;本文想要解决的问题为：DI01方法求大矩阵的迹，计算量太大&lt;/p&gt;
+&lt;h2 id=&#34;理论方法&#34;&gt;理论方法&lt;/h2&gt;
+&lt;h3 id=&#34;di01方法&#34;&gt;DI01方法&lt;/h3&gt;
+&lt;p&gt;前一篇论文笔记中，主要对协方差矩阵进行了一种调整（针对方差），假设相关模式是正确的。&lt;/p&gt;
+&lt;p&gt;在考虑B和R的不同部分的情况下，最优化的目标函数为&lt;/p&gt;
+&lt;p&gt;$$
+\sum^{v_b}_{i=1}\frac{\mathrm{J}_i^b(\mathrm{x})}{s_i^b}+\sum^{v_o}_{j=1}\frac{\mathrm{J}^o_j(\mathrm{x})}{s_j^o}
+$$&lt;/p&gt;
+&lt;p&gt;DI01的方法想要找到这组系数，使用代价函数的最小值的一个实现替换期望算子得到以下结果&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+s_l^b &amp;amp;= \frac{2\mathrm{J}^b_l(\mathrm{x}^a(s))}{Tr(\Pi_l^b\mathrm{K}(s)\mathrm{H}{\Pi_l^b}^T)}, \forall l \in \{1,\cdots,v_b\} \\
+s_k^o &amp;amp;= \frac{2\mathrm{J}^o_k(\mathrm{x}^a(s))}{Tr[\Pi_k^o(\mathrm{I}_p-\mathrm{H}\mathrm{K}(s)){\Pi_k^o}^T]}, \forall k \in \{1,\cdots,v_o\} \\
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;DI01算法基于以上两个式子属于不动点的关系，则可以通过迭代的方式求解。若$s_i$为迭代第$i$步的向量参数，则&lt;/p&gt;
+&lt;h3 id=&#34;j的统计期望&#34;&gt;J的统计期望&lt;/h3&gt;
+&lt;p&gt;完整的观测向量$\mathrm{z}^o$可视为$p$维$\mathrm{y}^o$适当观测向量和于真实状态想同维度$n$的背景场$\mathrm{x}^b$两份量的组合。$\mathrm{z}^o=\{(\mathrm{x}^b)^T(\mathrm{y}^o)^T\}$，且&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{x}^b = \mathrm{x}^t + \mathrm{\varepsilon}^b
+$$&lt;/p&gt;
+&lt;p&gt;其中$\mathrm{\varepsilon}^b$为B矩阵中预报误差组成的向量&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{y}^o = \mathrm{H}(\mathrm{x}^t) + \mathrm{\varepsilon}^o
+$$&lt;/p&gt;
+&lt;p&gt;其中$\mathrm{\varepsilon}^o$为R矩阵中观测误差组成的向量&lt;/p&gt;
+&lt;p&gt;则$\mathrm{z}^o$可以写为：
+$$
+\mathrm{z}^o = \Gamma(\mathrm{x}^t)+\mathrm{\varepsilon}
+$$
+其中$\Gamma$是完整的观测算子，$\mathrm{\varepsilon}$是预报和观测误差组成的$n+p$维向量&lt;/p&gt;
+&lt;p&gt;Talagrand(1999)得到了一个和结论：如果$J_j$表示$J$的一项，其为$m_j$个元素的和，则$J_j$最小值的期望为
+$$
+E[J_j(\mathrm{x}^a)]=\frac{1}{2}[m_j-Tr(\Gamma^T_j\mathrm{S}_j^{-1}\Gamma_j\mathrm{P}^a)]
+$$
+其中$\Gamma_j$和$\mathrm{S}_j$分别是与这$m_j$个元素相关的线性观测算子和R矩阵，$\mathrm{P}^a$表示对所有观测进行分析得到的分析误差协方差矩阵的估计。&lt;/p&gt;
+&lt;p&gt;对于$J^o$，令$\Gamma_j=\mathrm{H},\mathrm{S}_j=\mathrm{R}$：
+$$
+\begin{aligned}
+E(J^o) &amp;amp;= \frac{1}{2}[p-Tr(\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}\mathrm{P}^a)] \\
+&amp;amp;= \frac{1}{2}[p-Tr(\mathrm{H}^T\mathrm{K}^T)] \\
+&amp;amp;= \frac{1}{2}Tr(\mathrm{I}_p-\mathrm{H}\mathrm{K})
+\end{aligned}
+$$
+其中$\mathrm{I}_p$为$p$阶单位阵，$\mathrm{K}=\mathrm{P}^a\mathrm{H}^T\mathrm{R}^{-1}$证明如下：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\mathrm{P}^a &amp;amp;= E[(\mathrm{\varepsilon}^a)(\mathrm{\varepsilon})^T] \\
+&amp;amp;= E[(\varepsilon^b+\mathrm{K}(\varepsilon-\mathrm{H}\varepsilon^b))(\varepsilon^b+\mathrm{K}(\varepsilon-\mathrm{H}\varepsilon^b))^T] \\
+&amp;amp;= E\{[(\mathrm{I}-\mathrm{K}\mathrm{H})\varepsilon^b+\mathrm{K}\varepsilon][(\mathrm{I}-\mathrm{K}\mathrm{H})\varepsilon^b+\mathrm{K}\varepsilon]^T\} \\
+&amp;amp;\overset{\mathrm{L}=\mathrm{I}-\mathrm{KH}}{=} E[(\mathrm{L}\varepsilon^b+\mathrm{K}\varepsilon)(\mathrm{L}\varepsilon^b+\mathrm{K}\varepsilon)^T] \\
+&amp;amp;\overset{\varepsilon与\varepsilon^b无关}{=} E[\mathrm{L}\varepsilon^b(\varepsilon^b)^T\mathrm{L}^T]+E[\mathrm{K}\varepsilon\varepsilon^T\mathrm{K}^T] \\
+&amp;amp;= \mathrm{L}\mathrm{B}\mathrm{L}^T+\mathrm{K}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{K}\mathrm{R}\mathrm{K}^T
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;为了得到分析协方差矩阵的最优估计，最小化分析协方差矩阵的迹
+$$
+\begin{aligned}
+Tr(\mathrm{P}^a) &amp;amp;= Tr(\mathrm{B})+Tr(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T\mathrm{K}^T)-2Tr(\mathrm{B}\mathrm{H}^T\mathrm{K}^T)+Tr(\mathrm{K}\mathrm{R}\mathrm{K}^T) \\
+\end{aligned}
+$$
+对此求导可得
+$$
+\begin{aligned}
+\frac{d[Tr(\mathrm{P}^a)]}{d\mathrm{K}} &amp;amp;= 2Tr(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T)-2Tr(\mathrm{B}\mathrm{H}^T)+2Tr(\mathrm{K}\mathrm{R}) \\
+&amp;amp;= 2T(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T-\mathrm{B}\mathrm{H}^T+\mathrm{K}\mathrm{R}) \\
+&amp;amp;= 2Tr[\mathrm{K}(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})-\mathrm{B}\mathrm{H}^T]
+\end{aligned}
+$$
+令上述导数为$0$可得
+$$
+\begin{aligned}
+\mathrm{K} &amp;amp;= \mathrm{B}\mathrm{H}^T(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{B}\mathrm{H}^T(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}(\mathrm{H}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}\mathrm{B}\mathrm{H}^T)(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}(\mathrm{R}+\mathrm{H}\mathrm{B}\mathrm{H}^T)(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;对于三维变分：
+$$
+J(\mathrm{x}) = \frac{1}{2}[(\mathrm{x}-\mathrm{x}^b)^T\mathrm{B}^{-1}(\mathrm{x}-\mathrm{x}^b)]+\frac{1}{2}[(\mathrm{y}-\mathrm{H}(x))^T\mathrm{R}^{-1}(\mathrm{y}-\mathrm{H}(x))]
+$$
+想要$J$最小，则需要
+$$
+\begin{aligned}
+&amp;amp;\nabla J(\mathrm{x}^a) = \frac{d J}{d \mathrm{x}}|_{\mathrm{x}^a} = 0 \\
+\Leftrightarrow &amp;amp; \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^b)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^a)] = 0 \\
+\Leftrightarrow &amp;amp; \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^b)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^b)]+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{H}(\mathrm{x}^a)-\mathrm{H}(x)^b] = 0 \\
+\overset{\text{根据切线性假设}}{\Leftrightarrow} &amp;amp; \mathrm{x}^a-\mathrm{x}^b = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^b)]
+\end{aligned}
+$$
+对于二阶导（Hessian矩阵）：
+$$
+\nabla \nabla J(\mathrm{x}) = 2(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})
+$$&lt;/p&gt;
+&lt;p&gt;那么将真实大气状态$\mathrm{x}^t$带入一阶导为$0$可得
+$$
+\begin{aligned}
+0 &amp;amp;= \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^t+\mathrm{x}^t-\mathrm{x}^a)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)+\mathrm{H}(\mathrm{x}^t)-\mathrm{x}^a] \\
+&amp;amp;= \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^t)-\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}(\mathrm{x}^t-\mathrm{x}^a)-\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)] \\
+\Leftrightarrow &amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})(\mathrm{x}^t-\mathrm{x}^a) = \mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;上述式子两端均乘以自己的转置可得：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})(\mathrm{x}^t-\mathrm{x}^a)(\mathrm{x}^t-\mathrm{x}^a)^T(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T \\
+&amp;amp;= \{\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]\}\{\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]\}^T \\
+\Leftrightarrow
+&amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{P}^a(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T \overset{\text{背景误差与观测不相关}}{=} \mathrm{B}^{-1}\mathrm{B}\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{R}\mathrm{R}^{-1}\mathrm{H} \\
+\Leftrightarrow &amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{P}^a(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T = \mathrm{B}^{-1}+\mathrm{H}^T
+\mathrm{R}^{-1}\mathrm{H} \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;这样得到Hessian矩阵可如下计算：
+$$
+\nabla\nabla J(\mathrm{x}) = \frac{1}{2}(\mathrm{P}^a)^{-1}
+$$
+由以上推导可知：
+$$
+\mathrm{K} = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1} = (\mathrm{P}^a)^{-1}\mathrm{H}^T\mathrm{R}^{-1}
+$$&lt;/p&gt;
+&lt;p&gt;回到论文，同样的，对于完整的背景场部分，$\Gamma_j=\mathrm{I}_n,\mathrm{S}_j=\mathrm{B}$可得
+$$
+\begin{aligned}
+E(\mathrm{J}^b) &amp;amp;= \frac{1}{2}\{n-Tr[\mathrm{B}^{-1}(\mathrm{B}-\mathrm{K}\mathrm{H}\mathrm{B})]\} \\
+&amp;amp;= \frac{1}{2}\{n-Tr(\mathrm{I}_n-\mathrm{B}^{-1}\mathrm{K}\mathrm{H}\mathrm{B})\} \\
+&amp;amp;= \frac{1}{2}Tr(\mathrm{K}\mathrm{H})
+\end{aligned}
+$$
+其中$\mathrm{P}^a=\mathrm{B}-\mathrm{K}\mathrm{H}\mathrm{B}$证明如下：
+$$
+\begin{aligned}
+\mathrm{P}^a &amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{K}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{P}^a\mathrm{H}\mathrm{R}^{-1}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{P}^a\mathrm{H}^T\mathrm{K}^T \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a(\mathrm{I}-\mathrm{H}^T\mathrm{K}^T) = (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a = (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B} = \mathrm{B}-\mathrm{B}\mathrm{K}\mathrm{H}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;则
+$$
+E(\mathrm{J}) = E(\mathrm{J}^o)+E(\mathrm{J}^b) = \frac{1}{2}Tr(\mathrm{I}_p)=p/2
+$$&lt;/p&gt;
+&lt;p&gt;这表明，如果给定了观测误差协方差，则最小代价函数的期望值与观测数量$p$成正比，$p$也对应于分析问题中的自由度数量（这个可以进行后验诊断，如利用信息论的方法）。$E(\mathrm{J})$与$p/2$的偏差可以统计分析错误。&lt;/p&gt;
+&lt;h3 id=&#34;trmathrmkmathrmh和trmathrmhmathrmk的随机估计&#34;&gt;$Tr(\mathrm{K}\mathrm{H})$和$Tr(\mathrm{H}\mathrm{K})$的随机估计&lt;/h3&gt;
+&lt;p&gt;通过随机方法估计矩阵的迹如下：&lt;/p&gt;
+&lt;p&gt;$$
+\text{Rand} \quad Tr(\mathrm{H}\mathrm{K}) = \text{Rand} \quad Tr(\mathrm{R}^{-1/2}\mathrm{H}\mathrm{K}\mathrm{R}^{1/2}) = (\mathrm{R}^{-1/2}\xi)^T\mathrm{H}\mathrm{K}\mathrm{R}^{1/2}\xi
+$$&lt;/p&gt;
+&lt;p&gt;其中$\xi$是一个$p$维标准正态分布向量。&lt;/p&gt;
+&lt;p&gt;但是在实际系统中$\mathrm{K}$不是在变分过程中给显式计算的。&lt;/p&gt;
+&lt;p&gt;由文章第一个公式$\delta \mathrm{x}^a = \mathrm{K}\mathrm{d} = \mathrm{K}[\mathrm{y}^o-\mathrm{H}(\mathrm{x}^b]$可得：&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{H}\delta \mathrm{x}^a_{\mathrm{y}^o+\delta \mathrm{y}^o}-\mathrm{H} \delta \mathrm{x}^a_{\mathrm{y}^o} \simeq \mathrm{H}\mathrm{K}\delta \mathrm{y}^o
+$$&lt;/p&gt;
+&lt;p&gt;则令$\delta \mathrm{y}^o = \mathrm{R}^{1/2}\xi$，上述随即估计为&lt;/p&gt;
+&lt;p&gt;$$
+\text{Rand} \quad Tr(\mathrm{H}\mathrm{K}) = (\mathrm{R}^{-1/2}\xi)^T(\mathrm{H}\delta \mathrm{x}^a_{(\mathrm{y}^o+\mathrm{R}^{1/2}\xi)}-\mathrm{H}\delta \mathrm{x}^a_{(\mathrm{y}^o)})
+$$&lt;/p&gt;
+&lt;p&gt;该估计也可用于计算$E(\mathrm{J}^b)$，类似地由
+$$
+\delta \mathrm{x}^a_{\mathrm{x}^b+\delta \mathrm{x}^b}-\delta \mathrm{x}^a &lt;em&gt;{\mathrm{x}^b} \simeq -\mathrm{K}\mathrm{H}\delta \mathrm{x}^b
+$$
+可得
+$$
+\text{Rand} \quad Tr(\mathrm{K}\mathrm{H}) = -(\mathrm{B}^{-1/2}\xi)^T(\delta \mathrm{x}^a&lt;/em&gt;{(\mathrm{x}^b+\mathrm{B}^{1/2}\xi)}-\delta \mathrm{x}^a_{(\mathrm{x}^b)})
+$$&lt;/p&gt;
+&lt;p&gt;通过以上方法可以求得$E(\mathrm{J}^o)$和$E(\mathrm{J}^b)$&lt;/p&gt;
+&lt;h2 id=&#34;自适应调整&#34;&gt;自适应调整&lt;/h2&gt;
+&lt;h3 id=&#34;在线调整背景和观测误差的比例&#34;&gt;在线调整背景和观测误差的比例&lt;/h3&gt;
+&lt;p&gt;设两个参数$s^{b^2}$与$s^{o^2}$可得
+$$
+\mathrm{J}(\delta \mathrm{x}) = \frac{1}{{s^b}^2}\mathrm{J}^b(\delta \mathrm{x})+\frac{1}{{s^o}^2}\mathrm{J}^o(\delta \mathrm{x})
+$$&lt;/p&gt;
+&lt;p&gt;在GCV或一些极大似然估计方法中主要优化两个参数的比例$\lambda=s^{o^2}/s^{b^2}$，而若权重$s^b$和$s^o$是恰当的，则$(1/{s^b}^2)\mathrm{J}^b(\delta \mathrm{x})$和$(1/{s^o}^2)\mathrm{J}^o(\delta \mathrm{x})$需要与它们的期望相接近。即（接下来的公式还未完全看懂，需要询问段师兄）&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Diagnosis and adaptive tuning of observation-error parameters in a variational assimilation</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-diagnosis-and-adaptive-tuning-of-observation-error-parameters/</link>
+      <pubDate>Mon, 22 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-diagnosis-and-adaptive-tuning-of-observation-error-parameters/</guid>
+      <description>&lt;h2 id=&#34;问题背景&#34;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;由于观测精度低、分布系数，当前的分析方法主要基于较少的观测和短期预报的背景场。在另一个角度看，背景场可以视为另外一种观测。每个观测对分析的贡献依赖于其误差协方差，而这些误差不全是已知的，通过模式误差订正或自适应地调整误差参数可以提高分析质量。&lt;/p&gt;
+&lt;p&gt;一些文章使用后验诊断方法，使用基于观测值或背景场随机扰动的方法，证明了实际计算代价函数字部分的期望值是可行的。&lt;/p&gt;
+&lt;p&gt;另外一种思路试图从第一分析中使用的一组观测值对误差参数进行调整，提出了基于极大似然估计的方法，以及广义交叉验证方法（GCV）。&lt;/p&gt;
+&lt;p&gt;本文提出了一种基于O-B的方法进行诊断，目的是从一批观测和背景场中自适应调整观测误差参数。&lt;/p&gt;
+&lt;h2 id=&#34;理论方法&#34;&gt;理论方法&lt;/h2&gt;
+&lt;h3 id=&#34;varda&#34;&gt;VARDA&lt;/h3&gt;
+&lt;p&gt;三维变分的目标函数的增量形式为&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+J(\delta x) &amp;amp;= J^b(\delta \mathrm{x})+J^o(\delta \mathrm{x}) \\
+&amp;amp;= \frac{1}{2}\delta \mathrm{x}^T\mathrm{B}^{-1}\delta \mathrm{x} + \frac{1}{2}(\mathrm{d}-\mathrm{H}\delta x)^T\mathrm{R}^{-1}(\mathrm{d}-\mathrm{H}\delta\mathrm{x})
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;该代价函数最小值由&lt;/p&gt;
+&lt;p&gt;$$
+\delta \mathrm{x}^a = \mathrm{K}\mathrm{d} = \mathrm{K}[\mathrm{y}^o-\mathrm{H}(\mathrm{x}^b)]
+$$
+得到，其中增益矩阵$\mathrm{K}=\mathrm{B}\mathrm{H}^T(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1}$&lt;/p&gt;
+&lt;h3 id=&#34;j的统计期望&#34;&gt;J的统计期望&lt;/h3&gt;
+&lt;p&gt;完整的观测向量$\mathrm{z}^o$可视为$p$维$\mathrm{y}^o$适当观测向量和与真实状态相同维度$n$的背景场$\mathrm{x}^b$两份量的组合。$\mathrm{z}^o=\{(\mathrm{x}^b)^T(\mathrm{y}^o)^T\}$，且&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{x}^b = \mathrm{x}^t + \mathrm{\varepsilon}^b
+$$
+其中$\mathrm{\varepsilon}^b$为B矩阵中预报误差组成的向量&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{y}^o = \mathrm{H}(\mathrm{x}^t) + \mathrm{\varepsilon}^o
+$$
+其中$\mathrm{\varepsilon}^o$为R矩阵中观测误差组成的向量&lt;/p&gt;
+&lt;p&gt;则$\mathrm{z}^o$可以写为：
+$$
+\mathrm{z}^o = \Gamma(\mathrm{x}^t)+\mathrm{\varepsilon}
+$$
+其中$\Gamma$是完整的观测算子，$\mathrm{\varepsilon}$是预报和观测误差组成的$n+p$维向量&lt;/p&gt;
+&lt;p&gt;Talagrand(1999)得到了一个和结论：如果$J_j$表示$J$的一项，其为$m_j$个元素的和，则$J_j$最小值的期望为
+$$
+E[J_j(\mathrm{x}^a)]=\frac{1}{2}[m_j-Tr(\Gamma^T_j\mathrm{S}_j^{-1}\Gamma_j\mathrm{P}^a)]
+$$
+其中$\Gamma_j$和$\mathrm{S}_j$分别是与这$m_j$个元素相关的线性观测算子和R矩阵，$\mathrm{P}^a$表示对所有观测进行分析得到的分析误差协方差矩阵的估计。&lt;/p&gt;
+&lt;p&gt;对于$J^o$，令$\Gamma_j=\mathrm{H},\mathrm{S}_j=\mathrm{R}$：
+$$
+\begin{aligned}
+E(J^o) &amp;amp;= \frac{1}{2}[p-Tr(\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}\mathrm{P}^a)] \\
+&amp;amp;= \frac{1}{2}[p-Tr(\mathrm{H}^T\mathrm{K}^T)] \\
+&amp;amp;= \frac{1}{2}Tr(\mathrm{I}_p-\mathrm{H}\mathrm{K})
+\end{aligned}
+$$
+其中$\mathrm{I}_p$为$p$阶单位阵，$\mathrm{K}=\mathrm{P}^a\mathrm{H}^T\mathrm{R}^{-1}$证明如下：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\mathrm{P}^a &amp;amp;= E[(\mathrm{\varepsilon}^a)(\mathrm{\varepsilon})^T] \\
+&amp;amp;= E[(\varepsilon^b+\mathrm{K}(\varepsilon-\mathrm{H}\varepsilon^b))(\varepsilon^b+\mathrm{K}(\varepsilon-\mathrm{H}\varepsilon^b))^T] \\
+&amp;amp;= E\{[(\mathrm{I}-\mathrm{K}\mathrm{H})\varepsilon^b+\mathrm{K}\varepsilon][(\mathrm{I}-\mathrm{K}\mathrm{H})\varepsilon^b+\mathrm{K}\varepsilon]^T\} \\
+&amp;amp;\overset{\mathrm{L}=\mathrm{I}-\mathrm{KH}}{=} E[(\mathrm{L}\varepsilon^b+\mathrm{K}\varepsilon)(\mathrm{L}\varepsilon^b+\mathrm{K}\varepsilon)^T] \\
+&amp;amp;\overset{\varepsilon与\varepsilon^b无关}{=} E[\mathrm{L}\varepsilon^b(\varepsilon^b)^T\mathrm{L}^T]+E[\mathrm{K}\varepsilon\varepsilon^T\mathrm{K}^T] \\
+&amp;amp;= \mathrm{L}\mathrm{B}\mathrm{L}^T+\mathrm{K}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{K}\mathrm{R}\mathrm{K}^T
+\end{aligned}
+$$
+为了得到分析协方差矩阵的最优估计，最小化分析协方差矩阵的迹
+$$
+\begin{aligned}
+Tr(\mathrm{P}^a) &amp;amp;= Tr(\mathrm{B})+Tr(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T\mathrm{K}^T)-2Tr(\mathrm{B}\mathrm{H}^T\mathrm{K}^T)+Tr(\mathrm{K}\mathrm{R}\mathrm{K}^T) \\
+\end{aligned}
+$$
+对此求导可得
+$$
+\begin{aligned}
+\frac{d[Tr(\mathrm{P}^a)]}{d\mathrm{K}} &amp;amp;= 2Tr(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T)-2Tr(\mathrm{B}\mathrm{H}^T)+2Tr(\mathrm{K}\mathrm{R}) \\
+&amp;amp;= 2T(\mathrm{K}\mathrm{H}\mathrm{B}\mathrm{H}^T-\mathrm{B}\mathrm{H}^T+\mathrm{K}\mathrm{R}) \\
+&amp;amp;= 2Tr[\mathrm{K}(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})-\mathrm{B}\mathrm{H}^T]
+\end{aligned}
+$$
+令上述导数为$0$可得
+$$
+\begin{aligned}
+\mathrm{K} &amp;amp;= \mathrm{B}\mathrm{H}^T(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{B}\mathrm{H}^T(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}(\mathrm{H}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}\mathrm{B}\mathrm{H}^T)(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}(\mathrm{R}+\mathrm{H}\mathrm{B}\mathrm{H}^T)(\mathrm{H}\mathrm{B}\mathrm{H}^T+\mathrm{R})^{-1} \\
+&amp;amp;= (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;对于三维变分：
+$$
+J(\mathrm{x}) = \frac{1}{2}[(\mathrm{x}-\mathrm{x}^b)^T\mathrm{B}^{-1}(\mathrm{x}-\mathrm{x}^b)]+\frac{1}{2}[(\mathrm{y}-\mathrm{H}(x))^T\mathrm{R}^{-1}(\mathrm{y}-\mathrm{H}(x))]
+$$
+想要$J$最小，则需要
+$$
+\begin{aligned}
+&amp;amp;\nabla J(\mathrm{x}^a) = \frac{d J}{d \mathrm{x}}|_{\mathrm{x}^a} = 0 \\
+\Leftrightarrow &amp;amp; \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^b)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^a)] = 0 \\
+\Leftrightarrow &amp;amp; \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^b)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^b)]+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{H}(\mathrm{x}^a)-\mathrm{H}(x)^b] = 0 \\
+\overset{\text{根据切线性假设}}{\Leftrightarrow} &amp;amp; \mathrm{x}^a-\mathrm{x}^b = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^b)]
+\end{aligned}
+$$
+对于二阶导（Hessian矩阵）：
+$$
+\nabla \nabla J(\mathrm{x}) = 2(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})
+$$&lt;/p&gt;
+&lt;p&gt;那么将真实大气状态$\mathrm{x}^t$带入一阶导为$0$可得
+$$
+\begin{aligned}
+0 &amp;amp;= \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^t+\mathrm{x}^t-\mathrm{x}^a)-\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)+\mathrm{H}(\mathrm{x}^t)-\mathrm{x}^a] \\
+&amp;amp;= \mathrm{B}^{-1}(\mathrm{x}^a-\mathrm{x}^t)-\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}(\mathrm{x}^t-\mathrm{x}^a)-\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)] \\
+\Leftrightarrow &amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})(\mathrm{x}^t-\mathrm{x}^a) = \mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;上述式子两端均乘以自己的转置可得：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp;(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})(\mathrm{x}^t-\mathrm{x}^a)(\mathrm{x}^t-\mathrm{x}^a)^T(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T \\
+&amp;amp;= \{\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]\}\{\mathrm{B}^{-1}(\mathrm{x}^b-\mathrm{x}^t)+\mathrm{H}^T\mathrm{R}^{-1}[\mathrm{y}-\mathrm{H}(\mathrm{x}^t)]\}^T \\
+\Leftrightarrow
+&amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{P}^a(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T \overset{\text{背景误差与观测不相关}}{=} \mathrm{B}^{-1}\mathrm{B}\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{R}\mathrm{R}^{-1}\mathrm{H} \\
+\Leftrightarrow &amp;amp; (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})\mathrm{P}^a(\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^T = \mathrm{B}^{-1}+\mathrm{H}^T
+\mathrm{R}^{-1}\mathrm{H} \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}
+\end{aligned}
+$$
+这样得到Hessian矩阵可如下计算：
+$$
+\nabla\nabla J(\mathrm{x}) = \frac{1}{2}(\mathrm{P}^a)^{-1}
+$$
+由以上推导可知：
+$$
+\mathrm{K} = (\mathrm{B}^{-1}+\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H})^{-1}\mathrm{H}^T\mathrm{R}^{-1} = (\mathrm{P}^a)^{-1}\mathrm{H}^T\mathrm{R}^{-1}
+$$&lt;/p&gt;
+&lt;p&gt;回到论文，同样的，对于完整的背景场部分，$\Gamma_j=\mathrm{I}_n,\mathrm{S}_j=\mathrm{B}$可得
+$$
+\begin{aligned}
+E(\mathrm{J}^b) &amp;amp;= \frac{1}{2}\{n-Tr[\mathrm{B}^{-1}(\mathrm{B}-\mathrm{K}\mathrm{H}\mathrm{B})]\} \\
+&amp;amp;= \frac{1}{2}\{n-Tr(\mathrm{I}_n-\mathrm{B}^{-1}\mathrm{K}\mathrm{H}\mathrm{B})\} \\
+&amp;amp;= \frac{1}{2}Tr(\mathrm{K}\mathrm{H})
+\end{aligned}
+$$
+其中$\mathrm{P}^a=\mathrm{B}-\mathrm{K}\mathrm{H}\mathrm{B}$证明如下：
+$$
+\begin{aligned}
+\mathrm{P}^a &amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{K}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{P}^a\mathrm{H}\mathrm{R}^{-1}\mathrm{R}\mathrm{K}^T \\
+&amp;amp;= (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T+\mathrm{P}^a\mathrm{H}^T\mathrm{K}^T \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a(\mathrm{I}-\mathrm{H}^T\mathrm{K}^T) = (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B}(\mathrm{I}-\mathrm{K}\mathrm{H})^T \\
+\Leftrightarrow &amp;amp; \mathrm{P}^a = (\mathrm{I}-\mathrm{K}\mathrm{H})\mathrm{B} = \mathrm{B}-\mathrm{B}\mathrm{K}\mathrm{H}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;则
+$$
+E(\mathrm{J}) = E(\mathrm{J}^o)+E(\mathrm{J}^b) = \frac{1}{2}Tr(\mathrm{I}_p)=p/2
+$$&lt;/p&gt;
+&lt;p&gt;这表明，如果给定了观测误差协方差，则最小代价函数的期望值与观测数量$p$成正比，$p$也对应于分析问题中的自由度数量（这个可以进行后验诊断，如利用信息论的方法）。$E(\mathrm{J})$与$p/2$的偏差可以统计分析错误。&lt;/p&gt;
+&lt;h3 id=&#34;trmathrmkmathrmh和trmathrmhmathrmk的随机估计&#34;&gt;$Tr(\mathrm{K}\mathrm{H})$和$Tr(\mathrm{H}\mathrm{K})$的随机估计&lt;/h3&gt;
+&lt;p&gt;通过随机方法估计矩阵的迹如下：&lt;/p&gt;
+&lt;p&gt;$$
+\text{Rand} \quad Tr(\mathrm{H}\mathrm{K}) = \text{Rand} \quad Tr(\mathrm{R}^{-1/2}\mathrm{H}\mathrm{K}\mathrm{R}^{1/2}) = (\mathrm{R}^{-1/2}\xi)^T\mathrm{H}\mathrm{K}\mathrm{R}^{1/2}\xi
+$$&lt;/p&gt;
+&lt;p&gt;其中$\xi$是一个$p$维标准正态分布向量。&lt;/p&gt;
+&lt;p&gt;但是在实际系统中$\mathrm{K}$不是在变分过程中给显式计算的。&lt;/p&gt;
+&lt;p&gt;由文章第一个公式$\delta \mathrm{x}^a = \mathrm{K}\mathrm{d} = \mathrm{K}[\mathrm{y}^o-\mathrm{H}(\mathrm{x}^b]$可得：&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{H}\delta \mathrm{x}^a_{\mathrm{y}^o+\delta \mathrm{y}^o}-\mathrm{H} \delta \mathrm{x}^a_{\mathrm{y}^o} \simeq \mathrm{H}\mathrm{K}\delta \mathrm{y}^o
+$$&lt;/p&gt;
+&lt;p&gt;则令$\delta \mathrm{y}^o = \mathrm{R}^{1/2}\xi$，上述随即估计为&lt;/p&gt;
+&lt;p&gt;$$
+\text{Rand} \quad Tr(\mathrm{H}\mathrm{K}) = (\mathrm{R}^{-1/2}\xi)^T(\mathrm{H}\delta \mathrm{x}^a_{(\mathrm{y}^o+\mathrm{R}^{1/2}\xi)}-\mathrm{H}\delta \mathrm{x}^a_{(\mathrm{y}^o)})
+$$&lt;/p&gt;
+&lt;p&gt;该估计也可用于计算$E(\mathrm{J}^b)$，类似地由
+$$
+\delta \mathrm{x}^a_{\mathrm{x}^b+\delta \mathrm{x}^b}-\delta \mathrm{x}^a &lt;em&gt;{\mathrm{x}^b} \simeq -\mathrm{K}\mathrm{H}\delta \mathrm{x}^b
+$$
+可得
+$$
+\text{Rand} \quad Tr(\mathrm{K}\mathrm{H}) = -(\mathrm{B}^{-1/2}\xi)^T(\delta \mathrm{x}^a&lt;/em&gt;{(\mathrm{x}^b+\mathrm{B}^{1/2}\xi)}-\delta \mathrm{x}^a_{(\mathrm{x}^b)})
+$$&lt;/p&gt;
+&lt;p&gt;通过以上方法可以求得$E(\mathrm{J}^o)$和$E(\mathrm{J}^b)$&lt;/p&gt;
+&lt;h2 id=&#34;自适应调整&#34;&gt;自适应调整&lt;/h2&gt;
+&lt;h3 id=&#34;在线调整背景和观测误差的比例&#34;&gt;在线调整背景和观测误差的比例&lt;/h3&gt;
+&lt;p&gt;设两个参数$s^{b^2}$与$s^{o^2}$可得
+$$
+\mathrm{J}(\delta \mathrm{x}) = \frac{1}{{s^b}^2}\mathrm{J}^b(\delta \mathrm{x})+\frac{1}{{s^o}^2}\mathrm{J}^o(\delta \mathrm{x})
+$$&lt;/p&gt;
+&lt;p&gt;在GCV或一些极大似然估计方法中主要优化两个参数的比例$\lambda=s^{o^2}/s^{b^2}$，而若权重$s^b$和$s^o$是恰当的，则$(1/{s^b}^2)\mathrm{J}^b(\delta \mathrm{x})$和$(1/{s^o}^2)\mathrm{J}^o(\delta \mathrm{x})$需要与它们的期望相接近。即$(1/2)Tr[\mathrm{K}\mathrm{H}(s^b,s^o)]$和$(1/2)Tr[\mathrm{I}_p-\mathrm{H}\mathrm{K}(s^b,s^o)]$，其中$(s^b,s^o)$是参数，对应的结果应该是他们的一个函数&lt;/p&gt;
+&lt;p&gt;然后定义$S^b = 2\mathrm{J}^b/Tr(\mathrm{K}\mathrm{H})$和$S^o=2\mathrm{J}^o/Tr(\mathrm{I}_p-\mathrm{H}\mathrm{K})$，则该想法是寻找$s^b,s^o$使得&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+{s^b}^2 = S^b(s^b,s^o) \\
+{s^o}^2 = S^o(s^b,s^o)
+\end{cases}
+$$&lt;/p&gt;
+&lt;p&gt;该方法与GCV存在相似性，GCV主要最优化比率$\lambda$，定义如下：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+V(\lambda) &amp;amp;= \frac{(\mathrm{d}-\mathrm{H}\delta \mathrm{x}^a)^T\mathrm{R}^{-1}(\mathrm{d}-\mathrm{H}\delta \mathrm{x}^a)}{[Tr(\mathrm{I_p-\mathrm{H}\mathrm{K}})]^2} \\
+&amp;amp;= \frac{S^o(\delta \mathrm{x}^a)}{Tr(\mathrm{I}_p-\mathrm{H}\mathrm{K})}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;其中$S^o(\delta x^a)$表示$S^o$与$\delta x^a$有关。同样使用之前介绍的随机化方法进行计算&lt;/p&gt;
+&lt;p&gt;则可以使用如下的序列进行迭代计算不动点&lt;/p&gt;
+&lt;p&gt;$$
+\begin{cases}
+s^b_{k+1} = [S^b(s^b_k,s^o_k)]^{1/2} \\
+s^o_{k+1} = [S^o(s^b_k,s^o_k)]^{1/2}
+\end{cases}
+$$&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Diagnosing atmospheric motion vector observation errors for an operational high-resolution data assimilation system</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-diagnosing-atmospheric-motion-vector-observation-errors-for-an-operational-high-resolution-data-assimilation-system/</link>
+      <pubDate>Sun, 21 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-diagnosing-atmospheric-motion-vector-observation-errors-for-an-operational-high-resolution-data-assimilation-system/</guid>
+      <description>&lt;h2 id=&#34;问题背景&#34;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;目前，风速观测时从中等大小的特征中得出的，没有快速突变和专门的水平位移，这意味着AMV只能描述一般的大气波动。&lt;/p&gt;
+&lt;h2 id=&#34;理论方法&#34;&gt;理论方法&lt;/h2&gt;
+&lt;h3 id=&#34;desrozierst诊断方法&#34;&gt;Desrozierst诊断方法&lt;/h3&gt;
+&lt;p&gt;文章使用Desrozier诊断，利用$(O-B)(O-A)$对局部区域高分辨率同化系统的AMV误差统计进行估计。&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{d}_b^o = \mathrm{y}-\mathrm{H}\mathrm{x}^b
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\mathrm{d}_a^o = \mathrm{y}-\mathrm{H}\mathrm{x}^a
+$$&lt;/p&gt;
+&lt;p&gt;则&lt;/p&gt;
+&lt;p&gt;$$
+\langle \mathrm{d}_a^o,\mathrm{d}_b^o\rangle \approx \mathrm{R}_e
+$$&lt;/p&gt;
+&lt;h3 id=&#34;诊断方法的实现&#34;&gt;诊断方法的实现&lt;/h3&gt;
+&lt;p&gt;假设由N对观测在距离$d$和垂向$z$层上属于同一个间隔距离仓内，设第$k$个观测对为$(i_k,j_k)$，则其协方差表达式为：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+cov(z,d) &amp;amp;= \frac{1}{N}\sum^N_{k=1}(\mathrm{d}&lt;em&gt;a^0)&lt;/em&gt;{i_k}(\mathrm{d}&lt;em&gt;b^o)&lt;/em&gt;{j_k}-\left[\frac{1}{N}\sum^N_{k=1}(\mathrm{d}&lt;em&gt;a^o)&lt;/em&gt;{i_k}\right]\left[\frac{1}{N}\sum^N_{k=1}(\mathrm{d}&lt;em&gt;b^o)&lt;/em&gt;{j_k}\right]
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;误差方差$var(z)$使用类似的形式计算，但假设$d=0,j_k=i_k$。给定垂直层$z$，其水平相关函数时通过$z$水平面的总体观测误差方差对每个间隔距离仓内的观测误差协方差进行归一化得到的。&lt;/p&gt;
+&lt;p&gt;$$
+\rho(z,d)=\frac{cov(z,d)}{var(z)}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;误差来源&#34;&gt;误差来源&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;跟踪误差：跟踪了错误的特征&lt;/li&gt;
+&lt;li&gt;高度分配误差：模型亮温倒数和亮温到气压的转换错误会导致特征高度的误差&lt;/li&gt;
+&lt;li&gt;中尺度特征：&lt;/li&gt;
+&lt;li&gt;风切变：风切变时风速垂直方向上变化率。&lt;/li&gt;
+&lt;li&gt;极地锋急流：是一个中纬度的高风速径向曲流核心（$&amp;gt; 30m/s$），主要在$250-300hPa$。&lt;/li&gt;
+&lt;li&gt;温度反演：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
+&lt;p&gt;文章使用Met Office UKV模式进行3DVAR实验
+文章对于观测误差的定义如下&lt;/p&gt;
+&lt;p&gt;$$
+\sigma^2_{assigned} = \sigma^2_{tracking}+\sigma^2_{height}
+$$&lt;/p&gt;
+&lt;p&gt;对于间隔仓定义如下：与某个观测相聚80km到100km内的被放到同一个间隔仓内。&lt;/p&gt;
+&lt;h2 id=&#34;结果&#34;&gt;结果&lt;/h2&gt;
+&lt;p&gt;论文第一次使用Desrozierset诊断来估计AMV误差方差垂直和水平相关性。通过实验得到的结论有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;高度分配误差与高风切变结合对风速误差产生重大的影响&lt;/li&gt;
+&lt;li&gt;最大误差方差出现在中层，其中的风切变较大，跟踪特征更容易收到上下层的影响&lt;/li&gt;
+&lt;li&gt;文章估算了四个通道在不同垂直层的水平AMV误差相关性，对于IR108、WV062、WV073三个通道水平误差相关长度标度在（140-210km）范围内&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在高分辨率同化中，需要考虑相关性以便得到准确的R矩阵。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Correlated observation errors in dataassimilation</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-correlated-observation-errors-in-dataassimilation/</link>
+      <pubDate>Fri, 19 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-correlated-observation-errors-in-dataassimilation/</guid>
+      <description>&lt;h2 id=&#34;问题背景&#34;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;同化过程中观测的权重与其误差值成反比，遥感仪器误差通常认为是不相关的。而观测的相关性提高了在分析场中观测域梯度的精度，但对于观测域本身的精度没有太大影响。&lt;/p&gt;
+&lt;p&gt;由于观测可以达到$10^6$，则对观测误差相关性的存储和计算成本很高。故在实施上假设观测不相关。为了弥补相关性的不足，一般将观测误差进行膨胀，使得观测在分析中有较低的权重。（最多可放大2~4倍）。&lt;/p&gt;
+&lt;p&gt;通常使用稀疏化技术以降低数据密度满足观测无相关的假设，而目前对流风暴的预报使用高分辨率的模式，这要求尽可能很多的数据进行同化，而不是是用稀疏化技术，这就需要一种处理观测误差相关性的方法。&lt;/p&gt;
+&lt;h2 id=&#34;理论方法&#34;&gt;理论方法&lt;/h2&gt;
+&lt;h3 id=&#34;信息论&#34;&gt;信息论&lt;/h3&gt;
+&lt;p&gt;一组观测的信息量由他们降低分析的不确定性的多少衡量，文章使用Shannon Information Content和信号自由度进行评估。&lt;/p&gt;
+&lt;h4 id=&#34;shannon-information-content&#34;&gt;Shannon Information Content&lt;/h4&gt;
+&lt;p&gt;SIC是熵减少的一种度量。（物理上熵用于描述状态的概率密度函数所占据的状态空间的体积）。假设所有数据都服从高斯分布&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+SIC &amp;amp;= \frac{1}{2}|S_A^{-1}B| \\
+S_A^{-1} &amp;amp;= \mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}+\mathrm{B}^{-1}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;其中$S_A$是分析的误差协方差矩阵，SIC越大，对分析不确定性的减少越多。&lt;/p&gt;
+&lt;h4 id=&#34;信号自由度&#34;&gt;信号自由度&lt;/h4&gt;
+&lt;p&gt;信号自由度表示观测值测量的数量，信号自由度与总自由度越接近，观测提供的信息就越多&lt;/p&gt;
+&lt;p&gt;通过比较$B$矩阵和$S_A$特征值的大小可以知道不确定性的减少。&lt;/p&gt;
+&lt;p&gt;定义一个非奇异矩阵$L$，使得$LBL^T=I$且$LS_AL^T=\hat{S}_A$（该变换不是唯一的），可以将$L$替换为$X^TL$，其中$X$是一个正交阵。若取$X$为$\hat{S}_A$的特征向量矩阵，同时将$B$还原为单位阵，$S_A$还原为对角阵$\Lambda$，则&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+X^TLBL^TX &amp;amp;= X^XX = I \\
+X^TLS_AL^TX &amp;amp;= X^T\hat{S}_AX = \Lambda
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;经过该变换后，变换矩阵的对角元素都是相同的，每个元素对应一个单独的信号自由度。$\hat{S}_A$的特征值可以解释为每个独立方向上方差的相对减少，因此信号自由度为&lt;/p&gt;
+&lt;p&gt;$$
+dofs = N - trace(\Lambda)
+$$&lt;/p&gt;
+&lt;p&gt;注：信号自由度表示观测测量的数量，则应该是以$1$为单位，故通过将$B$矩阵转化为单位阵，其迹即为$B$中状态的数量，对$S_A$进行相同的变换对角化之后，也就将特征值进行了对应的缩放，对该对角阵求迹也就将$S_A$的信息量求出来了。&lt;/p&gt;
+&lt;h3 id=&#34;理想数据集&#34;&gt;理想数据集&lt;/h3&gt;
+&lt;p&gt;考虑200km的$N \times N$网格平面观测，假设每个观测都是直接获取的，$H=I$，背景误差是均匀的且由相关函数$B_{ij}=e^{-r_{ij}^2/2L}$描述，其中$r_{ij}$是两点之间的距离，$L=190$&lt;/p&gt;
+&lt;p&gt;测试误差矩阵$R_t$使用经验推导的误差方差和各向同性相关性得到，相关性表示为$C_{ij}=(1+\frac{r_{ij}}{L})e^{-r_{ij}/L}$。则$R_t=D^{1/2}CD^{1/2}$，其中$D$为观测方差的对角阵。&lt;/p&gt;
+&lt;h3 id=&#34;观测误差协方差矩阵结构&#34;&gt;观测误差协方差矩阵结构&lt;/h3&gt;
+&lt;p&gt;文章比较了以下四种结构&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使用测试误差协方差矩阵&lt;/li&gt;
+&lt;li&gt;将$R_t$中的相关性设为0（C为对角阵）&lt;/li&gt;
+&lt;li&gt;将$R_t$中的相关性设为0并膨胀观测方差（C为对角阵且误差进行了放大）&lt;/li&gt;
+&lt;li&gt;$$
+\tilde{R}=D^{1/2}(\alpha I+\sum^K_{k=1}(\lambda_k-\alpha)v_kv_k^T)D^{1/2}=D^{1/2}\tilde{C}D^{1/2}
+$$
+其中$(\lambda_k,v_k)$是$C$的特征值、特征向量对，$K$是主要特征对的数量，$\alpha$取为$trace(\tilde{R})=trace(D)$，则不会出现总误差方差的近似缺失。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;结果是第四种方法与测试矩阵最相似，使用的特征对越多，信息差异越小。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for sparse optimization for inverse problems in atmospheric modelling</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-sparse-optimization-for-inverse-problems-in-atmospheric-modelling/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-sparse-optimization-for-inverse-problems-in-atmospheric-modelling/</guid>
+      <description>&lt;p&gt;文章将要解决的问题简化为一个最优化问题
+$$
+\begin{align}
+&amp;amp;\min_x \left| Mx-y \right|_2^2 \\
+&amp;amp;s.t \quad x \geq 0
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;其中$M$是一个映射（理解为观测算子），$y$为观测，$x$为位置的排放位置，$M$是一个$\mathbb{R}^n \rightarrow \mathbb{R}^m$的映射（$M \in \mathbb{R^{m \times n}}$）。&lt;/p&gt;
+&lt;h2 id=&#34;spatial-and-temporal-location-weighting&#34;&gt;Spatial and temporal location weighting&lt;/h2&gt;
+&lt;p&gt;对于每个观测$y_j$，假设有一个数据$z_j=(z_j^x,z_j^y,z_j^t)$，其中$(z_j^x,z_j^y)$描述了观测的经纬度，$z_j^t$描述观测时刻。定义与观测$z_i,z_j$的距离相关的权重，首先对空间和时间权重定义如下:
+$$
+{\small
+\begin{align}
+w_S(z_i,z_j) &amp;amp;=
+\begin{cases}
+\exp\left(-\alpha_S\left|(z_i^x,z_i^y)-(z_j^x,z_j^y)\right|\right) &amp;amp; if \left| (z_i^x,z_i^y)-(z_j^x,z_j^y) \right| \leq s_{max} \\
+0 &amp;amp; otherwise
+\end{cases} \\
+w_T(z_i,z_j) &amp;amp;=
+\begin{cases}
+\exp\left(-\alpha_T\left|z_i^t-z_j^t \right|\right) &amp;amp; if \left| z_i^t,z_j^t \right| \leq t_{max} \\
+0 &amp;amp; otherwise
+\end{cases}
+\end{align}
+}
+$$&lt;/p&gt;
+&lt;p&gt;其中$\alpha_S,\alpha_T \geq 0, s_{max}, t_{max} \in [0, \infty]$为给定的参数。&lt;/p&gt;
+&lt;p&gt;注：为何使用指数函数来进行权重的定义？直接用范数定义不行吗？&lt;/p&gt;
+&lt;p&gt;然后对$z_i$与$z_j$的距离相关权重定义如下
+$$
+w(z_i,z_j)=w_S(z_i,z_j)w_T(z_i,z_j)
+$$&lt;/p&gt;
+&lt;p&gt;注：这里使用乘法就将指数函数中距离进行了加权求和，相当于对空间距离以及时间距离进行了加权得到新的距离，再用指数函数得到权重，那为什么不用$\ln,\log$等对数函数呢？（指数函数可以保证权重是正数）（问题：一定要是正相关的权重吗？能不能是负数？对于污染气体排放问题，一定是正数，而对于别的观测，如风速风向等则有可能互相之间有负相关的影响。）&lt;/p&gt;
+&lt;p&gt;接下来对每个观测$j=1,2,\cdots,m$，都想要最小化如下式子：
+$$
+\left(\sum^m_{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}(Mx)&lt;em&gt;i-\sum^m&lt;/em&gt;{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}y_i\right)^2
+$$
+推导：&lt;/p&gt;
+&lt;p&gt;本来需要最优化的式子为：
+$$
+\left((Mx)_j-y_j \right)^2
+$$&lt;/p&gt;
+&lt;p&gt;考虑不直接优化该式，转而优化$Mx$与$y$在点$j$的邻居上的距离，考虑$j$与$i$的距离权重占$j$与所有点的距离权重总和来对$i$与$j$的关系进行加权
+$$
+\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}
+$$&lt;/p&gt;
+&lt;p&gt;表示了$i$对应的数值对$j$的影响占所有$i$对$j$总影响的权重，那么，这里相当于做了一个归一化处理，将指数函数变成了$[0,1]$区间的值。再对该权重乘以对应$i$的值得到$i$对$j$的影响值，则得到要优化的式子。&lt;/p&gt;
+&lt;p&gt;则，转为最优化
+$$
+\sum^m_{j=1}\left(\sum^m_{i=1}\frac{w(z_j,z_i)}{\sum^m_{k=1}w(z_j,z_k)}\left((Mx)&lt;em&gt;i-{\sum^m&lt;/em&gt;{k=1}w(z_j,z_k)}y_i\right)\right)^2
+$$
+等价于
+$$
+\left| W(Mx-y) \right|^2_2
+$$
+其中权值矩阵$W$由元素
+$$
+w_{ij}=\frac{w(z_i,z_j)}{\sum^m_{k=1}w(z_i,z_j)}
+$$
+组成。
+则问题变为
+$$
+\begin{align}
+&amp;amp;\min_x \left|WMx-Wy\right|^2_2 \\
+&amp;amp;s.t \quad x \geq 0
+\end{align}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;sparse-optimization&#34;&gt;Sparse optimization&lt;/h2&gt;
+&lt;p&gt;稀疏优化的问题，首先提到了常见的方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;删除列&lt;/li&gt;
+&lt;li&gt;$L_2$正则化&lt;/li&gt;
+&lt;li&gt;$L_1$正则化（这个可以得到稀疏解）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;参考如下知乎回答了解得到$L_1$正则化得到稀疏解的原理&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/37096933/answer/70938890&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(7 封私信 / 75 条消息) l1 相比于 l2 为什么容易获得稀疏解？ - 知乎 (zhihu.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文章对于要求解的问题，不直接使用正则化的方法，而是考虑多目标优化的方案得到稀疏解（不损失信息），主要目的是不修改目标或者数据，只假设解是稀疏的，这样其正则化参数就是一个常量。&lt;/p&gt;
+&lt;p&gt;考虑$0$范数，定义为
+$$
+\left| x \right|_0 = \text{card} \{i | x_i \neq 0\}
+$$
+其中$\text{card}A$定义了$A$的元素个数。&lt;/p&gt;
+&lt;p&gt;则，稀疏优化想要同时最小化$|x|_0$与原始目标，即&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+&amp;amp;\min_x \left| WMx-Wy \right|^2_2 \\
+s.t \quad &amp;amp;|x|_0 \leq k_{tol} \\
+&amp;amp;x \geq 0
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;但这就造成了一个非凸优化问题，考虑$z_i \in {0,1}$，则
+$$
+0 \leq x_i \leq z_i ub_i
+$$&lt;/p&gt;
+&lt;p&gt;其中$ub_i$为$x_i$的上界，同样的考虑下界$lb_i$&lt;/p&gt;
+&lt;p&gt;以上问题转化为：&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+&amp;amp; \min_x \left| WMx-Wy \right|^2_2 \\
+s.t \quad &amp;amp; \sum^n_{i=1} z_i \leq k_{tol} \\
+&amp;amp; z_ilb_i \leq x_i \leq z_iub_i, i = 1,2,\cdots,n \\
+&amp;amp; z_i \in {0, 1}
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;将以上问题写作矩阵形式&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+&amp;amp;\min_u u^THu+h^Tu \\
+&amp;amp; Au \leq b \\
+&amp;amp; u_z \in {0,1}
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;其中
+$$
+\begin{align}
+&amp;amp; u = (x,z), u_z = z\\
+&amp;amp; H =
+\begin{pmatrix}
+M^TW^TWM &amp;amp; 0_{n \times n} \\
+0_{n \times n} &amp;amp; 0_{n \times n}
+\end{pmatrix},
+h =
+\begin{pmatrix}
+-2M^TW^TWy \\
+0_{n \times 1}
+\end{pmatrix} \\
+&amp;amp; A =
+\begin{pmatrix}
+0_{1 \times n} &amp;amp; 1_{1 \times n}\\
+-diag(1_{n \times 1}) &amp;amp; diag(lb) \\
+diag(1_{n \times 1}) &amp;amp; -diag(ub)
+\end{pmatrix},
+b =
+\begin{pmatrix}
+k_{tol} \\
+0_{n \times 1} \\
+0_{n \times 1}
+\end{pmatrix}
+\end{align}
+$$&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for some data resources of sea wind field</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-data-resources/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-data-resources/</guid>
+      <description>&lt;h2 id=&#34;fy3e&#34;&gt;FY3E&lt;/h2&gt;
+&lt;h3 id=&#34;简介&#34;&gt;简介&lt;/h3&gt;
+&lt;p&gt;FY-3E卫星有效补充了6小时同化窗内卫星观测资料的空白，对南北半球预报和洲际尺度的区域预报有积极的贡献，弥补了全球观测资料的不足，上午卫星（ETC 10:00左右）、下午卫星（ETC 13:00左右）、晨昏轨道卫星三星组网观测可以使6小时同化窗内卫星资料100%全球覆盖，对4-7天500hPa位势高度的预报半球尺度（北半球）提高2-3个百分点，区域尺度（北美洲）提高2-10个百分点。三星组网后，每6小时可为数值预报提供一次完整全球覆盖的资料，有效提高和改进全球数值天气预报精度和时效，对完善全球对地观测系统具有重要意义。&lt;/p&gt;
+&lt;p&gt;FY-3E卫星在确保极轨气象卫星全球成像和大气垂直探测观测业务的基础上，侧重数值天气预报的应用目标，对天气会商、热带气旋和其它极端气象灾害预警、气候监测、太阳和空间天气观测具有独特优势。&lt;/p&gt;
+&lt;h3 id=&#34;特色&#34;&gt;特色&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;高精度光学微波组合大气温度湿度垂直分布探测能力：拥有晨昏轨道上微波温度、微波湿度、高光谱红外、无线电掩星全球大气温度湿度垂直分布探测能力&lt;/li&gt;
+&lt;li&gt;主动遥感仪器风场精确探测能力：主动遥感探测，可提供气象预测预报亟需的全球海面风场（风速和风向）信息，并通过与全球导航卫星海反观测同平台观测，可提供更高的风场空间采样密度。&lt;/li&gt;
+&lt;li&gt;全球气候变化监测与预测的支撑能力：提供在晨昏时刻的太阳和地气系统观测；太阳辐射是地球接收的、驱动地球大气和海洋运动唯一能量；&lt;/li&gt;
+&lt;li&gt;太阳和空间环境综合探测能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;技术指标&#34;&gt;技术指标&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;轨道类型&lt;/th&gt;
+&lt;th&gt;近极地太阳同步轨道&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;轨道标称高度&lt;/td&gt;
+&lt;td&gt;836公里&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;轨道倾角&lt;/td&gt;
+&lt;td&gt;98.75º&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;轨道保持偏心率&lt;/td&gt;
+&lt;td&gt;≤0.0025&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;轨道周期&lt;/td&gt;
+&lt;td&gt;101.5min&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;轨道回归周期&lt;/td&gt;
+&lt;td&gt;标称5.5天，设计范围4~10天&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;降交点地方时&lt;/td&gt;
+&lt;td&gt;05:30&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;交点地方时漂移&lt;/td&gt;
+&lt;td&gt;8年小于20分钟&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;姿态稳定方式&lt;/td&gt;
+&lt;td&gt;三轴稳定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;卫星发射重量&lt;/td&gt;
+&lt;td&gt;2300公斤&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;卫星平均功率&lt;/td&gt;
+&lt;td&gt;2500瓦&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;卫星寿命&lt;/td&gt;
+&lt;td&gt;设计寿命8年，6年考核&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;探测仪器&#34;&gt;探测仪器&lt;/h3&gt;
+&lt;p&gt;FY-3E的主要仪器载荷配置有：微波温度计、微波湿度计、红外高光谱大气探测仪、&lt;strong&gt;GPS掩星探测仪以及双频微波主动散射雷达&lt;/strong&gt;。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;仪器名称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;仪器全称&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;英文全称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/MERSI-LL.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MERSI-LL &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;中分辨率光谱成像仪（微光型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Medium Resolution Spectral Imager-LL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/HIRAS.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HIRAS-2 &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;红外高光谱大气探测仪（II型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Hyperspectral Infrared Atmospheric Sounder-2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/MWTS-2.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MWTS-3 &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;微波温度计（III型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Micro-Wave Temperature Sounder-3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/MWHS-2.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MWHS-2 &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;微波湿度计（II型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Micro-Wave Humidity Sounder-2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/GNOS.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GNOS-2 &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;全球导航卫星掩星探测仪（II型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;GNSS Radio Occultation Sounder-2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;WindRad&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;风场测量雷达&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Wind Radar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SSIM&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;太阳辐照度光谱仪&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Solar Spectral Irradiance Monitor&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SIM-2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;太阳辐射监测仪（II型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Solar Irradiance Monitor-2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;X-EUVI&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;太阳X射线极紫外成像仪&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Solar X-ray and Extreme Ultraviolet Imager&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;http://fy4.nsmc.org.cn/nsmc/cn/instrument/IPM.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tri-IPM &lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;电离层光度计（多角度型）&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Triple-angle Ionospheric PhotoMeter&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SEM&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;空间环境监测器&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Space Environment Monitor&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;hy2b&#34;&gt;HY2B&lt;/h2&gt;
+&lt;h3 id=&#34;简介-1&#34;&gt;简介&lt;/h3&gt;
+&lt;p&gt;该卫星集主、被动微波遥感器于一体，属于我国海洋系列遥感卫星，具有高精度测轨、定轨能力与全天候、全天时、全球探测能力。卫星的主要使命是监测和调查海洋环境，获得包括海面风场、浪高、海面高度、海面温度等多种海洋动力环境参数，直接为灾害性海况预警预报提供实测数据，为海洋防灾减灾、海洋权益维护、海洋资源开发、海洋环境保护、海洋科学研究以及国防建设等提供支撑服务。&lt;/p&gt;
+&lt;h3 id=&#34;观测要素及精度&#34;&gt;观测要素及精度&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;海面风场&lt;/li&gt;
+&lt;li&gt;海面高度&lt;/li&gt;
+&lt;li&gt;有效波高&lt;/li&gt;
+&lt;li&gt;重力场&lt;/li&gt;
+&lt;li&gt;大洋环流和海面温度&lt;/li&gt;
+&lt;li&gt;兼顾观测要素包括：海冰、大地水准面和水汽含量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参量&lt;/th&gt;
+&lt;th&gt;测量精度&lt;/th&gt;
+&lt;th&gt;有效测量范围&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;风速&lt;/td&gt;
+&lt;td&gt;2m/s或10%，取大者&lt;/td&gt;
+&lt;td&gt;2-24m/s&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;风向&lt;/td&gt;
+&lt;td&gt;20°&lt;/td&gt;
+&lt;td&gt;0°-360°&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;海面高度&lt;/td&gt;
+&lt;td&gt;~5cm&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;有效波高&lt;/td&gt;
+&lt;td&gt;0.5m或10%，取大者&lt;/td&gt;
+&lt;td&gt;0.2~20m&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;海面温度&lt;/td&gt;
+&lt;td&gt;$\pm 1.0$℃&lt;/td&gt;
+&lt;td&gt;-2~35℃&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;水汽含量&lt;/td&gt;
+&lt;td&gt;$\pm 3.5 kg/m^2$&lt;/td&gt;
+&lt;td&gt;0~80 $kg/m^2$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;云中液态水&lt;/td&gt;
+&lt;td&gt;$\pm0.05 kg/m^2$&lt;/td&gt;
+&lt;td&gt;0~1.0$kg/m^2$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;有效载荷&#34;&gt;有效载荷&lt;/h3&gt;
+&lt;h4 id=&#34;雷达高度计&#34;&gt;雷达高度计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;主要功能：测量海面高度、有效波高和重力场参数，具有外定标工作模式&lt;/li&gt;
+&lt;li&gt;技术指标
+&lt;ul&gt;
+&lt;li&gt;工作频率：$13.58GHz,5.25GHz$&lt;/li&gt;
+&lt;li&gt;脉冲有限足迹 优于$2km$&lt;/li&gt;
+&lt;li&gt;测距精度：优于$2cm$（海洋星下点）&lt;/li&gt;
+&lt;li&gt;具有海陆观测功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;外定标模式工作方式：输出高度计脉冲$I/Q$原始数据，外定标过程能够覆盖完整的定标区域&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;微波散射计&#34;&gt;微波散射计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要功能：测量海面风矢量场，具有外定标工作模式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;技术指标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;工作频率 13.256GHz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作带宽（1dB）： 1MHz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;极化方式： HH, VV&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;处理后地面分辨率 25km&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;刈幅&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;H极化： 优于1350km&lt;/li&gt;
+&lt;li&gt;V极化： 优于1700km&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;s°测量精度 0.5dB&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;s°测量范围 -40dB~+20dB&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;扫描微波辐射计&#34;&gt;扫描微波辐射计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要功能：测量海面温度、海面水汽含量、液态水和降雨强度等参数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;技术指标&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;D:%5cFile%5cGithub%5cMySite%5ccontent%5cpost%5cNote%20for%20data%20resources%5cindex.assets%5cimage-20211110093857740.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;校正辐射计&#34;&gt;校正辐射计&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要功能：为高度计提供大气湿对流层路径延迟校正服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;技术指标：&lt;/p&gt;
+&lt;p&gt;![image-20211110093938948](D:\File\Github\MySite\content\post\Note for data resources\index.assets\image-20211110093938948.png)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;船舶识别系统&#34;&gt;船舶识别系统&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要功能：侦收、解调并转发AIS报文。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;技术指标：&lt;/p&gt;
+&lt;p&gt;工作频率：161.975MHz，162.025 MHz，156.775 MHz，156.825 MHz；&lt;/p&gt;
+&lt;p&gt;可监测幅宽：≥1000km。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据收集系统&#34;&gt;数据收集系统&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;主要功能：接收我国近海及其他海域的浮标测量数据，存贮后通过卫星对地数传通道进行星地转发&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;技术指标&lt;/p&gt;
+&lt;p&gt;工作频率：401.65MHz±55kHz；&lt;/p&gt;
+&lt;p&gt;调制方式：BPSK。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Learning WRFDA source code No.1</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-learning-wrfda-source-code-no.1/</link>
+      <pubDate>Fri, 22 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-learning-wrfda-source-code-no.1/</guid>
+      <description>&lt;h2 id=&#34;学习目的&#34;&gt;学习目的&lt;/h2&gt;
+&lt;p&gt;通过学习WRFDA的源码，了解：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;观测误差的读取与处理&lt;/li&gt;
+&lt;li&gt;质量控制的操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;wrfda源码结构&#34;&gt;WRFDA源码结构&lt;/h2&gt;
+&lt;p&gt;WRFDA源码位于WRF/var目录下，主要由以下几部分构成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;build&lt;/li&gt;
+&lt;li&gt;convertor&lt;/li&gt;
+&lt;li&gt;da&lt;/li&gt;
+&lt;li&gt;external&lt;/li&gt;
+&lt;li&gt;gen_be&lt;/li&gt;
+&lt;li&gt;gen_be_v3&lt;/li&gt;
+&lt;li&gt;graphics&lt;/li&gt;
+&lt;li&gt;obsproc&lt;/li&gt;
+&lt;li&gt;run&lt;/li&gt;
+&lt;li&gt;scripts&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于观测的读入和写出处理由obsproc模块负责，本人实验中主要使用散射计（QuickStart Scattermeter）数据，首先预处理为Little_R格式数据后再由obsproc模块处理为WRFDA读入需要的.ascii格式数据。&lt;/p&gt;
+&lt;p&gt;接下来首先对这一部分代码进行学习。&lt;/p&gt;
+&lt;p&gt;WRF/var/obsproc文件夹下的内容主要包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kmabufr_to_littler&lt;/li&gt;
+&lt;li&gt;MAP_plot&lt;/li&gt;
+&lt;li&gt;src
+&lt;ul&gt;
+&lt;li&gt;chech_obs.F90&lt;/li&gt;
+&lt;li&gt;constants.inc&lt;/li&gt;
+&lt;li&gt;error_hander.F90&lt;/li&gt;
+&lt;li&gt;fm_decoder.F90&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;li&gt;missing.inc&lt;/li&gt;
+&lt;li&gt;module_complete.F90&lt;/li&gt;
+&lt;li&gt;module_date.F90&lt;/li&gt;
+&lt;li&gt;module_decoded.F90&lt;/li&gt;
+&lt;li&gt;module_diagnostics.F90&lt;/li&gt;
+&lt;li&gt;module_duplicate.F90&lt;/li&gt;
+&lt;li&gt;module_err_afwa.F90&lt;/li&gt;
+&lt;li&gt;module_err_ncep.F90&lt;/li&gt;
+&lt;li&gt;module_func.F90&lt;/li&gt;
+&lt;li&gt;modue_gpspw_caa.F90&lt;/li&gt;
+&lt;li&gt;module_gpspw_gst.F90&lt;/li&gt;
+&lt;li&gt;module_gpspw.F90&lt;/li&gt;
+&lt;li&gt;module_cao.F90&lt;/li&gt;
+&lt;li&gt;module_inside.F90&lt;/li&gt;
+&lt;li&gt;module_intp.F90&lt;/li&gt;
+&lt;li&gt;module_map_utils.F90&lt;/li&gt;
+&lt;li&gt;module_map.F90&lt;/li&gt;
+&lt;li&gt;module_mm5.F90&lt;/li&gt;
+&lt;li&gt;module_namelist.F90&lt;/li&gt;
+&lt;li&gt;module_obs_merge.F90&lt;/li&gt;
+&lt;li&gt;module_per_type.F90&lt;/li&gt;
+&lt;li&gt;module_qc.F90&lt;/li&gt;
+&lt;li&gt;module_recoverh.F90&lt;/li&gt;
+&lt;li&gt;module_recoverp.F90&lt;/li&gt;
+&lt;li&gt;module_sort.F90&lt;/li&gt;
+&lt;li&gt;module_stntbl.F90&lt;/li&gt;
+&lt;li&gt;module_thin_ob.F90&lt;/li&gt;
+&lt;li&gt;module_type.F90&lt;/li&gt;
+&lt;li&gt;module_write.F90&lt;/li&gt;
+&lt;li&gt;obsproc.F90&lt;/li&gt;
+&lt;li&gt;platform_interface.inc&lt;/li&gt;
+&lt;li&gt;qc_reduction.F90&lt;/li&gt;
+&lt;li&gt;setup.F90&lt;/li&gt;
+&lt;li&gt;sort_platform.F90&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中主程序为obsproc.F90，其包含了所有的module代码完成主体功能，包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;读取编码的观测&lt;/li&gt;
+&lt;li&gt;在气压值缺失时补全&lt;/li&gt;
+&lt;li&gt;对观测按照位置和时间进行排序&lt;/li&gt;
+&lt;li&gt;合并空间重复的站点（同样观测类型、同样位置、同样时间）&lt;/li&gt;
+&lt;li&gt;剔除时间重合的站点（同样观测类型和位置，不同的时间）&lt;/li&gt;
+&lt;li&gt;补全缺失高度值&lt;/li&gt;
+&lt;li&gt;检查探针（垂直一致性和超绝热）&lt;/li&gt;
+&lt;li&gt;移除namelist中top定义的高于MM5 lid的观测值&lt;/li&gt;
+&lt;li&gt;估计观测误差&lt;/li&gt;
+&lt;li&gt;写出输入到MM5的3D-VAR中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;首先读取namelist.obsproc中的变量进行参数设置，对模拟的区域的参数进行设置，调用setup.F90函数，组要包括对坐标、投影方式、网格大小、网格数等基础参数进行设置。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;CALL &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setup&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;domain_check_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iproj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;phic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xlonc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;truelat1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;truelat2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#ifdef BKG
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;                   &lt;span class=&#34;n&#34;&gt;dis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xcntr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ycntr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psi1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;c2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;                   &lt;span class=&#34;n&#34;&gt;maxnes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nestix&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nestjx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;numc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nesti&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nestj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;ixc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jxc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xcntr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ycntr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xn&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pole&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psi1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;c2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;xim11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;xjm11&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;接下来对一些需要用到的基本参数进行设置，然后调用read_obs_gts对Little_R观测文件的部分进行读取操作&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;INQUIRE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;FILE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obs_gts_filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;EXIST&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exist&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exist&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;LEN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;TRIM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_gts_filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;THEN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;         call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_msfc_table&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;msfc.tbl&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;!  Read data from input file
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;CALL &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_obs_gts&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_gts_filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number_of_obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;max_number_of_obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fatal_if_exceed_max_obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;print_gts_read&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;ins&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;jew&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time_window_min&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;time_window_max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;                 &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;n&#34;&gt;map_projection&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;missing_flag&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;!  Reset unused memory for subsequent reading
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;DO &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loop_index&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number_of_obs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_number_of_obs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;k&#34;&gt;NULLIFY&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;loop_index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ENDDO&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;ELSE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;         WRITE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;(/,A,/)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;No decoded observation file to read.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;k&#34;&gt;STOP
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ENDIF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中read_obs_gts定义在module_decoded.F90中，对于散射计数据，其FM码为281，由于散射计一般为海表面10米处风场，代码将高度小于0的设为10，高度的qc值设为0。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;FM-281&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;ASSOCIATED&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;surface&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;THEN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;             if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevation&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;                 &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;k&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;                 &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;elevation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;k&#34;&gt;end if
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;             &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;obs_num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;surface&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;k&#34;&gt;END IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对于每个观测，调用read_measurements函数读取观测内容，该部分首先对坏值进行剔除，随后对于SMMI数据的误差进行了预定义：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;c&#34;&gt;!  Assign the SSMI error (AFWA only)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;c&#34;&gt;!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;c&#34;&gt;! initialize the variable that might be used in module_err_ncep.F90
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;c&#34;&gt;! for checking if the error is pre-assigned
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;READ&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;info&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;(I3)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;EQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;125&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;missing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;THEN 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;      SELECT CASE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;k&#34;&gt;CASE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;2.&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;!m/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;             &lt;span class=&#34;k&#34;&gt;CASE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5.&lt;/span&gt;  &lt;span class=&#34;c&#34;&gt;!m/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;             &lt;span class=&#34;k&#34;&gt;CASE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;!m/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;             &lt;span class=&#34;k&#34;&gt;CASE&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;!m/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;             &lt;span class=&#34;k&#34;&gt;CASE &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;DEFAULT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                 &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;!m/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;k&#34;&gt;END SELECT
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;ELSE IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;97&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;96&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;               &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;N_air&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N_air&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aircraft_cut&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! To convert the Aircraft observed height (&amp;gt; cutoff_height=3000m) to pressure:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! and discarded the observed height:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;                  &lt;span class=&#34;n&#34;&gt;N_air_cut&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N_air_cut&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;             &lt;span class=&#34;k&#34;&gt;call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Aircraft_pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;endif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! Y.-R. Guo, 03/20/2008: In RTOBS 2006091300 data:obs.2006091300.gz, there are
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!    two levels obs in FM-13 SHIP causing troubles in wrfvar.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! SHIP and BUOY, if pressure &amp;lt; 85000.0 Pa, discarded.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;k&#34;&gt;ELSE IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;13&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;18&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;19&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;THEN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;           if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;8500&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;               write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;(a,3x,a,2x,a,2x,2f13.5,2x,&amp;#34;Pressure=&amp;#34;,f10.1,a,i8)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;s1&#34;&gt;&amp;#39;Discarded:&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;trim&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;latitude&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;   &lt;span class=&#34;n&#34;&gt;location&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;longitude&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;lt; 85000.0 Pa, qc=&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pressure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;k&#34;&gt;CYCLE &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_meas&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;n&#34;&gt;endif&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;ENDIF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里对module_err_ncep.F90中fm=125的情况预定义了speed%error，那么散射计的误差能否这样预先定义好呢？于是我们转到module_err_ncep.F90进行查看，代码中对风速和风向的误差缺失进行了定义和插值&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;mf&#34;&gt;3.&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;VERTICAL&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;INTERPOLATION&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OF&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;NCEP&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OBSERVATIONAL&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ERROR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! ======================================================
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! 3.1 WIND DIRECTION FIXE TO 5 DEGREES
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!     --------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;direction&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;5.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! 3.2 WIND SPEED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!     ----------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!     Some wind speed data are read with their errors, don&amp;#39;t modify them
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;THEN
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;          &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;intplin&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err_k&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                          &lt;span class=&#34;n&#34;&gt;err_u&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;ENDIF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! 3.3 U-WIND COMPONENTS AS WIND SPEED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!     -------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;u&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;intplin&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err_k&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                  &lt;span class=&#34;n&#34;&gt;err_u&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;! 3.4 V-WIND COMPONENT AS WIND SPEED
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!     ------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;meas&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;intplin&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pres&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err_k&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                  &lt;span class=&#34;n&#34;&gt;err_v&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;JPERR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以发现，若预先定义direction%error以及speed%error（&amp;gt;=0）则自己定义的误差也就写入到了obsproc输出的内容中，这个过程可以直接写在module_err_ncep.F90直接对值进行定义。&lt;/p&gt;
+&lt;h3 id=&#34;da部分源码&#34;&gt;DA部分源码&lt;/h3&gt;
+&lt;h4 id=&#34;观测误差&#34;&gt;观测误差&lt;/h4&gt;
+&lt;p&gt;在da部分源码中，对于ascii格式数据进行了读入，这里也就将观测的误差进行了读入，若需要对误差进行调整也可在该部分进行代码修改。&lt;/p&gt;
+&lt;p&gt;在da_read_obs_ascii.inc代码块中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;281&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;use_qscatobs&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;or&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntotal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_qscat_input&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;cycle &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntotal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ntotal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;outside&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;cycle &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;thin_conv_ascii&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;                  &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crit&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tdiff&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                  &lt;span class=&#34;k&#34;&gt;call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map2grids_conv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dlat_earth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dlon_earth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;crit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nlocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;itx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;itt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iuse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iuse&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;cycle &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reports&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;else
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;                   &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;nlocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nlocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;end if&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!            if (nlocal(qscat) == ilocal(qscat)) then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wind_sd_qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;h&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;height&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;wind_sd_qscat&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;missing_data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;and&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;missing_data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;k&#34;&gt;call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;da_ffdduv_model&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                          &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;convert_uv2fd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;!            end if
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c&#34;&gt;! Impose minimum observation error = 1.0m/s for Quikscat data:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;u&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;iv&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ilocal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;qscat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;platform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;%&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中观测的误差由iv%qscat(ilocal(qscat))%u%error和iv%qscat(ilocal(qscat))%v%error存储，当wind_sd_qscat=true时，u%inv存储的speed，v%inv存储的是direction，对应的误差也由u%error和v%error存储。&lt;/p&gt;
+&lt;h4 id=&#34;质量控制&#34;&gt;质量控制&lt;/h4&gt;
+&lt;p&gt;质量控制在WRFDA中需要开启check_max_iv，对应到散射计的代码在da_check_max_iv_qscat.inc中，&lt;/p&gt;
+&lt;p&gt;一般对于观测的qc取0时，当直接对风速风向进行同化，则将会调用da_max_error_qc进行质量控制。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fortran&#34; data-lang=&#34;fortran&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;subroutine &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;da_max_error_qc&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;it&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_error&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;failed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;c&#34;&gt;!-----------------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;   &lt;span class=&#34;c&#34;&gt;! Purpose: TBD
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;   &lt;span class=&#34;c&#34;&gt;!-----------------------------------------------------------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;implicit none
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;   &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;integer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;          &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;     &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;it&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;infa_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;      &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;info&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;integer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;           &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;real&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;              &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;logical&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;           &lt;span class=&#34;k&#34;&gt;intent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;failed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;real&lt;/span&gt;                               &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err_max&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;integer&lt;/span&gt;                            &lt;span class=&#34;kd&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;qc_flag&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;trace_use_frequent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;da_trace_entry&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;da_max_error_qc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;failed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;qc_flag&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;err_max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;error&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;max_error&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;     &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;     &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;ABS&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;err_max&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;      &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;qc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fails_error_max&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;failed&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;field&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;inv&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;end if
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;   if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;trace_use_frequent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;call &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;da_trace_exit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;da_max_error_qc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end subroutine &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;da_max_error_qc&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;而da_check_max_iv_qscat在da_get_innov_vector_qscat.inc中进行了调用，其中输入的参数iv为o-b的结构体，故field%inv为o-b的值。&lt;/p&gt;
+&lt;p&gt;check_max_iv中对于$(o-b)^2&amp;gt;\alpha^2(\sigma^2_o+\sigma_b^2)$的观测直接进行了拒绝，这即是常规的质量控制方案。&lt;/p&gt;
+&lt;p&gt;若需要对质量控制进行修改，则应对da_max_error_qc代码进行修改。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for A Data-Driven Method for Hybrid Data Assimilation with Multilayer Perceptron</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-hda-mlp/</link>
+      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-hda-mlp/</guid>
+      <description>&lt;h2 id=&#34;主要工作&#34;&gt;主要工作&lt;/h2&gt;
+&lt;p&gt;提出一种HDA-MLP方法，在输出DA结果时有很好的进步性，且计算量小。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过MLP对单一DA方法(3DVar和EnKF)进行了形式化优化，并构建了新的训练数据集，添加了未来的短期预测来修正当前的同化结果，显著提高了结果的质量&lt;/li&gt;
+&lt;li&gt;为了优化同化结果，提出了一种新的3D-Var定制MLP&lt;/li&gt;
+&lt;li&gt;整合了一个创造性的MLP框架HDA-MLP来混合单一的3D-Var和EnKF&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;问题定义&#34;&gt;问题定义&lt;/h2&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi3.png&#34; alt=&#34;fig3&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;短期预测作为背景场$\mathrm{x}^b$，结合来自新鲜观察$\mathrm{y}^o$的信息来获得分析场$\mathrm{x}^a$，这称作分析循环&lt;/p&gt;
+&lt;p&gt;单个同化（3D-Var/EnKF）的目的是寻找最佳权重$\mathcal{w}$使得
+$$
+x^a_t=x^b_t+w*(y^o_t-x^b_t)
+$$&lt;/p&gt;
+&lt;p&gt;集合同化则是从不同的同化结果中进行加权
+$$
+x_{hybrid}^a=(1-v)&lt;em&gt;x_{Var}^a+v&lt;/em&gt;x_{Ensemble}^a
+$$&lt;/p&gt;
+&lt;p&gt;当前的$\mathrm{x}^a$受到多时刻历史数据的影响，可以将DA重新定义为一个时间序列问题。本文扩展认为，未来的短期预测$\mathrm{x}^b$是由之前的$\mathrm{x}^a$扩展得到的，未来短期的观测$\mathrm{y}^o$可以独立观测，用于修正$\mathrm{x}^a_t$，更具DA的动态性质，它也可以用来修正当前的分析场。&lt;/p&gt;
+&lt;p&gt;$x^a=f\left(historical(x^b,y^o),future(y^o)\right)$&lt;/p&gt;
+&lt;p&gt;其中$f$为训练得到的DA模型&lt;/p&gt;
+&lt;p&gt;考虑使用一段时间的$\mathrm{x}^a$来获得最终的$\mathrm{x}^a$，而不是将不同方法的DA结果结合。因此，混合DA可以定义为基于不同DA方法的多时刻$\mathrm{x}^a$的回归问题。&lt;/p&gt;
+&lt;p&gt;$x_{Hybrid}^a=F(x_{Var}^a,x_{Ensemble,l}^a),l=1,2,3,\cdots$&lt;/p&gt;
+&lt;p&gt;其中$F$为训练得到的混合DA模型，$l$表示$\mathrm{x}^a$的长度&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;h3 id=&#34;hda-mlp优化问题&#34;&gt;HDA-MLP：优化问题&lt;/h3&gt;
+&lt;p&gt;类似4DVar-DA，将同化时间窗设为$[t_1,t_n]$，利用前半段数据进行分析，利用后半段诗句对时间窗中的分析场进行修正，对当前分析场的优化由下式决定
+$$
+x_{ct}^a=\sum\limits^p_{i=0}w_{ct-i}x_{ct-i}^b+\sum\limits^q_{i=0}v_{ct-i}y_{ct-i}^o+bias
+$$
+其中$ct=\frac{n+1}{w},p=\frac{n-1}{2},q=n-1$，$\mathcal{w},\mathcal{v}$分别为$\mathrm{x}^b,\mathrm{y}^o$的权重矩阵&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi4.png&#34; alt=&#34;fig4&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fi5.png&#34; alt=&#34;fig5&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;混合&#34;&gt;混合&lt;/h3&gt;
+&lt;p&gt;使用MLP优化过的结果作为训练集，直接混合优化后的3D-Var和EnKF的分析场，再用于分析$\mathrm{x}^a_t$&lt;/p&gt;
+&lt;h2 id=&#34;实验结论&#34;&gt;实验结论&lt;/h2&gt;
+&lt;p&gt;在Lorenz-63上结果比较显著，但是在Lorenz-96上效果不太明显。&lt;/p&gt;
+&lt;h2 id=&#34;分析&#34;&gt;分析&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;有可能是三层MLP用于替换模式不能捕获Lorenz-96这类稍微复杂的混沌模型的规律，考虑使用时空序列预测的深度学习模型替换模式进行短期预测&lt;/li&gt;
+&lt;li&gt;可能是3D-Var本身不考虑时间的维度信息，缺少时间的指导，考虑用RNN替换MLP获取时间信息以增强同化结果&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Combining data assimilation and machine learning to emulate a dynamical model from sparse and noisy observations a case study with the Lorenz96 model</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/</link>
+      <pubDate>Fri, 16 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-combine-ml-and-da/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;在地球物理流体动力学中，由于&lt;code&gt;小尺度特征的表示不正确或物理过程被忽略&lt;/code&gt;，数值模式的某些部分必须由经验子模型或参数化进行表示。地球观测主要包括两个步骤：1. 模型调整和选择；2. 数据同化。&lt;/p&gt;
+&lt;p&gt;机器学习算法已经被用来产生&lt;code&gt;完全由观测到的低阶混沌系统&lt;/code&gt;的替代模型，然后用于预测。机器学习也已基于真实观测值应用于临近预报。特别的，&lt;code&gt;在模型误差存在下，由DA解决的优化问题等效于 ML问题&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;在必须基于嘈杂和稀疏的观测结果提出系统状态及其动力学模型的情况下，本文提出的混合算法&lt;code&gt;依靠DA来估计系统状态，并依靠ML来模拟动力模型&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;问题定义&#34;&gt;问题定义&lt;/h2&gt;
+&lt;p&gt;考虑对于未知过程$\mathbb{x}_k \in \mathbb{R}^m$多维观测的时间序列$\mathbb{y}^{obs}_k \in \mathbb{R}^p$：
+$$
+y^{obs}_k=\mathcal{H}_k(x_k)+\epsilon^{obs}_k
+$$
+其中$0 \leq k \leq K$是时间步的索引，$\mathcal{H}_k:\mathbb{R}^m\rightarrow\mathbb{R}^p$是观测算子（未知），假设观测误差$\epsilon^{obs}&lt;em&gt;k$服从均值为$0$和协方差矩阵为$R_k$的正态分布，观察次数$p$及其噪声水平不会随时间变化，且观测空间无关（即$R_k$是一个对角阵），并且考虑常规时间离散化，例如：$\forall k，t&lt;/em&gt;{k + 1} -t_k = h$&lt;/p&gt;
+&lt;p&gt;假设$x_k$是连续过程$x$的时间离散，服从形式为的未知的常微分方程
+$$
+\frac{dx}{dt} = \mathcal{M}(x)
+$$
+目标是得到$t_k$和$t_{k + 1}$之间的$\mathcal{M}$的的替代模型$\mathcal{G}$
+$$
+x_{k+1}=\mathcal{G}(x_k)+\epsilon_k^m=x_k+\int_{t_k}^{t_{k+1}}\mathcal{M}(x)dt \tag{3} \label{eq3}
+$$
+其中$\mathbb{\epsilon}_k^m$是模型$\mathcal{G}$的误差&lt;/p&gt;
+&lt;h2 id=&#34;方法&#34;&gt;方法&lt;/h2&gt;
+&lt;h3 id=&#34;cnn&#34;&gt;CNN&lt;/h3&gt;
+&lt;p&gt;目前已有论文使用卷积神经网络来表示代理模型。&lt;/p&gt;
+&lt;p&gt;由于$\ref{eq3}$中表达式可表示为$x_{k+1}=x_k+\cdots$，故采用残差网络的方式构建模型$\mathcal{G}(x)=x_k+f_{nn}(x_k,W)$。&lt;/p&gt;
+&lt;p&gt;$Loss$函数定义为
+$$
+L(W)=\sum^{K-{N_f}-1}&lt;em&gt;{k=0} \sum^{N_f}&lt;/em&gt;{i=1} |\mathcal{G}&lt;em&gt;W^{(i)}-x&lt;/em&gt;{k+1}|_{P_k^{-1}}^2
+$$&lt;/p&gt;
+&lt;p&gt;其中$N_f$是时间步数，$P_k$是定义范数$|x|_{P_k^-1}^2=x^TP_k^{-1}x$的半正定对称阵，注意：$\mathrm{P}_k$是代理模型的误差协方差矩阵。&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig2.jpg&#34; alt=&#34;fig2&#34; style=&#34;zoom:60%;&#34; /&gt;
+&lt;h3 id=&#34;同化&#34;&gt;同化&lt;/h3&gt;
+&lt;p&gt;本文使用有限大小的集合卡尔曼滤波器EnKF-N（本文方法不依赖于特定同化过程）&lt;/p&gt;
+&lt;p&gt;EnKF-N是一种序列集合同化方法，时间$t_k$时的分析矩阵$X_k^{a/f} \equiv \left[x_{k,1}^{a/f},\cdots,x_{k,p}^{a/f},\cdots,x_{k,N}^{a/f}\right] \in R^{m \times N}$其中的$a$表示分析场，成员$x_{k,p}^{a/f}=\mathcal{G}(x_{k-1,p}^a)+\epsilon_{k,p}^m$，其中$\mathrm{\epsilon}_{k,p}^a$是第$t_k$时刻成员$p$的模型误差。&lt;/p&gt;
+&lt;p&gt;分析过程中，给一个观测$\mathrm{y}^{obs}_k$和集合预测$\mathrm{X}_k^f$，使用同化算法更新为$\mathrm{X}_k^a$，对集合进行均值和协方差的求解。&lt;/p&gt;
+&lt;h3 id=&#34;结合同化与机器学习&#34;&gt;结合同化与机器学习&lt;/h3&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.jpg&#34; alt=&#34;fig1&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;该过程可以看作是&lt;code&gt;期望最大化算法&lt;/code&gt;，其中&lt;code&gt;DA是期望步骤&lt;/code&gt;，而&lt;code&gt;ML是最大化步骤&lt;/code&gt;。且ML与DA算法选取是&lt;code&gt;相互独立&lt;/code&gt;的。&lt;/p&gt;
+&lt;h2 id=&#34;实验&#34;&gt;实验&lt;/h2&gt;
+&lt;p&gt;组合DA-ML方法使用40变量Lorenz96产生的综合观测值进行测试。通过以下一组常微分方程，在周期一维域上定义模型L96：
+$$
+\frac{x_n}{dt} = (x_{n+1}-x_{n-2})x_{n-1}-x_n+F
+$$
+其中$x_n, 0 \leq n &amp;lt; m$是标量状态变量，$x_m = x_0, x_{−1} = x_{m−1}, x_{−2} = x_{m−2}, m= 40, F = 8$&lt;/p&gt;
+&lt;p&gt;使用Lyapunov时间单位$t_\Lambda=\Lambda_1t$，其中$t$是模型单位中的时间：一个Lyapunov时间单位对应于误差增长$e$倍的时间。&lt;/p&gt;
+&lt;p&gt;具体实验步骤查看论文。&lt;/p&gt;
+&lt;h2 id=&#34;结论与分析&#34;&gt;结论与分析&lt;/h2&gt;
+&lt;p&gt;实验中的观测值是来自全状态向量的子样本，意味着DA充当观测值的插值器和平滑器，从而产生了所谓的“分析”。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Learning Earth System Models Observations Machine Learning or Data Assimilation</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-learning-earth-system-models-observations-machine-learning-or-data-assimilation/</guid>
+      <description>&lt;h2 id=&#34;主要结论&#34;&gt;主要结论&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;资料同化与机器学习的共同点：在贝叶斯理论框架下，都是反问题求解。&lt;/li&gt;
+&lt;li&gt;资料同化的特性：不确定性、稀疏性、非直接观测&lt;/li&gt;
+&lt;li&gt;四维变分同化与RNN在一定程度下是等价的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;背景介绍&#34;&gt;背景介绍&lt;/h2&gt;
+&lt;p&gt;地球系统中存在大量不确定性，目前使用机器学习方法主要是为了&lt;code&gt;解决预测的不确定性&lt;/code&gt;[^2] [^3] [^4] [^5]。在数值预报中，常用的解决数据不确定性的方法为资料同化，其使用&lt;code&gt;物理定律和过去的观测中积累的知识&lt;/code&gt;。在理论背景下，资料同化已被用作学习地球物理模型的替代ML框架[^6]，而混合DA-ML方法则寻求&lt;code&gt;将可训练的模型纳入物理模型&lt;/code&gt;的组成部分，或在&lt;code&gt;状态评估&lt;/code&gt;和&lt;code&gt;预测的主要DA过程&lt;/code&gt;中完全替代物理模型[^7]。&lt;/p&gt;
+&lt;h2 id=&#34;在贝叶斯理论框架下结合ml和da&#34;&gt;在贝叶斯理论框架下结合ML和DA&lt;/h2&gt;
+&lt;p&gt;DA和ML均为了解决&lt;code&gt;反问题&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;对于正问题的定义：函数$h(\cdot)$将状态$x$映射到观测$y$：
+$$
+y = h(x, w)
+$$
+反问题则是为了从观测$y$找到$x$&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig1.png&#34; alt=&#34;fig1&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;上图说明：DA通常用固定的$w$估计$x$，ML保持固定的$x$估计$w$&lt;/p&gt;
+&lt;p&gt;在机器学习的视角上看，特征$x$和权重$w$是平等的，一般将特征与标签集合起来$(x,y)$作为数据&lt;/p&gt;
+&lt;p&gt;常规DA与ML最接近的是参数估计，通常可以将状态模型中的一小部分参数与状态一起进行估计&lt;/p&gt;
+&lt;h2 id=&#34;时间维度分析&#34;&gt;时间维度分析&lt;/h2&gt;
+&lt;p&gt;DA过程中的时间维度可以等同于前馈神经网络中的层[^8]，但DA与递归神经网络（RNN）之间存在更清晰的相似之处。&lt;code&gt;RNN成为监视和预测大气等混沌动力学系统并使用ML完全替代DA的一种方式&lt;/code&gt;[^9] [^10] [^11] [^12]&lt;/p&gt;
+&lt;h2 id=&#34;机器学习可用于学习新的物理地球模式&#34;&gt;机器学习可用于学习新的物理地球模式&lt;/h2&gt;
+&lt;p&gt;如下图所示，&lt;code&gt;云参数化&lt;/code&gt;步骤是ML或DA方法的主要目标，旨在&lt;code&gt;从观测中学习新的物理模型&lt;/code&gt;[^13] [^14]&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig3.png&#34; alt=&#34;fig3&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;此外，随着地球系统建模进一步代表表面和生物过程，而我们在基于物理的正向模型中表达理解的能力甚至更低，因此ML仍然是一种&lt;code&gt;利用观测来提高科学知识（进而提高模型）的有吸引力的方法&lt;/code&gt;[^15]&lt;/p&gt;
+&lt;p&gt;大气的详细预测需要比常规观测更高的垂直分辨率，因此DA使用大气模型填充高分辨率细节（观测的“零空间”）以间接推断其他观测信息（通过向前和向后） 及时传播观测信息&lt;/p&gt;
+&lt;p&gt;机器学习的第二个主要问题是如何整合现有的领域知识。 比较常见的方法是&lt;code&gt;将物理约束条件作为损失函数中的附加项&lt;/code&gt;[^16] [^17]，并且存在其他方法[^18]&lt;/p&gt;
+&lt;p&gt;对于已经运行了数据同化系统的天气预报中心，该数据同化系统对数十年的专业天气预报知识进行了编码，显而易见的方法是扩展现有的DA系统以学习模型的各个方面，无论是通过参数估计还是通过 使用神经网络或等效方法学习新的功能表示[^6]&lt;/p&gt;
+&lt;p&gt;在循环DA系统中，通过过去10天（对于大气）的观测信息的正向传播以及观测数据的向后传播，可以减少这些状态下的不确定性。也可以从&lt;code&gt;后处理预测中使用ML进行偏差校正&lt;/code&gt;[^19]，适用于由物理模型做出的部分错误的预测。机器学习可以同样适用于&lt;code&gt;学习可以估计模型误差的空间范围&lt;/code&gt;[^20]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：一个实际的问题是将Fortran中的典型DA或科学应用程序与ML软件（例如Keras和TensorFlow）相结合，这些软件是Python前端和C ++后端[^21]&lt;/p&gt;
+&lt;p&gt;使用ML从地球系统观测中学习的部分驱动力是假设ML仿真器将比观测的物理模型更快[^2]。 但是，在一个4D-Var DA系统中，观测的运行时间成本仅为2％，主要成本来自DA算法和地球系统的物理模型[^22]&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;此外，尽管试图丢弃现有的物理知识并开始使用ML进行尝试[^23] [^10] [^12]，但是任何尊重贝叶斯的方法都将尝试从先验知识受益&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器学习可以&lt;code&gt;将物理观测模型合并为输出层&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;物理模型层也可以并入神经网络&lt;/code&gt;以约束地球物理状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;递归网络&lt;/code&gt;在地球物理状态预测中的主要工作是及时传播此状态，以&lt;code&gt;保留过去的观测信息&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;机器学习可以作为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;其他物理模型框架中可学习的模块；&lt;/li&gt;
+&lt;li&gt;用于&lt;code&gt;学习模型和观察系统误差&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;加速过程的一部分的&lt;code&gt;加速器&lt;/code&gt;（特别是在需要多次运行模型的区域中，这在集合和变体中都存在）；&lt;/li&gt;
+&lt;li&gt;以及作为&lt;code&gt;变分同化自动微分&lt;/code&gt;的替代工具&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Note for Long short-term memory embedded nudging schemes for nonlinear data assimilation of geophysical flows</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-long-short-term-memory-embedded-nudging-schemes-for-nonlinear-data-assimilation-of-geophysical-flows/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-long-short-term-memory-embedded-nudging-schemes-for-nonlinear-data-assimilation-of-geophysical-flows/</guid>
+      <description>&lt;h2 id=&#34;背景介绍&#34;&gt;背景介绍&lt;/h2&gt;
+&lt;p&gt;随着数值模型分辨率的提高，非线性可能会变得非常强，以至于基于线性化的DA算法可能会失败&lt;/p&gt;
+&lt;p&gt;轻推法（Nudging）中状态分析是模型误差与预测误差之间线性叠加的近似，其需要对Nudging或加权矩阵进行特别近似&lt;/p&gt;
+&lt;p&gt;本文通过松弛线性叠加假设，并通过LSTM来进行模型预测和稀疏观测的非线性混合，以解决由于不准确的初始条件、边界条件或模型参数可能产生的预测和观测的误差&lt;/p&gt;
+&lt;h2 id=&#34;nudging&#34;&gt;Nudging&lt;/h2&gt;
+&lt;p&gt;Nudging是一种数据同化方法，用于从实际观察数据中初始化飓风模型。与基于模型预测与观测之间的误差使代价函数最小的变分和顺序同化方法相反，Nudging方法利用预测误差作为模型演化方程的约束。&lt;/p&gt;
+&lt;p&gt;基于Nudging的动力系统的演化可写为
+$$
+x_{k+1} = M(x_k) + G_ke_k \tag{1} \label{eq1}
+$$
+其中$G_k \in \mathbb{R}^{n \times m}$称为时变推力系数矩阵，其中的预测误差$e_k$计算如下
+$$
+e_k = z_k - h(x_k)
+$$
+$\ref{eq1}$中的校正项与$e_k \in \mathbb{R}^m$成正比，因此，这种nudging的形式被称为观测nudging&lt;/p&gt;
+&lt;h2 id=&#34;时间维度分析&#34;&gt;时间维度分析&lt;/h2&gt;
+&lt;p&gt;DA过程中的时间维度可以等同于前馈神经网络中的层&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;，但DA与递归神经网络（RNN）之间存在更清晰的相似之处。&lt;code&gt;RNN成为监视和预测大气等混沌动力学系统并使用ML完全替代DA的一种方式&lt;/code&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&#34;机器学习可用于学习新的物理地球模式&#34;&gt;机器学习可用于学习新的物理地球模式&lt;/h2&gt;
+&lt;p&gt;如下图所示，&lt;code&gt;云参数化&lt;/code&gt;步骤是ML或DA方法的主要目标，旨在&lt;code&gt;从观测中学习新的物理模型&lt;/code&gt;&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig3.png&#34; alt=&#34;fig3&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;此外，随着地球系统建模进一步代表表面和生物过程，而我们在基于物理的正向模型中表达理解的能力甚至更低，因此ML仍然是一种&lt;code&gt;利用观测来提高科学知识（进而提高模型）的有吸引力的方法&lt;/code&gt;&lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;大气的详细预测需要比常规观测更高的垂直分辨率，因此DA使用大气模型填充高分辨率细节（观测的“零空间”）以间接推断其他观测信息（通过向前和向后） 及时传播观测信息&lt;/p&gt;
+&lt;p&gt;机器学习的第二个主要问题是如何整合现有的领域知识。 比较常见的方法是&lt;code&gt;将物理约束条件作为损失函数中的附加项&lt;/code&gt;&lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:10&#34;&gt;&lt;a href=&#34;#fn:10&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;，并且存在其他方法&lt;sup id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;对于已经运行了数据同化系统的天气预报中心，该数据同化系统对数十年的专业天气预报知识进行了编码，显而易见的方法是扩展现有的DA系统以学习模型的各个方面，无论是通过参数估计还是通过 使用神经网络或等效方法学习新的功能表示&lt;sup id=&#34;fnref:12&#34;&gt;&lt;a href=&#34;#fn:12&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;12&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;在循环DA系统中，通过过去10天（对于大气）的观测信息的正向传播以及观测数据的向后传播，可以减少这些状态下的不确定性。也可以从&lt;code&gt;后处理预测中使用ML进行偏差校正&lt;/code&gt;&lt;sup id=&#34;fnref:13&#34;&gt;&lt;a href=&#34;#fn:13&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;13&lt;/a&gt;&lt;/sup&gt;，适用于由物理模型做出的部分错误的预测。机器学习可以同样适用于&lt;code&gt;学习可以估计模型误差的空间范围&lt;/code&gt;&lt;sup id=&#34;fnref:14&#34;&gt;&lt;a href=&#34;#fn:14&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;14&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：一个实际的问题是将Fortran中的典型DA或科学应用程序与ML软件（例如Keras和TensorFlow）相结合，这些软件是Python前端和C ++后端&lt;sup id=&#34;fnref:15&#34;&gt;&lt;a href=&#34;#fn:15&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;15&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;使用ML从地球系统观测中学习的部分驱动力是假设ML仿真器将比观测的物理模型更快&lt;sup id=&#34;fnref:16&#34;&gt;&lt;a href=&#34;#fn:16&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;16&lt;/a&gt;&lt;/sup&gt;。 但是，在一个4D-Var DA系统中，观测的运行时间成本仅为2％，主要成本来自DA算法和地球系统的物理模型&lt;sup id=&#34;fnref:17&#34;&gt;&lt;a href=&#34;#fn:17&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;17&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;此外，尽管试图丢弃现有的物理知识并开始使用ML进行尝试&lt;sup id=&#34;fnref:18&#34;&gt;&lt;a href=&#34;#fn:18&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;18&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;，但是任何尊重贝叶斯的方法都将尝试从先验知识受益&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器学习可以&lt;code&gt;将物理观测模型合并为输出层&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;物理模型层也可以并入神经网络&lt;/code&gt;以约束地球物理状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;递归网络&lt;/code&gt;在地球物理状态预测中的主要工作是及时传播此状态，以&lt;code&gt;保留过去的观测信息&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;机器学习可以作为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;其他物理模型框架中可学习的模块；&lt;/li&gt;
+&lt;li&gt;用于&lt;code&gt;学习模型和观察系统误差&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;加速过程的一部分的&lt;code&gt;加速器&lt;/code&gt;（特别是在需要多次运行模型的区域中，这在集合和变体中都存在）；&lt;/li&gt;
+&lt;li&gt;以及作为&lt;code&gt;变分同化自动微分&lt;/code&gt;的替代工具&lt;/li&gt;
+&lt;/ol&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Abarbanel, H. D., P. J. Rozdeba, and S. Shirman (2018). Machine learning: deepest learning as statistical data assimilation problems. Neural Computation 30(8), 2025–2055.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Park, D. C. and Y. Zhu (1994). Bilinear recurrent neural network. In Proceedings of1994 IEEE International Conference on Neural Networks (ICNN’94), Volume 3, pp. 1459–1464. IEEE.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Pathak, J., B. Hunt, M. Girvan, Z. Lu, and E. Ott (2018). Model-free prediction of large spatiotemporally chaotic systems from data: A reservoir computing approach. Phys. Rev. Let. 120(2), 024102.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Vlachas, P., J. Pathak, B. Hunt, T. Sapsis, M. Girvan, E. Ott, and P. Koumoutsakos (2020). Backpropagation algorithms and reservoir computing in recurrent neural networks for the forecasting of complex spatiotemporal dynamics. Neural Networks 126, 191–217.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Sønderby, C. K., L. Espeholt, J. Heek, M. Dehghani, A. Oliver, T. Salimans, S. Agrawal, J. Hickey, and N. Kalchbrenner (2020). MetNet: A neural weather model for precipitation forecasting. arXiv preprint arXiv:2003.12140.&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Schneider, T., S. Lan, A. Stuart, and J. Teixeira (2017). Earth system modeling 2.0: A blueprint for models that learn from observations and targeted high-resolution simulations. Geophys. Res. Let. 44(24), 12–396.&amp;#160;&lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Gentine, P., M. Pritchard, S. Rasp, G. Reinaudi, and G. Yacalis (2018). Could machine learning break the convection parameterization deadlock? Geophysical Research Letters 45(11), 5742–5751.&amp;#160;&lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:8&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Reichstein, M., G. Camps-Valls, B. Stevens, M. Jung, J. Denzler, N. Carvalhais, et al. (2019). Deep learning and process understanding for data-driven Earth system science. Nature 566(7743), 195–204.&amp;#160;&lt;a href=&#34;#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:9&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Beucler, T., M. Pritchard, S. Rasp, P. Gentine, J. Ott, and P. Baldi (2019). Enforcing analytic constraints in neural-networks emulating physical systems. arXiv preprint arXiv:1909.00912.&amp;#160;&lt;a href=&#34;#fnref:9&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:10&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Wu, Y., M. Schuster, Z. Chen, Q. V. Le, M. Norouzi, W. Macherey, M. Krikun, Y. Cao, Q. Gao, K. Macherey, et al. (2016). Google’s neural machine translation system: Bridging the gap between human and machine translation. arXiv preprint arXiv:1609.08144.&amp;#160;&lt;a href=&#34;#fnref:10&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:11&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Von Rueden, L., S. Mayer, J. Garcke, C. Bauckhage, and J. Schuecker (2019). Informed machine learning–towards a taxonomy of explicit integration of knowledge into machine learning. Learning 18, 19–20.&amp;#160;&lt;a href=&#34;#fnref:11&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:12&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Bocquet, M., J. Brajard, A. Carrassi, and L. Bertino (2019). Data assimilation as a learning tool to infer ordinary differential equation representations of dynamical models. Nonlinear Processes in Geophysics 26(3), 143–162&amp;#160;&lt;a href=&#34;#fnref:12&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:13&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;McGovern, A., K. L. Elmore, D. J. Gagne, S. E. Haupt, C. D. Karstens, R. Lagerquist, T. Smith, and J. K. Williams (2017). Using artificial intelligence to improve real-time decision-making for high-impact weather. Bulletin ofthe American Meteorological Society 98(10), 2073–2090.&amp;#160;&lt;a href=&#34;#fnref:13&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:14&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Bonavita, M. and P. Laloyaux (2020). Machine learning for model error inference and correction. J. App. Meterol. Earth. Sys., to be submitted.&amp;#160;&lt;a href=&#34;#fnref:14&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:15&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Ott, J., M. Pritchard, N. Best, E. Linstead, M. Curcic, and P. Baldi (2020). A Fortran-Keras deep learning bridge for scientific computing. arXiv preprint arXiv:2004.10652.&amp;#160;&lt;a href=&#34;#fnref:15&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:16&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Boukabara, S.-A., V. Krasnopolsky, J. Q. Stewart, A. McGovern, D. Hall, J. E. T. Hoeve, J. Hickey, H.L. A. Huang, J. K. Williams, K. Ide, P. Tissot, S. E. Haupt, E. Kearns, K. S. Casey, N. Oza, P. Dolan, P. Childs, S. G. Penny, A. J. Geer, E. Maddy, and R. N. Hoffman (2020). Outlook for exploiting artificial intelligence in earth science. Bull. Am. Meteorol. Soc., submitted.&amp;#160;&lt;a href=&#34;#fnref:16&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:17&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;English, S., P. Lean, and A. Geer (2020). How radiative transfer models can support the future needs of earth-system forecasting and re-analysis. J. Quant. Spectrosc. Rad. Trans., accepted.&amp;#160;&lt;a href=&#34;#fnref:17&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:18&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;Dueben, P. D. and P. Bauer (2018). Challenges and design choices for global weather and climate models based on machine learning. Geosci. Mod. Dev. 11(10), 3999–4009.&amp;#160;&lt;a href=&#34;#fnref:18&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>On the initialization of Tropical Cyclones</title>
+      <link>https://wuxinwang1997.github.io/post/note-for-on-the-initialization-of-tropical-cyclones/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://wuxinwang1997.github.io/post/note-for-on-the-initialization-of-tropical-cyclones/</guid>
+      <description>&lt;h2 id=&#34;背景介绍&#34;&gt;背景介绍&lt;/h2&gt;
+&lt;p&gt;随着数值模型分辨率的提高，非线性可能会变得非常强，以至于基于线性化的DA算法可能会失败&lt;/p&gt;
+&lt;p&gt;轻推法（Nudging）中状态分析是模型误差与预测误差之间线性叠加的近似，其需要对Nudging或加权矩阵进行特别近似&lt;/p&gt;
+&lt;p&gt;本文通过松弛线性叠加假设，并通过LSTM来进行模型预测和稀疏观测的非线性混合，以解决由于不准确的初始条件、边界条件或模型参数可能产生的预测和观测的误差&lt;/p&gt;
+&lt;h2 id=&#34;nudging&#34;&gt;Nudging&lt;/h2&gt;
+&lt;p&gt;Nudging是一种数据同化方法，用于从实际观察数据中初始化飓风模型。与基于模型预测与观测之间的误差使代价函数最小的变分和顺序同化方法相反，Nudging方法利用预测误差作为模型演化方程的约束。&lt;/p&gt;
+&lt;p&gt;基于Nudging的动力系统的演化可写为
+$$
+x_{k+1} = M(x_k) + G_ke_k \tag{1} \label{eq1}
+$$
+其中$G_k \in \mathbb{R}^{n \times m}$称为时变推力系数矩阵，其中的预测误差$e_k$计算如下
+$$
+e_k = z_k - h(x_k)
+$$
+$\ref{eq1}$中的校正项与$e_k \in \mathbb{R}^m$成正比，因此，这种nudging的形式被称为观测nudging&lt;/p&gt;
+&lt;h2 id=&#34;时间维度分析&#34;&gt;时间维度分析&lt;/h2&gt;
+&lt;p&gt;DA过程中的时间维度可以等同于前馈神经网络中的层[^8]，但DA与递归神经网络（RNN）之间存在更清晰的相似之处。&lt;code&gt;RNN成为监视和预测大气等混沌动力学系统并使用ML完全替代DA的一种方式&lt;/code&gt;[^9] [^10] [^11] [^12]&lt;/p&gt;
+&lt;h2 id=&#34;机器学习可用于学习新的物理地球模式&#34;&gt;机器学习可用于学习新的物理地球模式&lt;/h2&gt;
+&lt;p&gt;如下图所示，&lt;code&gt;云参数化&lt;/code&gt;步骤是ML或DA方法的主要目标，旨在&lt;code&gt;从观测中学习新的物理模型&lt;/code&gt;[^13] [^14]&lt;/p&gt;
+&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wuxinwang1997/blogImages/fig3.png&#34; alt=&#34;fig3&#34; style=&#34;zoom:67%;&#34; /&gt;
+&lt;p&gt;此外，随着地球系统建模进一步代表表面和生物过程，而我们在基于物理的正向模型中表达理解的能力甚至更低，因此ML仍然是一种&lt;code&gt;利用观测来提高科学知识（进而提高模型）的有吸引力的方法&lt;/code&gt;[^15]&lt;/p&gt;
+&lt;p&gt;大气的详细预测需要比常规观测更高的垂直分辨率，因此DA使用大气模型填充高分辨率细节（观测的“零空间”）以间接推断其他观测信息（通过向前和向后） 及时传播观测信息&lt;/p&gt;
+&lt;p&gt;机器学习的第二个主要问题是如何整合现有的领域知识。 比较常见的方法是&lt;code&gt;将物理约束条件作为损失函数中的附加项&lt;/code&gt;[^16] [^17]，并且存在其他方法[^18]&lt;/p&gt;
+&lt;p&gt;对于已经运行了数据同化系统的天气预报中心，该数据同化系统对数十年的专业天气预报知识进行了编码，显而易见的方法是扩展现有的DA系统以学习模型的各个方面，无论是通过参数估计还是通过 使用神经网络或等效方法学习新的功能表示[^6]&lt;/p&gt;
+&lt;p&gt;在循环DA系统中，通过过去10天（对于大气）的观测信息的正向传播以及观测数据的向后传播，可以减少这些状态下的不确定性。也可以从&lt;code&gt;后处理预测中使用ML进行偏差校正&lt;/code&gt;[^19]，适用于由物理模型做出的部分错误的预测。机器学习可以同样适用于&lt;code&gt;学习可以估计模型误差的空间范围&lt;/code&gt;[^20]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：一个实际的问题是将Fortran中的典型DA或科学应用程序与ML软件（例如Keras和TensorFlow）相结合，这些软件是Python前端和C ++后端[^21]&lt;/p&gt;
+&lt;p&gt;使用ML从地球系统观测中学习的部分驱动力是假设ML仿真器将比观测的物理模型更快[^2]。 但是，在一个4D-Var DA系统中，观测的运行时间成本仅为2％，主要成本来自DA算法和地球系统的物理模型[^22]&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;此外，尽管试图丢弃现有的物理知识并开始使用ML进行尝试[^23] [^10] [^12]，但是任何尊重贝叶斯的方法都将尝试从先验知识受益&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器学习可以&lt;code&gt;将物理观测模型合并为输出层&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;物理模型层也可以并入神经网络&lt;/code&gt;以约束地球物理状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;递归网络&lt;/code&gt;在地球物理状态预测中的主要工作是及时传播此状态，以&lt;code&gt;保留过去的观测信息&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;机器学习可以作为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;其他物理模型框架中可学习的模块；&lt;/li&gt;
+&lt;li&gt;用于&lt;code&gt;学习模型和观察系统误差&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;加速过程的一部分的&lt;code&gt;加速器&lt;/code&gt;（特别是在需要多次运行模型的区域中，这在集合和变体中都存在）；&lt;/li&gt;
+&lt;li&gt;以及作为&lt;code&gt;变分同化自动微分&lt;/code&gt;的替代工具&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

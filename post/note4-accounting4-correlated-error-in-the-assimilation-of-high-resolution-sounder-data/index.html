@@ -1,0 +1,1365 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wuxin Wang" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="考虑IASI的通道相关性，通过改变特征值来改变矩阵条件数以达到减少同化迭代的目的" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#1565c0" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.1052fab8b7700a3dc49ee23683097d66.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Wuxin Wang" />
+  <meta property="og:url" content="https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/" />
+  <meta property="og:title" content="Note for Accounting for correlated error in the assimilation of high-resolution sounder data | Wuxin Wang" />
+  <meta property="og:description" content="考虑IASI的通道相关性，通过改变特征值来改变矩阵条件数以达到减少同化迭代的目的" /><meta property="og:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-11-13T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-11-13T14:09:29&#43;08:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/"
+  },
+  "headline": "Note for Accounting for correlated error in the assimilation of high-resolution sounder data",
+  
+  "datePublished": "2021-11-13T00:00:00Z",
+  "dateModified": "2021-11-13T14:09:29+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wuxin Wang"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wuxin Wang",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wuxinwang1997.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "考虑IASI的通道相关性，通过改变特征值来改变矩阵条件数以达到减少同化迭代的目的"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Note for Accounting for correlated error in the assimilation of high-resolution sounder data | Wuxin Wang</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7dad9614e40cf18d2998a592e5824e52" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.e22a2a20712150175b9cd707be2d0584.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Wuxin Wang</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Wuxin Wang</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#talks"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#featured"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Note for Accounting for correlated error in the assimilation of high-resolution sounder data</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      Wuxin Wang</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Nov 13, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/note/">Note</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="问题背景">问题背景</h2>
+<p>截至文章发表前对于IASI的同化中$R$矩阵都假设是对角阵，即观测通道之间是不相关的，主要通过扩大观测误差以间接表示通道间误差相关性，这就人为导致观测权重变低了。</p>
+<p>卫星观测误差包括：仪器误差、代表性误差、前向模式误差以及其他预处理误差。之前有工作表明IASI数据中对水蒸气敏感的通道存在相关性，文章通过直接考虑水汽通道相关性以提高对应观测的权重。</p>
+<h2 id="理论方法">理论方法</h2>
+<h3 id="同化">同化</h3>
+<p>考虑变分同化方法（可以将非线性观测如卫星资料进行同化）</p>
+<p>$$
+J(x) = \frac{1}{2}(\mathrm{x}-\mathrm{x}^b)^TB^{-1}(\mathrm{x}-\mathrm{x}^b)+\frac{1}{2}(\mathrm{y}-H(\mathrm{x}))^TR^{-1}(\mathrm{y}-H(\mathrm{x}))
+$$</p>
+<p>观测（$R$）和背景（$B$）误差协方差矩阵提供了有关观测和背景误差特征的信息，从而为每个观测提供了对应的权重。</p>
+<p>代价函数的Hessian矩阵为</p>
+<p>$$
+J^{&rsquo;&rsquo;} = B^{-1}+\mathrm{H}^TR^{-1}\mathrm{H}
+$$</p>
+<p>其中$\mathrm{H}$为观测算子$H$的雅可比矩阵（各分量二阶偏导数组成的矩阵）。Hessian矩阵与代价函数收敛速度相关，而该性质由矩阵的条件数（$\frac{\lambda_{max}}{\lambda_{min}}$）决定，条件数描述了矩阵与奇异矩阵或不可逆矩阵之间的距离，因此条件数越大，收敛速度越慢。</p>
+<p>在业务系统中主要使用增量代价函数，即$J(\delta{x})=J(x-x^g)$，其中$x^g$为已知状态量。在最小化代价函数之前进行变量转换，$\delta x = \mathrm{U}\mathrm{\chi}=\mathrm{U}_h\mathrm{U}_v\mathrm{U}_p\mathrm{\chi}$，其中$\mathrm{U}_p$为参数转换，$\mathrm{U}_v$为垂向变换，$\mathrm{U}_h$为水平变换。则简化后的代价函数的Hessian矩阵为</p>
+<p>$$
+J^{&rsquo;&rsquo;} = \mathrm{I}+\mathrm{B}^{T/2}\mathrm{H}^T\mathrm{R}^{-1}\mathrm{H}\mathrm{B}^{1/2}
+$$</p>
+<p>则Hessian矩阵的$\lambda_{min}=1$，其条件数取决于后一项的条件数，即$\mathrm{R}$矩阵的条件数，那么使用病态的$\mathrm{R}$会导致收敛更慢。</p>
+<h3 id="观测误差">观测误差</h3>
+<p>对于大多数观测，仪器噪声在通道之间不相关，这意味着其相应的协方差矩阵E是对角阵。然而，IASI测量是切趾(apodised)的（Chamberlain，1979），这降低了噪声，但引入了相邻通道之间的相关性，因此其对角线周围有非零协方差频带。</p>
+<h3 id="观测误差的估计">观测误差的估计</h3>
+<p>使用（O-A）与（O-B）进行$\mathrm{R}$矩阵的构建</p>
+<p>$$
+\mathrm{R}=E\left[\{\mathrm{y}-H(\mathrm{x}^a)\}\{\mathrm{y}-H(\mathrm{x}^b)\}^T\right]
+$$</p>
+<p>但是该估计基于以下假设</p>
+<ol>
+<li>观测误差与模式误差不想管</li>
+<li>$\mathrm{B}$和$\mathrm{R}$是完全正确的</li>
+</ol>
+<p>Desrozierset al.（2009）表明，观测值和背景误差必须具有足够不同的尺度，才能使诊断结果可靠。</p>
+<h3 id="诊断结果">诊断结果</h3>
+<p>尝试区分水平代表性错误方法包括</p>
+<ol>
+<li>比较1DVar和4DVar的诊断结果</li>
+<li>采用不同分辨率的同化分析的初猜场和分析值得偏差，对这些运行的输出执行Desroziers诊断并检查差异将说明不同IASI通道受代表性错误影响的程度。这还将显示哪些相关性是由代表性错误引起的。差异越大，该通道中的代表性误差越大。</li>
+</ol>
+<h2 id="修改矩阵">修改矩阵</h2>
+<h3 id="对相关性进行统计处理的影响">对相关性进行统计处理的影响</h3>
+<p>考虑相关性时，大多数通道的O-A的标准差都会增大，即考虑相关性会导致观测权重降低（这也是为什么增大误差是抵消误差相关性的一种实用解决方案），误差膨胀永远不会完全补偿被忽略的误差相关性。</p>
+<h3 id="同化中矩阵的使用">同化中矩阵的使用</h3>
+<ol>
+<li>时间：考虑观测误差时计算$R$的逆计算成本很高，常有效的方法时利用Cholesky分解，但必须在每次最小化迭代中对每个观测进行。</li>
+<li>迭代次数：由于$\mathrm{O}$和$\mathrm{B}$差别太大或者假设误差太小；或者Hessian矩阵是病态的</li>
+</ol>
+<p>正确指定同化中的观测误差，则最终的代价函数应为观测总数/2；Desroziers and Ivanov (2001) and Talagrand (1999)</p>
+<p>IASI的完整矩阵的条件数远大于对角阵，而最小化对Hessian和$\mathrm{R}$矩阵的条件数很敏感，这表明减少矩阵条件数可以减少迭代次数提高最小化的稳定性，这可以通过修改矩阵的特征值来实现。</p>
+<p>注：对于条件数的理解是这篇文章很重要的一点。需要对最优化、矩阵论较为熟悉。</p>
+<h3 id="修复矩阵的方法">修复矩阵的方法</h3>
+<ol>
+<li>
+<p>定义特征值的最小阈值
+$$
+\lambda_{thresh} = \frac{\lambda_{max}}{K_{req}}
+$$
+其中$\lambda_{thresh}$为特征值的阈值，$\lambda_{max}$为特征值最大值，$K_{req}$为要求的最大条件数。</p>
+<p>优点：改动比较小
+缺点：本应有不同误差的通道被赋予相同的权重和误差</p>
+</li>
+<li>
+<p>对角线增加一个相同的值，以达到需要的条件数
+$$
+\lambda_{inc} = \frac{\lambda_{max}-\lambda_{min} K_{req}}{K_{req}-1}
+$$
+其中$\lambda_{inc}$为增量。
+优点：不同通道误差之间的关系不变
+缺点：最大特征值的变化相对较小，这将会削弱通道之间的相关性</p>
+</li>
+</ol>
+<p>文章经过实验对比采用第二种方法，并通过实验确定目标条件数的取值。</p>
+<h3 id="修复矩阵的影响">修复矩阵的影响</h3>
+<p>由于误差协方差矩阵对角元素通常比较大，该方法会显著降低相关性。</p>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/academic/">Academic</a>
+  
+  <a class="badge badge-light" href="/tag/data-assimilation/">Data Assimilation</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/&amp;text=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/&amp;t=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data&amp;body=https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/&amp;title=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data%20https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://wuxinwang1997.github.io/post/note4-accounting4-correlated-error-in-the-assimilation-of-high-resolution-sounder-data/&amp;title=Note%20for%20Accounting%20for%20correlated%20error%20in%20the%20assimilation%20of%20high-resolution%20sounder%20data" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://wuxinwang1997.github.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu923308ddc45a0139331c87f8a72e7c37_94118_270x270_fill_q75_lanczos_center.jpg" alt="Wuxin Wang"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://wuxinwang1997.github.io/">Wuxin Wang</a></h5>
+      <h6 class="card-subtitle">Ph.D student of Computer Science</h6>
+      <p class="card-text">My research interests include data assimilation, machine learning and spatial-temporal forecasting.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/wuxinwang1997" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.zhihu.com/people/pa-ke-ni-zi" target="_blank" rel="noopener">
+        <i class="fab fa-zhihu"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2022 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.92d2024afaa4dce0cad42ba360879ce9.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="/js/wowchemy-headroom.e8fd2d733eef6a8bbbe0539398fc0547.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.de33c90527762392d440555c36739dd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+</body>
+</html>
