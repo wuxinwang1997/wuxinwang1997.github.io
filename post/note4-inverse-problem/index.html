@@ -89,6 +89,9 @@
 
   
   
+    
+    <script src="/js/mathjax-config.js"></script>
+  
 
   
 
@@ -236,9 +239,9 @@
 
       
       
-        
-      
 
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
       
     
       
@@ -945,300 +948,246 @@ $$</p>
 <p>在许多反演求解中（特别四非线性反演求解中）需要进行正演计算。欲求解反演问题，首先必须假设相应的正演问题已经获得解决</p>
 </li>
 </ul>
-$\color{red}{反问题的求解比正问题困难，且与正问题相关}$
-
-- 反演问题的求解归结为最有估计问题，计算量很大
-  
-  $Ax=y, x \in X, y \in Y$
-  
-  $A$是算子，$x$代表了初值、边界、物理参数等
-  
-  把反问题转化为正问题：在$x$的变化范围内，寻找$x$使得它对应的$y$等于$y^{obs}$，那么这样的$x$就是要求最优解
-  
-  由于$A$可能不是满射，即$R(A) \neq Y$，因此，对$y \in Y$，反问题很可能无解
-  
-  另一方面，$y^{obs}$一般存在误差（未知），因此，求出$Ax=y^{obs}$精确解$x^a$不可能
-  
-  于是，寻求近似解，即把使得$\|Ax-y^{obs}\|$最小的$x^a$作为$Ax=y^{obs}$的近似解（最优化问题）
-
-- 反问题的不适定性带来的求解困难
-  
-  1. 解不存在。解决办法：求近似解
-  
-  2. 解不唯一。解决办法：增加约束条件
-  
-  3. 解不稳定，导致$\color{red}{通常的数值方法失效}$
-     
-     解决办法：增加约束条件，构造稳定近似解
-
-#### 反问题的求解方法
-
-#### 分类1：
-
-- 确定性方法
-  
-  - 最小二乘
-    $$
-    Ax=b \quad A=(a_{ij})_{m \times n} \quad x=[x_1,\cdots,x_n]^T \quad b=[b_1,\cdots,b_m^T]
-    $$
-    考虑$m > n$，超定，往往无解
-    
-    $$
-    J(x)=|Ax-b|^2=\min ! \Rightarrow \frac{\partial{J}}{\partial{x}}(\nabla_xJ)=0 \Rightarrow A'Ax=A'b
-    $$
-    
-    解一定存在，但条件数$Cond(A)=\|A\|\|A^{-1}\|$很大，则解是不适定的
-    
-    最小二乘求解的结果未必是稳定的
-    
-    考虑$m<n$，欠定，解不唯一
-    
-    采用Lagrange乘子法，增加约束条件，$\|x\|^2=\min ! \quad s.t \quad Ax=b$
-    
-    $$
-    J(x) = \|x\|^2 - \lambda'(Ax-b)
-    $$
-    
-    $\lambda = \begin{matrix}\lambda_1\\\\ \vdots \\\\ \lambda_m\end{matrix}$
-    
-    是Lagrange乘子向量
-    
-    若$Ax=b$不精确，考虑$\|Ax-b\|^2 \min !$，增加惩罚项做正则化
-    
-    $$
-    \tilde{J}(x)=\|Ax-b\|^2+\alpha \|Lx\|^2
-    $$
-    
-    $L$——算子， $\alpha > 0$参数
-  
-  - 伴随方法
-    
-    $$
-    \begin{aligned}
-      \frac{\mathrm{d}X}{\mathrm{d}t} &= F(X), \Omega \\\\
-      X(0) &= X_0 \\\\
-      X|_P &= X_B \\\\
-      Z &= K(X(t))+\varepsilon \quad \text{观测方程}
-    \end{aligned}
-    $$
-    
-    在$[0,T]$，$Z$有观测值，$Z^{obs}$，确定$X_0$（初始场）
-    
-    假设模型精确，问题归结为最优化问题
-    
-    $$
-    J(X_0) = \frac{1}{2}\int_0^T \|K(X(t))-Z^{obs}\|^2 \mathrm{d}t = \min !
-    $$
-    
-    求解方法：伴随方法$\Rightarrow$伴随方程$\Rightarrow$ $\nabla_{X_0}J$（梯度）
-    
-    伴随方程：线性化得到，或采用Lagrange乘子法得到
-
-- 随机性方法
-  
-  即统计方法（不确定性方法）。随机方法既可以处理线性问题也可以处理非线性反问题。在问题是定时，随机方法和确定性方法得到的结果应该是一致的；在问题不适定时，随即方法应该优于确定性方法
-  
-  - Bayes方法
-    
-    在随机方法中解反问题的思路：所有的变量都视为随机变量，解反问题就归结为求条件概率$P(x|y)$
-    
-    $$
-    P(x|y^{\delta})=\frac{P(y^{\delta}|x)P(x)}{P(y^\delta)}
-    $$
-
-  - Kalman
-    
-    一个演化方程和观测方程
-    
-    如果$T > N-1$，如$T=N$，则称为Kalman预测（外推）
-    
-    如果$T=N-1$，称为Kalman现报（滤波，估计）
-    
-    如果$0 \leq T \leq N-1$，称为Kalman回报（平滑或内插）
-    
-    对于非线性模型，且误差不服从正态分布
-    
-    例子滤波方法
-  
-  - 模拟退火和遗传算法
-  
-  - 人工神经网络方法
-  
-  - 深度学习
-
-
-#### 分类2
-
-- 线性反问题
-
-- 非线性反问题
-  
-  - 线性化+迭代方法
-  
-  - 非线性最小二乘法
-
-
-#### 分类3
-
-- 数值优化方法
-  
-  反问题都可以归结为最优化问题
-  
-  Krylov子空间方法
-
-- 解析方法
-
-
-#### 关于正则化参数的选取
-
-- 先验给定：与数据误差水平$\delta$的一元函数
-
-- 后验选取：数据$y^{obs}$和数据误差水平$\delta$的函数
-
-Morozov偏差原则
-
-交叉检验和广义交叉检验
-
-$C_L$方法
-
-$L$曲线方法
-
-
-### 第4讲 最小二乘法解线性反问题
-
-$Ax=b, A=(a_{ij})_{m \times n}$为实矩阵，$x = [x_1,\cdots,x_n]^T, b=[b_1,\cdots,b_m]^T$
-
-- Case 1 $m > n$，超定，overdetermined
-  
-  可能误解，求近似解 $\|Ax-b\|^2=\min ! = (Ax-b)^T(Ax-b)$
-  
-  利用变分方法：$A^TAx=A^Tb$总有解，$(A^TA)^{-1}$存在，$\hat{x}=(A^TA)^{_1}b$，误差的估计：$\varepsilon = b-A\hat{x}$，解不稳定
-
-- Case 2 $m=n$一样处理
-
-- Case 3 $m < n$，欠定，underdetermined，解不唯一，有无穷解
-  
-  加约束条件，一般处理方法：在无穷多解中选择使得
-  
-  $\|x\|^2=\min$的解（极小模解）
-  
-  归结为$\|x\|^2=\min! \quad s.t \quad Ax=b$
-  
-  $Lagrange$乘子法，$J=x^Tx-\lambda^T(Ax-b)=\min !$
-  
-  $\Rightarrow \hat{x}=A^T(AA^T)^{-1}b,\hat{\lambda}=(AA^T)^{-1}b,\hat{\varepsilon}=0$
-  
-  $\hat{x}$的不确定性：$P=\left<(\hat{x}-x)(\hat{x}-x)^T\right>=A^T(AA^T)^{-1}\left<\varepsilon\varepsilon^T\right>(AA^T)^{-1}A$
-
-### 第5讲 用SVD分解解线性反问题
-
-$A=(a_{ij})_{m \times n}$为实矩阵，$A: R^n \rightarrow R^m$，秩$R(A)=l(>0)$，则一定存在$l$个正数$\sigma_0 \geq \sigma_1 \geq \cdots \geq \sigma_l \geq 0$，同时存在两组标准正交向量：$v_1,v_2,\cdots,v_n，u_1,u_2,\cdots,u_m$满足
-
+<p>$\color{red}{反问题的求解比正问题困难，且与正问题相关}$</p>
+</li>
+<li>
+<p>反演问题的求解归结为最有估计问题，计算量很大</p>
+<p>$Ax=y, x \in X, y \in Y$</p>
+<p>$A$是算子，$x$代表了初值、边界、物理参数等</p>
+<p>把反问题转化为正问题：在$x$的变化范围内，寻找$x$使得它对应的$y$等于$y^{obs}$，那么这样的$x$就是要求最优解</p>
+<p>由于$A$可能不是满射，即$R(A) \neq Y$，因此，对$y \in Y$，反问题很可能无解</p>
+<p>另一方面，$y^{obs}$一般存在误差（未知），因此，求出$Ax=y^{obs}$精确解$x^a$不可能</p>
+<p>于是，寻求近似解，即把使得$|Ax-y^{obs}|$最小的$x^a$作为$Ax=y^{obs}$的近似解（最优化问题）</p>
+</li>
+<li>
+<p>反问题的不适定性带来的求解困难</p>
+<ol>
+<li>
+<p>解不存在。解决办法：求近似解</p>
+</li>
+<li>
+<p>解不唯一。解决办法：增加约束条件</p>
+</li>
+<li>
+<p>解不稳定，导致$\color{red}{通常的数值方法失效}$</p>
+<p>解决办法：增加约束条件，构造稳定近似解</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="反问题的求解方法">反问题的求解方法</h4>
+<h4 id="分类1">分类1：</h4>
+<ul>
+<li>
+<p>确定性方法</p>
+<ul>
+<li>
+<p>最小二乘
 $$
+Ax=b \quad A=(a_{ij})_{m \times n} \quad x=[x_1,\cdots,x_n]^T \quad b=[b_1,\cdots,b_m^T]
+$$
+考虑$m &gt; n$，超定，往往无解</p>
+<p>$$
+J(x)=|Ax-b|^2=\min ! \Rightarrow \frac{\partial{J}}{\partial{x}}(\nabla_xJ)=0 \Rightarrow A&rsquo;Ax=A&rsquo;b
+$$</p>
+<p>解一定存在，但条件数$Cond(A)=|A||A^{-1}|$很大，则解是不适定的</p>
+<p>最小二乘求解的结果未必是稳定的</p>
+<p>考虑$m&lt;n$，欠定，解不唯一</p>
+<p>采用Lagrange乘子法，增加约束条件，$|x|^2=\min ! \quad s.t \quad Ax=b$</p>
+<p>$$
+J(x) = |x|^2 - \lambda&rsquo;(Ax-b)
+$$</p>
+<p>$\lambda = \begin{matrix}\lambda_1\\ \vdots \\ \lambda_m\end{matrix}$</p>
+<p>是Lagrange乘子向量</p>
+<p>若$Ax=b$不精确，考虑$|Ax-b|^2 \min !$，增加惩罚项做正则化</p>
+<p>$$
+\tilde{J}(x)=|Ax-b|^2+\alpha |Lx|^2
+$$</p>
+<p>$L$——算子， $\alpha &gt; 0$参数</p>
+</li>
+<li>
+<p>伴随方法</p>
+<p>$$
 \begin{aligned}
-Av_i &= \sigma_iu_i, &i=1,\cdots,l \\
-A^Tu_i &= \sigma_iv_i, &i=1,\cdots,l \\
-Av_i&=0 & i=l+1,\cdots,n \\
-A^Tu_i&=0 & i=l+1,\cdots,m \\
+\frac{\mathrm{d}X}{\mathrm{d}t} &amp;= F(X), \Omega \\
+X(0) &amp;= X_0 \\
+X|_P &amp;= X_B \\
+Z &amp;= K(X(t))+\varepsilon \quad \text{观测方程}
 \end{aligned}
-$$
-
-则
-
-$$
-A=\sum^l_{i=1}\sigma_iu_iv_i^T=(u_1 \cdots u_n)\begin{bmatrix}\sigma_1 & \cdots & 0 \\\\
-0 & \ddots & 0\\\\ 
-0 & \cdots & \sigma_l\end{bmatrix}(v_1^T \cdots v_m^T)^T
-$$
-
-物理意义：协方差矩阵将两个场联系起来，确定耦合模态
-
-#### 正则化思想的引入
-
-一般来说，$Ax=b$都是欠定的，解不唯一，为了使解位移，引入一个所谓的第二函数（半范数），$\Omega(x)$，使$\Omega(x) = \min!$的解唯一
-
-令$F=\{x\big|\|Ax-b\|^2 \leq C_0^2\}$，$C_0$称为误差水平（应该叫做精度，precision），$F$称为$Ax=b$的可行解集，通过令$\Omega(x)=\min!$得到唯一解。
-
-如何确定$\Omega(x)$？如令$\Omega(x) = \|x\|^2=\min!$即可得到最小模解
-
-若$x$有先验的值（背景场）$x^b$，可令$\Omega(x)=\|x-x^b\|^2=\min!$
-
-若$x$的变化比较平滑，可令$\Omega(x)=\|L(x-x^b)\|^2=\min!$
-
-$L-$算子（求导算子）
-
-$L_0=I$（单位阵）
-
-$L_1=\frac{1}{\Delta x}\begin{bmatrix}-1&1&0&0&0\\\\0&-1&1&0&0\\\\0&0&\ddots&\ddots\end{bmatrix}$
-
-$L_2$（二阶导数）
-
-也可以把各阶导数组合在一起
-
-问题归结为$\Omega(x)=\min! \quad \|Ax-b\|^2=C_0$
-
-令$J(x)=\Omega(x)+\lambda\|Ax-b\|^2=\min!$
-
-考虑$\Omega(x)=\|L_k(x-x^b)\|^2$，$J(x)=\|L_k(x-x^b)\|^2+\lambda\|Ax-b\|^2=\min!$
-
-两边除以$\lambda$，$J'(x)=\frac{1}{\lambda}\|L_k(x-x^b)\|^2+\|Ax-b\|^2$
-
-考虑$L_k=I$，$\hat{x}=(\lambda I+A^TA)^{-1}(\lambda x^b+ATd)$
-
-$A^TA=\left(\sum^l_{i=1}\sigma_iv_iu_i^T\right)\left(\sum^l_{i=1}\sigma_iu_iv_i^T\right)=\sum^l_{i=1}\sigma^2_iv_iv_i^T$
-
-$I_{n \times n}=\sum^n_{i=1}v_iv_i^T$
-
-$$
+$$</p>
+<p>在$[0,T]$，$Z$有观测值，$Z^{obs}$，确定$X_0$（初始场）</p>
+<p>假设模型精确，问题归结为最优化问题</p>
+<p>$$
+J(X_0) = \frac{1}{2}\int_0^T |K(X(t))-Z^{obs}|^2 \mathrm{d}t = \min !
+$$</p>
+<p>求解方法：伴随方法$\Rightarrow$伴随方程$\Rightarrow$ $\nabla_{X_0}J$（梯度）</p>
+<p>伴随方程：线性化得到，或采用Lagrange乘子法得到</p>
+</li>
+</ul>
+</li>
+<li>
+<p>随机性方法</p>
+<p>即统计方法（不确定性方法）。随机方法既可以处理线性问题也可以处理非线性反问题。在问题是定时，随机方法和确定性方法得到的结果应该是一致的；在问题不适定时，随即方法应该优于确定性方法</p>
+<ul>
+<li>
+<p>Bayes方法</p>
+<p>在随机方法中解反问题的思路：所有的变量都视为随机变量，解反问题就归结为求条件概率$P(x|y)$</p>
+<p>$$
+P(x|y^{\delta})=\frac{P(y^{\delta}|x)P(x)}{P(y^\delta)}
+$$</p>
+</li>
+<li>
+<p>Kalman</p>
+<p>一个演化方程和观测方程</p>
+<p>如果$T &gt; N-1$，如$T=N$，则称为Kalman预测（外推）</p>
+<p>如果$T=N-1$，称为Kalman现报（滤波，估计）</p>
+<p>如果$0 \leq T \leq N-1$，称为Kalman回报（平滑或内插）</p>
+<p>对于非线性模型，且误差不服从正态分布</p>
+<p>例子滤波方法</p>
+</li>
+<li>
+<p>模拟退火和遗传算法</p>
+</li>
+<li>
+<p>人工神经网络方法</p>
+</li>
+<li>
+<p>深度学习</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="分类2">分类2</h4>
+<ul>
+<li>
+<p>线性反问题</p>
+</li>
+<li>
+<p>非线性反问题</p>
+<ul>
+<li>
+<p>线性化+迭代方法</p>
+</li>
+<li>
+<p>非线性最小二乘法</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="分类3">分类3</h4>
+<ul>
+<li>
+<p>数值优化方法</p>
+<p>反问题都可以归结为最优化问题</p>
+<p>Krylov子空间方法</p>
+</li>
+<li>
+<p>解析方法</p>
+</li>
+</ul>
+<h4 id="关于正则化参数的选取">关于正则化参数的选取</h4>
+<ul>
+<li>
+<p>先验给定：与数据误差水平$\delta$的一元函数</p>
+</li>
+<li>
+<p>后验选取：数据$y^{obs}$和数据误差水平$\delta$的函数</p>
+</li>
+</ul>
+<p>Morozov偏差原则</p>
+<p>交叉检验和广义交叉检验</p>
+<p>$C_L$方法</p>
+<p>$L$曲线方法</p>
+<h3 id="第4讲-最小二乘法解线性反问题">第4讲 最小二乘法解线性反问题</h3>
+<p>$Ax=b, A=(a_{ij})_{m \times n}$为实矩阵，$x = [x_1,\cdots,x_n]^T, b=[b_1,\cdots,b_m]^T$</p>
+<ul>
+<li>
+<p>Case 1 $m &gt; n$，超定，overdetermined</p>
+<p>可能误解，求近似解 $|Ax-b|^2=\min ! = (Ax-b)^T(Ax-b)$</p>
+<p>利用变分方法：$A^TAx=A^Tb$总有解，$(A^TA)^{-1}$存在，$\hat{x}=(A^TA)^{_1}b$，误差的估计：$\varepsilon = b-A\hat{x}$，解不稳定</p>
+</li>
+<li>
+<p>Case 2 $m=n$一样处理</p>
+</li>
+<li>
+<p>Case 3 $m &lt; n$，欠定，underdetermined，解不唯一，有无穷解</p>
+<p>加约束条件，一般处理方法：在无穷多解中选择使得</p>
+<p>$|x|^2=\min$的解（极小模解）</p>
+<p>归结为$|x|^2=\min! \quad s.t \quad Ax=b$</p>
+<p>$Lagrange$乘子法，$J=x^Tx-\lambda^T(Ax-b)=\min !$</p>
+<p>$\Rightarrow \hat{x}=A^T(AA^T)^{-1}b,\hat{\lambda}=(AA^T)^{-1}b,\hat{\varepsilon}=0$</p>
+<p>$\hat{x}$的不确定性：$P=\left&lt;(\hat{x}-x)(\hat{x}-x)^T\right&gt;=A^T(AA^T)^{-1}\left&lt;\varepsilon\varepsilon^T\right&gt;(AA^T)^{-1}A$</p>
+</li>
+</ul>
+<h3 id="第5讲-用svd分解解线性反问题">第5讲 用SVD分解解线性反问题</h3>
+<p>$A=(a_{ij})_{m \times n}$为实矩阵，$A: R^n \rightarrow R^m$，秩$R(A)=l(&gt;0)$，则一定存在$l$个正数$\sigma_0 \geq \sigma_1 \geq \cdots \geq \sigma_l \geq 0$，同时存在两组标准正交向量：$v_1,v_2,\cdots,v_n，u_1,u_2,\cdots,u_m$满足</p>
+<p>$$
 \begin{aligned}
-\lambda I+A^TA &= \lambda\sum^n_{i=1}v_iv_i^T+\sum^l_{i=1}\sigma^2_iv_iv_i^T \\\\
-&= \sum^n_{i=1}(\lambda+\sigma^2_i)v_iv_i^T
+Av_i &amp;= \sigma_iu_i, &amp;i=1,\cdots,l \
+A^Tu_i &amp;= \sigma_iv_i, &amp;i=1,\cdots,l \
+Av_i&amp;=0 &amp; i=l+1,\cdots,n \
+A^Tu_i&amp;=0 &amp; i=l+1,\cdots,m \
 \end{aligned}
-$$
-
-$$
+$$</p>
+<p>则</p>
+<p>$$
+A=\sum^l_{i=1}\sigma_iu_iv_i^T=(u_1 \cdots u_n)\begin{bmatrix}\sigma_1 &amp; \cdots &amp; 0 \\
+0 &amp; \ddots &amp; 0\\
+0 &amp; \cdots &amp; \sigma_l\end{bmatrix}(v_1^T \cdots v_m^T)^T
+$$</p>
+<p>物理意义：协方差矩阵将两个场联系起来，确定耦合模态</p>
+<h4 id="正则化思想的引入">正则化思想的引入</h4>
+<p>一般来说，$Ax=b$都是欠定的，解不唯一，为了使解位移，引入一个所谓的第二函数（半范数），$\Omega(x)$，使$\Omega(x) = \min!$的解唯一</p>
+<p>令$F={x\big||Ax-b|^2 \leq C_0^2}$，$C_0$称为误差水平（应该叫做精度，precision），$F$称为$Ax=b$的可行解集，通过令$\Omega(x)=\min!$得到唯一解。</p>
+<p>如何确定$\Omega(x)$？如令$\Omega(x) = |x|^2=\min!$即可得到最小模解</p>
+<p>若$x$有先验的值（背景场）$x^b$，可令$\Omega(x)=|x-x^b|^2=\min!$</p>
+<p>若$x$的变化比较平滑，可令$\Omega(x)=|L(x-x^b)|^2=\min!$</p>
+<p>$L-$算子（求导算子）</p>
+<p>$L_0=I$（单位阵）</p>
+<p>$L_1=\frac{1}{\Delta x}\begin{bmatrix}-1&amp;1&amp;0&amp;0&amp;0\\0&amp;-1&amp;1&amp;0&amp;0\\0&amp;0&amp;\ddots&amp;\ddots\end{bmatrix}$</p>
+<p>$L_2$（二阶导数）</p>
+<p>也可以把各阶导数组合在一起</p>
+<p>问题归结为$\Omega(x)=\min! \quad |Ax-b|^2=C_0$</p>
+<p>令$J(x)=\Omega(x)+\lambda|Ax-b|^2=\min!$</p>
+<p>考虑$\Omega(x)=|L_k(x-x^b)|^2$，$J(x)=|L_k(x-x^b)|^2+\lambda|Ax-b|^2=\min!$</p>
+<p>两边除以$\lambda$，$J&rsquo;(x)=\frac{1}{\lambda}|L_k(x-x^b)|^2+|Ax-b|^2$</p>
+<p>考虑$L_k=I$，$\hat{x}=(\lambda I+A^TA)^{-1}(\lambda x^b+ATd)$</p>
+<p>$A^TA=\left(\sum^l_{i=1}\sigma_iv_iu_i^T\right)\left(\sum^l_{i=1}\sigma_iu_iv_i^T\right)=\sum^l_{i=1}\sigma^2_iv_iv_i^T$</p>
+<p>$I_{n \times n}=\sum^n_{i=1}v_iv_i^T$</p>
+<p>$$
+\begin{aligned}
+\lambda I+A^TA &amp;= \lambda\sum^n_{i=1}v_iv_i^T+\sum^l_{i=1}\sigma^2_iv_iv_i^T \\
+&amp;= \sum^n_{i=1}(\lambda+\sigma^2_i)v_iv_i^T
+\end{aligned}
+$$</p>
+<p>$$
 (\lambda I+A^TA)^{-1} = \sum^n_{i=1}(\lambda + \sigma_i^2)^{-1}v_iv_i^T
-$$
-
-$$
+$$</p>
+<p>$$
 \lambda x^b+A^Td = \lambda\sum^n_{i=1}(v_i^Tx^b)v_i+\sum^l_{i=1}\sigma_iv_i(u_i^Td)
-$$
-
-$$
+$$</p>
+<p>$$
 \hat{x} = \sum^l_{i=1}[\frac{\lambda}{\lambda+\sigma_i^2}x_i^b+\frac{\sigma_i^2}{\lambda+\sigma_i^2}(\frac{d_i}{\sigma_i})]v_i+\sum^n_{i=l+1}x_i^bv_i
-$$
-
-其中$x_i^b=(v_i^Tx^b),d_i=(u_i^Td)$
-
-此方法被称为Tikhonovz正则化
-
-还有一种叫做截断奇异值分解TSVD，抛弃小的奇异值，保留大的奇异值，$A=\sum^l_{i=1}\sigma_iu_iv_i^T$
-
-问题：对于给定的系统，已知观测数据$Z$（$m$维随机向量），利用$Z$对参数$x$（$n$维随机向量）做出最优估计
-
-方法1：Bayes公式：
-
-$$
+$$</p>
+<p>其中$x_i^b=(v_i^Tx^b),d_i=(u_i^Td)$</p>
+<p>此方法被称为Tikhonovz正则化</p>
+<p>还有一种叫做截断奇异值分解TSVD，抛弃小的奇异值，保留大的奇异值，$A=\sum^l_{i=1}\sigma_iu_iv_i^T$</p>
+<p>问题：对于给定的系统，已知观测数据$Z$（$m$维随机向量），利用$Z$对参数$x$（$n$维随机向量）做出最优估计</p>
+<p>方法1：Bayes公式：</p>
+<p>$$
 P_{X|Z}(x|z) = \frac{p(x,z)}{P_Z(z)}=\frac{p(x|z)p(x)}{p(z)}
-$$
-
-方法2：构造$Z$的函数$\hat{x}=g(z)$，估计$x$
-
-结果：
-
-$$
+$$</p>
+<p>方法2：构造$Z$的函数$\hat{x}=g(z)$，估计$x$</p>
+<p>结果：</p>
+<p>$$
 \begin{aligned}
-Z &= kx+\varepsilon \\
-x &= [x_1,\cdots,x_n]^T
+Z &amp;= kx+\varepsilon \
+x &amp;= [x_1,\cdots,x_n]^T
 \end{aligned}
-$$
-
-### 第9讲 Kalman滤波类的估计
-
-#### 一 问题的提出：
-
-两个方程
-
+$$</p>
+<h3 id="第9讲-kalman滤波类的估计">第9讲 Kalman滤波类的估计</h3>
+<h4 id="一-问题的提出">一 问题的提出：</h4>
+<p>两个方程</p>
 
 $$
 \begin{aligned}
@@ -1366,8 +1315,6 @@ $$
 
 
 C.K. Wikle and L.M.Berliner, 2007. A Bayesian tutorial for data assimilation. Physica D.
-</li>
-</ul>
 
     </div>
 
