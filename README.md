@@ -30,6 +30,15 @@ Some examples:
 - **Beautiful and Simple Design**: this homepage is beautiful and simple, which is very suitable for academic personal homepage.
 - **SEO**: search Engine Optimization (SEO) helps search engines find the information you publish on your homepage easily, then rank it against similar websites.
 
+## Update Site
+```
+git checkout gh-pages
+git rm -rf .
+git add .
+git commit -a -m "First pages commit"
+git push origin gh-pages
+```
+
 ## Quick Start
 
 1. Fork this REPO and rename to `USERNAME.github.io`, where `USERNAME` is your github USERNAME.
