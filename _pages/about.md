@@ -27,6 +27,7 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 
 
 # 🔥 News
+- *2024.05*: &nbsp;🎉🎉 One paper is accepted by [IEEE Transactions on Geoscience and Remote Sensing](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=36).
 - *2023.12*: &nbsp;🎉🎉 One paper is accepted by [Journal of Advances in Modeling Earth Systems](https://agupubs.onlinelibrary.wiley.com/journal/19422466).
 - *2023.12*: &nbsp;🎉🎉 One paper is accepted by [ICASSP 2024](https://2024.ieeeicassp.org/).
 
