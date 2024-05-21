@@ -70,7 +70,9 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 # 💬 Invited Talks
 <!-- - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/) -->
-- *2023.10*, [2023年全国卫星数据同化研讨会暨首届国产卫星数据同化应用研讨会 (墙报)](http://www.cms1924.org/WebPage/WebPageDetail_370_391_3981.aspx), China.
+- *2024.05*, [2024年第三届人工智能海洋学论坛 (Oral)](https://mp.weixin.qq.com/s/sv5ci_UDlpogQg1bHPOiSQ), China.
+- *2024.05*, [2024年第五届大数据与人工智能在海洋环境分析预测及防灾减灾中的应用研讨会 (Oral)](https://mp.weixin.qq.com/s/PcZSVDJeId_3TJDFXpNHRA), China.
+- *2023.10*, [2023年全国卫星数据同化研讨会暨首届国产卫星数据同化应用研讨会 (Poster)](http://www.cms1924.org/WebPage/WebPageDetail_370_391_3981.aspx), China.
 
 <!-- # 💻 Internships
 - *2019.05 - 2020.02*, [Lorem](https://github.com/), China. -->
