@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren). I am now woring on AI for Earth. For example, deep learning-based data assimilation, and weather forecasting big models.
+I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren). I am now working on AI for Earth. For example, deep learning-based data assimilation, and weather forecasting big models.
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
