@@ -21,12 +21,13 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, fundation model, and deep learning. I have published 8 papers in top journals and conferences with total 19 citations.
+My research interests include spatial-temporal forecasting, data assimilation, fundation model, and deep learning. I have published 9 papers in top journals and conferences with total 21 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
 
 # 🔥 News
+- *2024.09*: &nbsp;🎉🎉 One paper is accepted by IEEE Geoscience and Remote Sensing Letters.
 - *2024.05*: &nbsp;🎉🎉 One paper is accepted by [IEEE Transactions on Geoscience and Remote Sensing](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=36).
 - *2023.12*: &nbsp;🎉🎉 One paper is accepted by [Journal of Advances in Modeling Earth Systems](https://agupubs.onlinelibrary.wiley.com/journal/19422466).
 - *2023.12*: &nbsp;🎉🎉 One paper is accepted by [ICASSP 2024](https://2024.ieeeicassp.org/).
@@ -44,15 +45,16 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
 </div> -->
-1. Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An adaptive variance adjusting strategy for the climatological background error covariance matrix based on deep reinforcement learning[J]. Preprint 2024. [doi](http://dx.doi.org/10.21203/rs.3.rs-4489846/v1)
-2. Weicheng Ni, Kaijun Ren, Yanlai Zhao, **Wuxin Wang**. Quality Assessment of MAXSS Global Merged Wind Products under Tropical Cyclone Conditions[C]. Photonics & Electromagnetics Research Symposium (PIERS), 2024, [doi](http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
-3. Xinjie Shi, Qingguo Su, **Wuxin Wang**, Weicheng Ni, Boheng Duan, and Kaijun Ren. TCNet: Triple Collocation-Based Network for Ocean Surface Wind Speed Retrieval on CYGNSS[J]. IEEE Transactions on Geoscience and Remote Sensing, 2024, [doi](https://doi.org/10.1109/TGRS.2024.3401835)
-4. **Wuxin Wang**, Kaijun Ren, Boheng Duan, Junxing Zhu, Xiaoyong Li, Weicheng Ni, Jingze Lu, Taikang Yuan. A Four‐Dimensional Variational Constrained Neural Network‐Based Data Assimilation Method[J]. Journal of Advances in Modeling Earth Systems, 2024, 16(1): e2023MS003687. [doi](https://doi.org/10.1029/2023MS003687)
-5. Jingze Lu, Kaijun Ren, Taikang Yuan, and **Wuxin Wang**. Phase-Space-Guided Deep Learning For Time Series Forecasting[C]//ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024: 7200-7204. [doi](https://doi.org/10.1109/ICASSP48485.2024.10446009)
-6. Taikang Yuan, Junxing Zhu, **Wuxin Wang**, Jingze Lu, Xiang Wang, Xiaoyong Li, and Kaijun Ren. A space-time partial differential equation based physics-guided neural network for sea surface temperature prediction[J]. Remote Sensing, 2023, 15(14): 3498. [doi](https://doi.org/10.3390/rs15143498)
-7. Xingyu Chai, Jincai Li, Jun Zhao, **Wuxin Wang**, and Xiaofeng Zhao. LGB-PHY: An evaporation duct height prediction model based on physically constrained lightGBM algorithm[J]. Remote Sensing, 2022, 14(14): 3448. [doi](https://doi.org/10.3390/rs14143448)
-8. Taikang Yuan, Junxing Zhu, Kaijun Ren, **Wuxin Wang**, Xiang Wang, and Xiaoyong Li. Neural network driven by space-time partial differential equation for predicting sea surface temperature[C]//2022 IEEE International Conference on Data Mining (ICDM). IEEE, 2022: 656-665. [doi](https://doi.org/10.1109/ICDM54844.2022.00076)
-9. Haodi Wang, Wen Chen, Peilong Yu, **Wuxin Wang**, Wen Zhang, and Kaijun Ren. Variabilities of Strait Throughflow in the Northwest Pacific Based on HYCOM and PHY Data[C]//2021 4th International Conference on Information Communication and Signal Processing (ICICSP). IEEE, 2021: 621-626. [doi](https://doi.org/10.1109/ICICSP54369.2021.9611879)
+1. **Wuxin Wang**, Weicheng Ni, Tao Han, Lei Bai, Boheng Duan, Kaijun Ren. DABench: A Benchmark Dataset for Data-Driven Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
+2. Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An adaptive variance adjusting strategy for the climatological background error covariance matrix based on deep reinforcement learning[J]. Preprint 2024. [doi](http://dx.doi.org/10.21203/rs.3.rs-4489846/v1)
+3. Weicheng Ni, Kaijun Ren, Yanlai Zhao, **Wuxin Wang**. Quality Assessment of MAXSS Global Merged Wind Products under Tropical Cyclone Conditions[C]. Photonics & Electromagnetics Research Symposium (PIERS), 2024, [doi](http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
+4. Xinjie Shi, Qingguo Su, **Wuxin Wang**, Weicheng Ni, Boheng Duan, and Kaijun Ren. TCNet: Triple Collocation-Based Network for Ocean Surface Wind Speed Retrieval on CYGNSS[J]. IEEE Transactions on Geoscience and Remote Sensing, 2024, [doi](https://doi.org/10.1109/TGRS.2024.3401835)
+5. **Wuxin Wang**, Kaijun Ren, Boheng Duan, Junxing Zhu, Xiaoyong Li, Weicheng Ni, Jingze Lu, Taikang Yuan. A Four‐Dimensional Variational Constrained Neural Network‐Based Data Assimilation Method[J]. Journal of Advances in Modeling Earth Systems, 2024, 16(1): e2023MS003687. [doi](https://doi.org/10.1029/2023MS003687)
+6. Jingze Lu, Kaijun Ren, Taikang Yuan, and **Wuxin Wang**. Phase-Space-Guided Deep Learning For Time Series Forecasting[C]//ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024: 7200-7204. [doi](https://doi.org/10.1109/ICASSP48485.2024.10446009)
+7. Taikang Yuan, Junxing Zhu, **Wuxin Wang**, Jingze Lu, Xiang Wang, Xiaoyong Li, and Kaijun Ren. A space-time partial differential equation based physics-guided neural network for sea surface temperature prediction[J]. Remote Sensing, 2023, 15(14): 3498. [doi](https://doi.org/10.3390/rs15143498)
+8. Xingyu Chai, Jincai Li, Jun Zhao, **Wuxin Wang**, and Xiaofeng Zhao. LGB-PHY: An evaporation duct height prediction model based on physically constrained lightGBM algorithm[J]. Remote Sensing, 2022, 14(14): 3448. [doi](https://doi.org/10.3390/rs14143448)
+9. Taikang Yuan, Junxing Zhu, Kaijun Ren, **Wuxin Wang**, Xiang Wang, and Xiaoyong Li. Neural network driven by space-time partial differential equation for predicting sea surface temperature[C]//2022 IEEE International Conference on Data Mining (ICDM). IEEE, 2022: 656-665. [doi](https://doi.org/10.1109/ICDM54844.2022.00076)
+10. Haodi Wang, Wen Chen, Peilong Yu, **Wuxin Wang**, Wen Zhang, and Kaijun Ren. Variabilities of Strait Throughflow in the Northwest Pacific Based on HYCOM and PHY Data[C]//2021 4th International Conference on Information Communication and Signal Processing (ICICSP). IEEE, 2021: 621-626. [doi](https://doi.org/10.1109/ICICSP54369.2021.9611879)
 
 <!-- - [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020** -->
 
@@ -72,6 +74,7 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 # 💬 Invited Talks
 <!-- - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/) -->
+- *2024.08*, [2024年气象前沿科技青年报告汇 (Oral)](https://mp.weixin.qq.com/s/pJFJ5QQDYrq9XdpmQwRMWA), China.
 - *2024.05*, [2024年第三届人工智能海洋学论坛 (Oral)](https://mp.weixin.qq.com/s/sv5ci_UDlpogQg1bHPOiSQ), China.
 - *2024.05*, [2024年第五届大数据与人工智能在海洋环境分析预测及防灾减灾中的应用研讨会 (Oral)](https://mp.weixin.qq.com/s/PcZSVDJeId_3TJDFXpNHRA), China.
 - *2023.10*, [2023年全国卫星数据同化研讨会暨首届国产卫星数据同化应用研讨会 (Poster)](http://www.cms1924.org/WebPage/WebPageDetail_370_391_3981.aspx), China.
