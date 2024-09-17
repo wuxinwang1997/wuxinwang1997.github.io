@@ -27,6 +27,7 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 
 
 # 🔥 News
+- *2024.09*: &nbsp;🎉🎉 One paper is accepted by [npj Climate and Atmospheric Science](https://www.nature.com/npjclimatsci/).
 - *2024.09*: &nbsp;🎉🎉 One paper is accepted by [IEEE Geoscience and Remote Sensing Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8859).
 - *2024.05*: &nbsp;🎉🎉 One paper is accepted by [IEEE Transactions on Geoscience and Remote Sensing](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=36).
 - *2023.12*: &nbsp;🎉🎉 One paper is accepted by [Journal of Advances in Modeling Earth Systems](https://agupubs.onlinelibrary.wiley.com/journal/19422466).
@@ -76,6 +77,7 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 # 💬 Invited Talks
 <!-- - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/) -->
+- *2024.09*, [第二届“智能+气象海洋预报保障”高地论坛 (Oral)](https://mp.weixin.qq.com/s/7yQmahWdf2ZVbQ4HPme4GA), China.
 - *2024.08*, [2024年气象前沿科技青年报告汇 (Oral)](https://mp.weixin.qq.com/s/pJFJ5QQDYrq9XdpmQwRMWA), China.
 - *2024.05*, [2024年第三届人工智能海洋学论坛 (Oral)](https://mp.weixin.qq.com/s/sv5ci_UDlpogQg1bHPOiSQ), China.
 - *2024.05*, [2024年第五届大数据与人工智能在海洋环境分析预测及防灾减灾中的应用研讨会 (Oral)](https://mp.weixin.qq.com/s/PcZSVDJeId_3TJDFXpNHRA), China.
