@@ -46,7 +46,9 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
 </div> -->
-- Qingguo Su, Xinjie Shi, **Wuxin Wang**, Di Zhang, Kefeng Deng, Kaijun Ren. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation[J]. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation. [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888)
+- **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science. accepted, 2024.
+<!-- [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888) -->
+- Qingguo Su, Xinjie Shi, **Wuxin Wang**, Di Zhang, Kefeng Deng, Kaijun Ren. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation[J]. IEEE Geoscience and Remote Sensing Letters. [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888)
 - **Wuxin Wang**, Weicheng Ni, Tao Han, Lei Bai, Boheng Duan, Kaijun Ren. DABench: A Benchmark Dataset for Data-Driven Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
 - Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An adaptive variance adjusting strategy for the climatological background error covariance matrix based on deep reinforcement learning[J]. Preprint 2024. [doi](http://dx.doi.org/10.21203/rs.3.rs-4489846/v1)
 - Weicheng Ni, A Stoffelen, Kaijun Ren, J Vogelzang, Yanlai Zhao, **Wuxin Wang**. Monitoring of Tropical Cyclones at Enhanced Resolution[C].  In IGARSS 2024-2024 IEEE International Geoscience and Remote Sensing Symposium (pp. 5803-5806), [doi](http://dx.doi.org/10.1109/IGARSS53475.2024.10642968http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
