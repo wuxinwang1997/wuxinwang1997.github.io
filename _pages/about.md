@@ -21,7 +21,7 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, fundation model, and deep learning. I have published 12 papers in top journals and conferences with total 27 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 12 papers in top journals and conferences with total 27 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
@@ -46,7 +46,7 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
 </div> -->
-- **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science. accepted, 2024.
+- **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science. accepted, 2024. [doi](10.1038/s41612-024-00776-1)
 <!-- [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888) -->
 - Qingguo Su, Xinjie Shi, **Wuxin Wang**, Di Zhang, Kefeng Deng, Kaijun Ren. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation[J]. IEEE Geoscience and Remote Sensing Letters. [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888)
 - **Wuxin Wang**, Weicheng Ni, Tao Han, Lei Bai, Boheng Duan, Kaijun Ren. DABench: A Benchmark Dataset for Data-Driven Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
