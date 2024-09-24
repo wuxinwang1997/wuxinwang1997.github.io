@@ -46,24 +46,31 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 </div>
 </div> -->
-- **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science. accepted, 2024. [doi](10.1038/s41612-024-00776-1)
-<!-- [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888) -->
-- Qingguo Su, Xinjie Shi, **Wuxin Wang**, Di Zhang, Kefeng Deng, Kaijun Ren. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation[J]. IEEE Geoscience and Remote Sensing Letters. [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888)
-- **Wuxin Wang**, Weicheng Ni, Tao Han, Lei Bai, Boheng Duan, Kaijun Ren. DABench: A Benchmark Dataset for Data-Driven Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
+
+## Preprints
+- **Wuxin Wang**, Weicheng Ni, Tao Han, Lei Bai, Boheng Duan, Kaijun Ren. DABench: A Benchmark Dataset for Data-Driven Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438) (under review at NeurIPS 2024)
 - Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An adaptive variance adjusting strategy for the climatological background error covariance matrix based on deep reinforcement learning[J]. Preprint 2024. [doi](http://dx.doi.org/10.21203/rs.3.rs-4489846/v1)
-- Weicheng Ni, A Stoffelen, Kaijun Ren, J Vogelzang, Yanlai Zhao, **Wuxin Wang**. Monitoring of Tropical Cyclones at Enhanced Resolution[C].  In IGARSS 2024-2024 IEEE International Geoscience and Remote Sensing Symposium (pp. 5803-5806), [doi](http://dx.doi.org/10.1109/IGARSS53475.2024.10642968http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
-- Weicheng Ni, Kaijun Ren, Yanlai Zhao, **Wuxin Wang**. Quality Assessment of MAXSS Global Merged Wind Products under Tropical Cyclone Conditions[C]. Photonics & Electromagnetics Research Symposium (PIERS), 2024, [doi](http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
+
+## Journal Articles
+- **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science. accepted, 2024. [doi](10.1038/s41612-024-00776-1) (**JCR Q1, Top journal in the field of meteorology and oceanographyp**)
+- Qingguo Su, Xinjie Shi, **Wuxin Wang**, Di Zhang, Kefeng Deng, Kaijun Ren. A Novel Generative Adversarial Network Based on Gaussian-perceptual for Downscaling Precipitation[J]. IEEE Geoscience and Remote Sensing Letters. [doi](https://doi.org/10.48550/arXiv.2408.11438https://doi.org/10.1109/LGRS.2024.3453888)
 - Xinjie Shi, Qingguo Su, **Wuxin Wang**, Weicheng Ni, Boheng Duan, and Kaijun Ren. TCNet: Triple Collocation-Based Network for Ocean Surface Wind Speed Retrieval on CYGNSS[J]. IEEE Transactions on Geoscience and Remote Sensing, 2024, [doi](https://doi.org/10.1109/TGRS.2024.3401835)
-- **Wuxin Wang**, Kaijun Ren, Boheng Duan, Junxing Zhu, Xiaoyong Li, Weicheng Ni, Jingze Lu, Taikang Yuan. A Four‐Dimensional Variational Constrained Neural Network‐Based Data Assimilation Method[J]. Journal of Advances in Modeling Earth Systems, 2024, 16(1): e2023MS003687. [doi](https://doi.org/10.1029/2023MS003687)
-- Jingze Lu, Kaijun Ren, Taikang Yuan, and **Wuxin Wang**. Phase-Space-Guided Deep Learning For Time Series Forecasting[C]//ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024: 7200-7204. [doi](https://doi.org/10.1109/ICASSP48485.2024.10446009)
+- **Wuxin Wang**, Kaijun Ren, Boheng Duan, Junxing Zhu, Xiaoyong Li, Weicheng Ni, Jingze Lu, Taikang Yuan. A Four‐Dimensional Variational Constrained Neural Network‐Based Data Assimilation Method[J]. Journal of Advances in Modeling Earth Systems, 2024, 16(1): e2023MS003687. [doi](https://doi.org/10.1029/2023MS003687) (**JCR Q1, Top journal in the field of numerical weather prediction**)
 - Taikang Yuan, Junxing Zhu, **Wuxin Wang**, Jingze Lu, Xiang Wang, Xiaoyong Li, and Kaijun Ren. A space-time partial differential equation based physics-guided neural network for sea surface temperature prediction[J]. Remote Sensing, 2023, 15(14): 3498. [doi](https://doi.org/10.3390/rs15143498)
 - Xingyu Chai, Jincai Li, Jun Zhao, **Wuxin Wang**, and Xiaofeng Zhao. LGB-PHY: An evaporation duct height prediction model based on physically constrained lightGBM algorithm[J]. Remote Sensing, 2022, 14(14): 3448. [doi](https://doi.org/10.3390/rs14143448)
-- Taikang Yuan, Junxing Zhu, Kaijun Ren, **Wuxin Wang**, Xiang Wang, and Xiaoyong Li. Neural network driven by space-time partial differential equation for predicting sea surface temperature[C]//2022 IEEE International Conference on Data Mining (ICDM). IEEE, 2022: 656-665. [doi](https://doi.org/10.1109/ICDM54844.2022.00076)
+
+
+## Conference Proceedings
+- Weicheng Ni, A Stoffelen, Kaijun Ren, J Vogelzang, Yanlai Zhao, **Wuxin Wang**. Monitoring of Tropical Cyclones at Enhanced Resolution[C].  In IGARSS 2024-2024 IEEE International Geoscience and Remote Sensing Symposium (pp. 5803-5806), [doi](http://dx.doi.org/10.1109/IGARSS53475.2024.10642968http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
+- Weicheng Ni, Kaijun Ren, Yanlai Zhao, **Wuxin Wang**. Quality Assessment of MAXSS Global Merged Wind Products under Tropical Cyclone Conditions[C]. Photonics & Electromagnetics Research Symposium (PIERS), 2024, [doi](http://dx.doi.org/10.1109/PIERS62282.2024.10618185)
+- Jingze Lu, Kaijun Ren, Taikang Yuan, and **Wuxin Wang**. Phase-Space-Guided Deep Learning For Time Series Forecasting[C]//ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024: 7200-7204. [doi](https://doi.org/10.1109/ICASSP48485.2024.10446009) (**CCF B, Top conferences in speech and signal processing**)
+- Taikang Yuan, Junxing Zhu, Kaijun Ren, **Wuxin Wang**, Xiang Wang, and Xiaoyong Li. Neural network driven by space-time partial differential equation for predicting sea surface temperature[C]//2022 IEEE International Conference on Data Mining (ICDM). IEEE, 2022: 656-665. [doi](https://doi.org/10.1109/ICDM54844.2022.00076) (**CCF B, Top conferences in data mining**)
 - Haodi Wang, Wen Chen, Peilong Yu, **Wuxin Wang**, Wen Zhang, and Kaijun Ren. Variabilities of Strait Throughflow in the Northwest Pacific Based on HYCOM and PHY Data[C]//2021 4th International Conference on Information Communication and Signal Processing (ICICSP). IEEE, 2021: 621-626. [doi](https://doi.org/10.1109/ICICSP54369.2021.9611879)
+
 
 <!-- - [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020** -->
 
-# 🎖 Honors and Awards
+# 🎖 Selected Honors and Awards
 - *2021.06* Silver Medal in Kaggle Competition ‘BirdCLEF-2021’ Top 3% (18/848). 
 - *2021.03* Top 3% (74/2849) in Tianchi Competition ‘AI Earth’. 
 - *2020.06* Outstanding Bachelor’s Degree Thesis of Wuhan University.
