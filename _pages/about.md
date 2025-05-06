@@ -21,12 +21,13 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 13 papers in top journals and conferences with total 37 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 13 papers in top journals and conferences with total 52 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
 
 # 🔥 News
+- *2025.05*: &nbsp;🎉🎉 One paper is accepted by [Journal of Advances in Modeling Earth Systems](https://agupubs.onlinelibrary.wiley.com/journal/19422466).
 - *2024.12*: &nbsp;🎉🎉 One paper is accepted by [IEEE Geoscience and Remote Sensing Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8859).
 - *2024.09*: &nbsp;🎉🎉 One paper is accepted by [npj Climate and Atmospheric Science](https://www.nature.com/npjclimatsci/).
 - *2024.09*: &nbsp;🎉🎉 One paper is accepted by [IEEE Geoscience and Remote Sensing Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8859).
