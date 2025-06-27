@@ -17,11 +17,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren). I am now working on AI for Earth. For example, deep learning-based data assimilation, and weather forecasting big models.
+I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren) and Associate Prof. [Boheng Duan (段博恒)](https://www.researchgate.net/profile/Doheng-Duan).  I also collaborate with [Lei Bai (白磊)](http://leibai.site/) and [Ben Fei (费奔)](https://ieeexplore.ieee.org/author/37089506842) losely. I am now working on AI for Earth. For example, deep learning-based data assimilation, end-to-end weather forecasting foundation models.
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 14 papers in top journals and conferences with total 54 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 14 papers in top journals and conferences with total 58 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
@@ -51,9 +51,9 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 
 ## Preprints
 - **Wuxin Wang**, Weicheng Ni, Tao Han, Taikang Yuan, Xiaoyong Li, Lei Bai, Boheng Duan, Kaijun Ren. A Benchmark for AI-based Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
-- Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An adaptive variance adjusting strategy for the climatological background error covariance matrix based on deep reinforcement learning[J]. Preprint 2024. [doi](http://dx.doi.org/10.21203/rs.3.rs-4489846/v1)
 
 ## Journal Articles
+- Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An Adaptive Variance Adjustment Strategy for a Static Background Error Covariance Matrix—Part I: Verification in the Lorenz-96 Model[J]. Applied Sciences, 2025, 15(12): 6399. [doi](https://doi.org/10.3390/app15126399)
 - **Wuxin Wang**, Boheng Duan, Weicheng Ni, Jingze Lu, Taikang Yuan, Dawei Li, Juan Zhao, Kaijun Ren. A Four-Dimensional Variational Informed Generative Adversarial Network for Data Assimilation[J]. Journal of Advances in Modeling Earth Systems, 2025,  17(6), e2024MS004437. [doi](https://doi.org/10.1029/2024MS004437) (**JCR Q1, Top journal in the field of numerical weather prediction**)
 - Weicheng Ni, Ad Stoffelen, Kaijun Ren, Jor Vogelzang, Yanlai Zhao, Xiaofeng Yang, **Wuxin Wang**. Enhanced Tropical Cyclone ASCAT Winds Guided by SAR-learned Spatial Structure Functions[J]. IEEE Transactions on Geoscience and Remote Sensing, 2024, [doi](https://doi.org/10.1109/TGRS.2024.3516209)
 - **Wuxin Wang**, Jinrong Zhang, Qingguo Su, Xingyu Chai, Jingze Lu, Weicheng Ni, Boheng Duan, Kaijun Ren. Accurate initial field estimation for weather forecasting with a variational constrained neural network[J]. npj Climate and Atmospheric Science 7, 223 (2024). [doi](10.1038/s41612-024-00776-1) (**JCR Q1, Top journal in the field of meteorology and oceanography**)
