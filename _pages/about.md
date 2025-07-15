@@ -21,7 +21,7 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 14 papers in top journals and conferences with total 58 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 15 papers in top journals and conferences with total 63 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
@@ -50,6 +50,8 @@ My research interests include spatial-temporal forecasting, data assimilation, f
 </div> -->
 
 ## Preprints
+- **Wuxin Wang**, Weicheng Ni, Lilan Huang, Tao Han, Ben Fei, Shuo Ma, Taikang Yuan, Yanlai Zhao, Kefeng Deng, Xiaoyong Li, Boheng Duan, Lei Bai, Kaijun Ren. XiChen: An observation-scalable fully AI-driven global weather forecasting system with 4D variational knowledge[J]. arxiv preprint arxiv:2507.09202, 2025. [doi](
+https://doi.org/10.48550/arXiv.2507.09202)
 - **Wuxin Wang**, Weicheng Ni, Tao Han, Taikang Yuan, Xiaoyong Li, Lei Bai, Boheng Duan, Kaijun Ren. A Benchmark for AI-based Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
 
 ## Journal Articles
