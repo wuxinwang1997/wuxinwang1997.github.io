@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren) and Associate Prof. [Boheng Duan (段博恒)](https://www.researchgate.net/profile/Doheng-Duan).  I also collaborate with [Lei Bai (白磊)](http://leibai.site/) and [Ben Fei (费奔)](https://ieeexplore.ieee.org/author/37089506842) losely. I am now working on AI for Earth. For example, deep learning-based data assimilation, end-to-end weather forecasting foundation models.
+I am a Ph.D student of computer science at the College of Computer Science and Technology, National University of Defense Technology, advised by Prof. [Kaijun Ren (任开军)](https://www.researchgate.net/profile/Kaijun-Ren) and Associate Prof. [Boheng Duan (段博恒)](https://www.researchgate.net/profile/Doheng-Duan).  I also collaborate with [Lei Bai (白磊)](http://leibai.site/) and [Ben Fei (费奔)](https://ieeexplore.ieee.org/author/37089506842) closely. I am now working on AI for Earth. For example, deep learning-based data assimilation, end-to-end weather forecasting foundation models.
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
