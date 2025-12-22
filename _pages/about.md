@@ -21,7 +21,7 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 16 papers in top journals and conferences with total 78 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 18 papers in top journals and conferences with total 82 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
@@ -56,6 +56,7 @@ https://doi.org/10.48550/arXiv.2507.09202)
 - **Wuxin Wang**, Weicheng Ni, Tao Han, Taikang Yuan, Xiaoyong Li, Lei Bai, Boheng Duan, Kaijun Ren. A Benchmark for AI-based Weather Data Assimilation[J]. arxiv preprint arxiv:2408.11438, 2024. [doi](https://doi.org/10.48550/arXiv.2408.11438)
 
 ## Journal Articles
+- **Wuxin Wang**, Weicheng Ni, Taikang Yuan, Lilan Huang, Tao Han, Boheng Duan, Xiaoyong Li, Yanlai Zhao, Ben Fei, Lei Bai, Kaijun Ren. Artificial Intelligence Techniques in Data Assimilation: Emerging Approaches, Key Challenges, and Future Prospects[J]. Science China Earth Sciences, 2025. [doi](https://doi.org/10.1007/s11430-025-1807-8https://doi.org/10.3390/app15126399)
 - Lilan Huang, Hongze Leng, Junqiang Song, Dongzi Wang, **Wuxin Wang**, Ruisheng Hu, Hang Cao. An Adaptive Variance Adjustment Strategy for a Static Background Error Covariance Matrix—Part I: Verification in the Lorenz-96 Model[J]. Applied Sciences, 2025, 15(12): 6399. [doi](https://doi.org/10.3390/app15126399)
 - **Wuxin Wang**, Boheng Duan, Weicheng Ni, Jingze Lu, Taikang Yuan, Dawei Li, Juan Zhao, Kaijun Ren. A Four-Dimensional Variational Informed Generative Adversarial Network for Data Assimilation[J]. Journal of Advances in Modeling Earth Systems, 2025,  17(6), e2024MS004437. [doi](https://doi.org/10.1029/2024MS004437) (**JCR Q1, Top journal in the field of numerical weather prediction**)
 - Weicheng Ni, Ad Stoffelen, Kaijun Ren, Jor Vogelzang, Yanlai Zhao, Xiaofeng Yang, **Wuxin Wang**. Enhanced Tropical Cyclone ASCAT Winds Guided by SAR-learned Spatial Structure Functions[J]. IEEE Transactions on Geoscience and Remote Sensing, 2024, [doi](https://doi.org/10.1109/TGRS.2024.3516209)
