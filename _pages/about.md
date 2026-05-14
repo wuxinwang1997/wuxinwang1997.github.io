@@ -21,12 +21,13 @@ I am a Ph.D student of computer science at the College of Computer Science and T
 
 I won the Lei Jun Scholarship (雷军奖学金) of Wuhan Univerisity (School of Remote Sensing and Information Engineering, Class of 2016, Top 1) in 2019.
 
-My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 18 papers in top journals and conferences with total 121 citations.
+My research interests include spatial-temporal forecasting, data assimilation, foundation model, and deep learning. I have published 19 papers in top journals and conferences with total 123 citations.
 
 <!-- My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>). -->
 
 
 # 🔥 News
+- *2026.05*: &nbsp;🎉🎉 One paper is accepted by [IJCAI 2026](https://2026.ijcai.org/). 
 - *2025.09*: &nbsp;🎉🎉 One paper is accepted by [Science China Earth Sciences](https://www.sciengine.com/SCES/home).
 - *2025.05*: &nbsp;🎉🎉 One paper is accepted by [Journal of Advances in Modeling Earth Systems](https://agupubs.onlinelibrary.wiley.com/journal/19422466).
 - *2024.12*: &nbsp;🎉🎉 One paper is accepted by [IEEE Geoscience and Remote Sensing Letters](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8859).
@@ -90,9 +91,10 @@ https://doi.org/10.48550/arXiv.2507.09202)
 - *2020.09 - (now)*, PhD student majored in Computer Science, National Univeristy of Defense Technology. 
 - *2016.09 - 2020.06*, Bachelor's Degree majored in Sptaial Information and Digital Technology, Wuhan University. 
 
-# 💬 Invited Talks
+# 💬 Presentations
 <!-- - *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
 - *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/) -->
+- *2025.12*, [2025年全国数值预报技术交流研讨会 (Outstanding Report Award)](https://atmos.sysu.edu.cn/article/4412), China.
 - *2024.11*, [气象人工智能交流研讨会 (Oral)](https://mp.weixin.qq.com/s/71s2yGbO719LXYdO55GIIg), China.
 - *2024.11*, [2024年风云气象卫星用户大会暨全国风云卫星学术研讨会 (Oral)](https://mp.weixin.qq.com/s/-KDq9RA3PLArfjWfyRiYKQ), China.
 - *2024.09*, [第二届“智能+气象海洋预报保障”高地论坛 (Oral)](https://mp.weixin.qq.com/s/7yQmahWdf2ZVbQ4HPme4GA), China.
